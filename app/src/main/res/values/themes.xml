@@ -1,0 +1,31 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BoxForRoot" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/material_blue</item>
+        <item name="colorPrimaryVariant">@color/material_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="bg">@color/light_white</item>
+        <item name="boldText">@color/black_bold_text</item>
+        <item name="regularText">@color/black_regular_text</item>
+        <item name="appbar">@color/light_white</item>
+        <item name="card">@color/white</item>
+        <item name="appbarAttribute">@color/material_blue</item>
+        <item name="hintText">@color/black_hint_text</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/material_blue</item>
+        <item name="colorSecondaryVariant">@color/material_blue</item>
+        <item name="colorOnSecondary">@color/material_blue</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >@color/light_white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

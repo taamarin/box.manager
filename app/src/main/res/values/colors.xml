@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="material_blue">#2196F3</color>
+    <color name="material_blue5p">#0D2196F3</color>
+    <color name="dots_bg">#192196F3</color>
+    <color name="dots_half">#802196F3</color>
+    <color name="material_red">#EC7474</color>
+    <color name="light_white">#FCFCFC</color>
+    <color name="dark">#0E121A</color>
+    <color name="light_dark">#171C26</color>
+    <color name="black_bold_text">#4F565E</color>
+    <color name="black_regular_text">#888F96</color>
+    <color name="black_hint_text">#80888F96</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bgdialog">#1E0304</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="white_bold_text">#FCFCFC</color>
+    <color name="white_regular_text">#F2F5F6</color>
+    <color name="white_hint_text">#80F2F5F6</color>
+    <color name="ripple_color">#7F717171</color>
+    <color name="color_bg_dialog">@color/white</color>
+    <attr format="color" name="card"/>
+    <attr format="color" name="bg"/>
+    <attr format="color" name="boldText"/>
+    <attr format="color" name="regularText"/>
+    <attr format="color" name="hintText"/>
+    <attr format="color" name="appbar"/>
+    <attr format="color" name="appbarAttribute"/>
+</resources>
