@@ -6,9 +6,9 @@
         android:icon="@drawable/ic_home" />
 
     <item
-        android:id="@+id/nav_log"
-        android:title="Log"
-        android:icon="@drawable/ic_log" />
+        android:id="@+id/nav_dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/ic_dashboard" />
 
     <item
         android:id="@+id/nav_applist"
