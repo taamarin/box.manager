@@ -21,4 +21,8 @@ object ThermUtil {
             MagiskHelper.execRootCmdVoid(cmd, callback)
         }
     }
+
+    fun readLog(): String {
+        return MagiskHelper.execRootCmd("cat /data/adb/box/run/runs.log")
+    }
 }

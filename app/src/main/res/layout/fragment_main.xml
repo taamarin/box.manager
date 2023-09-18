@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/bg"
+    android:padding="20dp"
     tools:context=".ui.fragment.MainFragment">
 
     <FrameLayout
@@ -24,8 +25,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
                 android:layout_marginBottom="10dp"
                 android:clipChildren="false"
                 android:clipToPadding="false">
@@ -55,6 +56,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/proxy"
+                style="@style/MyCardView"
                 android:layout_width="match_parent"
                 android:layout_height="86dp"
                 android:layout_marginHorizontal="16dp"
@@ -106,6 +108,31 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardLog"
+                style="@style/MyCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:cardPreventCornerOverlap="false">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvLog"/>
+
+                </ScrollView>
+
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
     </FrameLayout>

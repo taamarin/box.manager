@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.chz.bfm.R
 import xyz.chz.bfm.databinding.FragmentMainBinding
 import xyz.chz.bfm.enm.StatusConnection
+import xyz.chz.bfm.ui.model.MainModel
 import xyz.chz.bfm.util.Util
 import xyz.chz.bfm.util.command.ThermUtil
 import xyz.chz.bfm.util.moduleVer
@@ -19,12 +21,18 @@ import xyz.chz.bfm.util.setImage
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
+    private val viewModel: MainModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.data()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,12 +49,12 @@ class MainFragment : Fragment() {
                 if (Util.isProxyed) {
                     ThermUtil.stop {
                         Util.runOnUiThread {
-                            if (it) {
+                            Util.isProxyed = if (it) {
                                 setProxyCard(StatusConnection.Disabled.str)
-                                Util.isProxyed = false
+                                false
                             } else {
                                 setProxyCard(StatusConnection.Error.str)
-                                Util.isProxyed = true
+                                true
                             }
                             v.isClickable = true
                         }
@@ -54,19 +62,20 @@ class MainFragment : Fragment() {
                 } else {
                     ThermUtil.start {
                         Util.runOnUiThread {
-                            if (it) {
+                            Util.isProxyed = if (it) {
                                 setProxyCard(StatusConnection.Enabled.str)
-                                Util.isProxyed = true
+                                true
                             } else {
                                 setProxyCard(StatusConnection.Error.str)
-                                Util.isProxyed = false
+                                false
                             }
-                            v.isClickable = true
+                            v.isClickable = false
                         }
                     }
                 }
             }
         }
+        setupLog()
     }
 
     private fun setProxyCard(status: String) = with(binding) {
@@ -106,6 +115,14 @@ class MainFragment : Fragment() {
                 statusSummary.moduleVer()
             }
         }
+    }
+
+    private fun setupLog() = with(binding) {
+        viewModel.log.observe(viewLifecycleOwner) { data ->
+            tvLog.text = data
+        }
+
+        if(Util.isProxyed) viewModel.data().cancel()
     }
 
 }
