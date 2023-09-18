@@ -64,10 +64,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
-                app:cardBackgroundColor="#4CAF50"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                app:cardPreventCornerOverlap="false">
+                app:cardBackgroundColor="#6fa251">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -122,13 +119,13 @@
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:padding="10dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
 
                     <TextView
+                        android:id="@+id/tvLog"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tvLog"/>
+                        android:layout_height="wrap_content" />
 
                 </ScrollView>
 

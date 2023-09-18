@@ -11,4 +11,23 @@
         <item name="cornerSizeBottomLeft">8dp</item>
         <item name="cornerSizeBottomRight">8dp</item>
     </style>
+
+    <style name="ThemeOverlay.MaterialComponents.MaterialAlertDialog_background" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:background">@color/color_bg_dialog</item>
+        <item name="colorOnSurface">@color/material_blue</item>
+        <item name="shapeAppearanceOverlay">@style/DialogCorners</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:background">@color/dark</item>
+        <item name="backgroundTint">@color/material_blue</item>
+    </style>
+
+    <style name="DialogCorners">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
 </resources>

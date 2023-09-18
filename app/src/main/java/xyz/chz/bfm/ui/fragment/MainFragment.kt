@@ -12,7 +12,7 @@ import xyz.chz.bfm.databinding.FragmentMainBinding
 import xyz.chz.bfm.enm.StatusConnection
 import xyz.chz.bfm.ui.model.MainModel
 import xyz.chz.bfm.util.Util
-import xyz.chz.bfm.util.command.ThermUtil
+import xyz.chz.bfm.util.command.TermUtil
 import xyz.chz.bfm.util.moduleVer
 import xyz.chz.bfm.util.setColorBackground
 import xyz.chz.bfm.util.setImage
@@ -47,7 +47,7 @@ class MainFragment : Fragment() {
                 setProxyCard(StatusConnection.Loading.str)
                 v.isClickable = false
                 if (Util.isProxyed) {
-                    ThermUtil.stop {
+                    TermUtil.stop {
                         Util.runOnUiThread {
                             Util.isProxyed = if (it) {
                                 setProxyCard(StatusConnection.Disabled.str)
@@ -60,7 +60,7 @@ class MainFragment : Fragment() {
                         }
                     }
                 } else {
-                    ThermUtil.start {
+                    TermUtil.start {
                         Util.runOnUiThread {
                             Util.isProxyed = if (it) {
                                 setProxyCard(StatusConnection.Enabled.str)
@@ -120,9 +120,8 @@ class MainFragment : Fragment() {
     private fun setupLog() = with(binding) {
         viewModel.log.observe(viewLifecycleOwner) { data ->
             tvLog.text = data
+            if (data.contains("connected")) viewModel.data().cancel()
         }
-
-        if(Util.isProxyed) viewModel.data().cancel()
     }
 
 }

@@ -10,7 +10,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import xyz.chz.bfm.util.command.ThermUtil
+import xyz.chz.bfm.util.command.TermUtil
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,7 +22,7 @@ class MainModel @Inject constructor() : ViewModel() {
     fun data(): Job {
         return CoroutineScope(Dispatchers.IO).launch {
             while (isActive) {
-                _log.postValue(ThermUtil.readLog())
+                _log.postValue(TermUtil.readLog())
                 delay(1000)
             }
         }
