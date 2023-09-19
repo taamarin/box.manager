@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        tools:context=".ui.activity.MainActivity">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            android:text="select core :" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_weight="0">
+
+            <Spinner
+                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/coreSelector">
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            android:text="clash settings:"
+            android:id="@+id/clash1" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="0"
+            android:id="@+id/clash2">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginLeft="9dp"
+                android:layout_weight="1.6"
+                android:text="find procces" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:text=" :" />
+
+            <Spinner
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:id="@+id/spFindProc">
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="0"
+            android:id="@+id/clash8">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginLeft="9dp"
+                android:layout_weight="1.6"
+                android:text="clash options" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:text=" :" />
+
+            <Spinner
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:id="@+id/spClashType">
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="0"
+            android:id="@+id/clash5">
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbunified_delay"
+                android:text="unified delay[meta]" />
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbsnifferrs"
+                android:text="sniffer[meta]" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="0"
+            android:id="@+id/clash6">
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbfake_ip"
+                android:text="fake-ip" />
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbgeodata_mod"
+                android:text="geodata[meta] " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="0"
+            android:id="@+id/clash7">
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbsubs"
+                android:text="subscription" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            android:text="module settings:" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="0">
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbcgr"
+                android:text="cgroup" />
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbquic"
+                android:text="quic" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="0">
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbipv6"
+                android:text="ipv6" />
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbport_detect"
+                android:text="port detect" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="0">
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbcron"
+                android:text="crontab" />
+
+            <CheckBox
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/cbgeo"
+                android:text="geox" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.6"
+                    android:layout_marginLeft="9dp"
+                    android:text="NetworkMode" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:text=":" />
+
+                <Spinner
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:id="@+id/spNetworkMode" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.6"
+                    android:layout_marginLeft="9dp"
+                    android:text="ProxyMode" />
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:text=":" />
+
+                <Spinner
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:id="@+id/spProxyMode" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="0">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/checkModule"
+                android:text="check module" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/checkIp"
+                android:text="MyIP" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:textSize="12sp"
+                android:layout_weight="1"
+                android:id="@+id/aboutApp"
+                android:text="about" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

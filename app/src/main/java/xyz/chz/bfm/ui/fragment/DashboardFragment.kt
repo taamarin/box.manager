@@ -10,7 +10,7 @@ import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.chz.bfm.databinding.FragmentDashboardBinding
-import xyz.chz.bfm.util.command.TermUtil
+import xyz.chz.bfm.util.command.TermCmd
 
 @AndroidEntryPoint
 class DashboardFragment : Fragment() {
@@ -29,7 +29,7 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            dbWebview.loadUrl("${TermUtil.linkDasboard()}/ui/#/proxies")
+            dbWebview.loadUrl("${TermCmd.linkDasboard()}/ui/#/proxies")
             with(dbWebview.settings) {
                 domStorageEnabled = true
                 databaseEnabled = true

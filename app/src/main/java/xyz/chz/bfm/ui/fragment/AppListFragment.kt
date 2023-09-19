@@ -11,13 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import xyz.chz.bfm.R
 import xyz.chz.bfm.adapter.AppListAdapter
 import xyz.chz.bfm.adapter.AppManager
 import xyz.chz.bfm.data.AppInfo
 import xyz.chz.bfm.databinding.FragmentAppListBinding
+import xyz.chz.bfm.util.Util
+import xyz.chz.bfm.util.command.TermCmd
+import xyz.chz.bfm.util.setMyFab
 import java.text.Collator
-import xyz.chz.bfm.util.*
-import xyz.chz.bfm.util.command.TermUtil
 
 @AndroidEntryPoint
 class AppListFragment : Fragment() {
@@ -48,7 +50,7 @@ class AppListFragment : Fragment() {
                 DividerItemDecoration(requireActivity(), LinearLayoutManager.VERTICAL)
             rvApps.addItemDecoration(dividerItemDecoration)
 
-            val applist = TermUtil.appidList
+            val applist = TermCmd.appidList
 
             AppManager.rxLoadNetworkAppList(requireActivity())
                 .subscribeOn(Schedulers.io())
@@ -85,18 +87,26 @@ class AppListFragment : Fragment() {
                     rvApps.adapter = adapter
                     prgWaiting.visibility = View.GONE
                 }
-            switchBypassApps.setOnCheckedChangeListener { _, isChecked ->
-                TermUtil.setWhitelistOrBlacklist(isChecked)
+
+            with(fbSave) {
+                setOnClickListener {
+                    setMyFab("#888F96", R.drawable.ic_commit)
+                    if (Util.isProxyed) {
+                        TermCmd.renewBox {
+                            Util.runOnUiThread {
+                                if(it) {
+                                    setMyFab("#6fa251", R.drawable.ic_done)
+                                } else {
+                                    setMyFab("#EC7474", R.drawable.ic_error)
+                                }
+                            }
+                        }
+                    }
+                    adapter?.let {
+                        TermCmd.setAppidList(it.blacklist)
+                    }
+                }
             }
-            switchBypassApps.isChecked = TermUtil.isBlackListMode
         }
     }
-
-    override fun onPause() {
-        super.onPause()
-        adapter?.let {
-            TermUtil.setAppidList(it.blacklist)
-        }
-    }
-
 }

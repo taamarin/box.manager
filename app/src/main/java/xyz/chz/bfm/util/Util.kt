@@ -2,7 +2,7 @@ package xyz.chz.bfm.util
 
 import android.os.Handler
 import android.os.Looper
-import xyz.chz.bfm.util.command.TermUtil
+import xyz.chz.bfm.util.command.TermCmd
 
 object Util {
     private val handler = Handler(Looper.getMainLooper())
@@ -15,5 +15,5 @@ object Util {
         }
     }
 
-    var isProxyed = TermUtil.isProxying()
+    var isProxyed = TermCmd.isProxying()
 }

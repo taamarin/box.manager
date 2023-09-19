@@ -5,12 +5,18 @@ import xyz.chz.bfm.util.magisk.MagiskHelper.execRootCmdSilent
 import xyz.chz.bfm.util.magisk.MagiskHelper.execRootCmdVoid
 import kotlin.concurrent.thread
 
-object TermUtil {
+object TermCmd {
     val path = "/data/adb/box/"
-
 
     fun isProxying(): Boolean {
         return execRootCmdSilent("if [ -f ${path}run/box.pid ] ; then exit 1;fi") == 1
+    }
+
+    fun renewBox(callback: (Boolean) -> Unit) {
+        thread {
+            val cmd = "${path}scripts/box.iptables renew"
+            execRootCmdVoid(cmd, callback)
+        }
     }
 
     fun start(callback: (Boolean) -> Unit) {

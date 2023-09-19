@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">BoxForRoot</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="apps_count_list">added %d apps in mode %s</string>
 </resources>
