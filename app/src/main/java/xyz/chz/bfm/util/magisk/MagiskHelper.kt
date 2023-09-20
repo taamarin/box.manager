@@ -6,7 +6,6 @@ import java.io.DataOutputStream
 import java.io.InputStreamReader
 
 object MagiskHelper {
-    private const val TAG = "BoxForRoot.MagiskHelper"
     val IS_MAGISK_LITE = "lite" == execRootCmd("magisk -v | grep -o lite")
 
     fun execRootCmd(cmd: String): String {
@@ -15,14 +14,12 @@ object MagiskHelper {
             val process = Runtime.getRuntime().exec("su")
             val dos = DataOutputStream(process.outputStream)
             val reader = BufferedReader(InputStreamReader(process.inputStream))
-            Log.i(TAG, cmd)
             dos.writeBytes("$cmd\n")
             dos.flush()
             dos.writeBytes("exit\n")
             dos.flush()
             var line: String?
             while (reader.readLine().also { line = it } != null) {
-                Log.d("result", line!!)
                 result.append(line).append('\n')
             }
             process.waitFor()
@@ -39,7 +36,6 @@ object MagiskHelper {
         try {
             val process = Runtime.getRuntime().exec("su")
             val dos = DataOutputStream(process.outputStream)
-            Log.i(TAG, cmd)
             dos.writeBytes("$cmd\n")
             dos.flush()
             dos.writeBytes("exit\n")
@@ -56,7 +52,6 @@ object MagiskHelper {
     fun execRootCmdVoid(cmd: String, callback: (Boolean) -> Unit) {
         try {
             val process = Runtime.getRuntime().exec("su -c $cmd")
-            Log.i(TAG, cmd)
             process.waitFor()
             callback(process.exitValue() == 0)
         } catch (e: Exception) {

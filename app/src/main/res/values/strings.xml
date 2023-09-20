@@ -1,5 +1,67 @@
 <resources>
+    <!-- Apps -->
     <string name="app_name">BoxForRoot</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="min_module_vrsion">20230814</string>
     <string name="apps_count_list">added %d apps in mode %s</string>
+    <string name="no_apps_count_list">mode %s</string>
+    <string name="ok">OK</string>
+    <string name="for_clash_only">clash only work on redir-host</string>
+    <string name="module_not_found">Module Not Found</string>
+    <string name="update_module">Please upgrade ur Module :)\nMinimum ver: %d</string>
+    <string name="module_repo_url">https://github.com/taamarin/box_for_magisk</string>
+    <string name="release_repo_url">https://github.com/taamarin/box_for_magisk/releases</string>
+
+    <!-- Setting Dialog-->
+    <string name="select_core">select core :</string>
+    <string name="clash_settings">clash settings:</string>
+    <string name="find_procces">find procces</string>
+    <string name="clash_options">clash options</string>
+    <string name="unified_delay">unified delay[meta]</string>
+    <string name="sniffer">sniffer[meta]</string>
+    <string name="fake_ip">fake-ip</string>
+    <string name="geodata_meta">geodata[meta]</string>
+    <string name="subscription">subscription</string>
+    <string name="module_settings">module settings:</string>
+    <string name="cgroup">cgroup</string>
+    <string name="quic">quic</string>
+    <string name="ipv6">ipv6</string>
+    <string name="port_detect">port detect</string>
+    <string name="crontab">crontab</string>
+    <string name="geox">geox</string>
+    <string name="networkmode">NetworkMode</string>
+    <string name="proxymode">ProxyMode</string>
+    <string name="check_module">check module</string>
+    <string name="myip">MyIP</string>
+
+    <!--Setting Dialog-->
+    <string-array name="core_array">
+        <item>clash</item>
+        <item>sing-box</item>
+        <item>xray</item>
+        <item>v2fly</item>
+    </string-array>
+
+    <string-array name="proc_array">
+        <item>off</item>
+        <item>strict</item>
+        <item>always</item>
+    </string-array>
+
+    <string-array name="clash_core_array">
+        <item>premium</item>
+        <item>meta</item>
+    </string-array>
+
+    <string-array name="network_array">
+        <item>tproxy</item>
+        <item>redirect</item>
+        <item>mixed</item>
+    </string-array>
+
+    <string-array name="proxy_array">
+        <item>tun</item>
+        <item>whitelist</item>
+        <item>blacklist</item>
+    </string-array>
+
 </resources>

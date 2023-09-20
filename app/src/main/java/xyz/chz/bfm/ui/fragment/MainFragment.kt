@@ -1,6 +1,7 @@
 package xyz.chz.bfm.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,11 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.Response
+import org.json.JSONException
+import org.json.JSONObject
 import xyz.chz.bfm.R
 import xyz.chz.bfm.databinding.FragmentMainBinding
 import xyz.chz.bfm.dialog.MakeDialog
@@ -16,22 +22,28 @@ import xyz.chz.bfm.dialog.SettingDialog
 import xyz.chz.bfm.dialog.SettingDialogInterface
 import xyz.chz.bfm.enm.StatusConnection
 import xyz.chz.bfm.ui.model.MainViewModel
+import xyz.chz.bfm.util.OkHttpHelper
 import xyz.chz.bfm.util.Util
 import xyz.chz.bfm.util.command.SettingCmd
 import xyz.chz.bfm.util.command.TermCmd
+import xyz.chz.bfm.util.modul.ModuleManager
 import xyz.chz.bfm.util.moduleVer
 import xyz.chz.bfm.util.setColorBackground
 import xyz.chz.bfm.util.setImage
+import xyz.chz.bfm.util.setTextHtml
+import xyz.chz.bfm.util.toast
+import java.io.IOException
 
 @AndroidEntryPoint
 class MainFragment : Fragment(), SettingDialogInterface, MakeDialogInterface {
 
     private lateinit var binding: FragmentMainBinding
     private val viewModel: MainViewModel by viewModels()
+    private var state: Int? = 0
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
         binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -86,8 +98,13 @@ class MainFragment : Fragment(), SettingDialogInterface, MakeDialogInterface {
     }
 
     private fun setProxyCard(status: String) = with(binding) {
-        val strapps =
-            String.format(getString(R.string.apps_count_list), TermCmd.appidList.size, SettingCmd.proxyMode)
+        var strapps: String
+        if (TermCmd.appidList.size == 0) strapps =
+            String.format(getString(R.string.no_apps_count_list), SettingCmd.proxyMode)
+        else strapps = String.format(
+            getString(R.string.apps_count_list), TermCmd.appidList.size, SettingCmd.proxyMode
+        )
+
         when (status) {
             StatusConnection.Enabled.str -> {
                 statusTitle.text = StatusConnection.Enabled.str
@@ -144,8 +161,8 @@ class MainFragment : Fragment(), SettingDialogInterface, MakeDialogInterface {
     }
 
     private fun setupLog() = with(binding) {
-        viewModel.log.observe(viewLifecycleOwner) { data ->
-            tvLog.text = data
+        viewModel.log.observe(viewLifecycleOwner) {
+            tvLog.text = setTextHtml(it)
         }
     }
 
@@ -162,15 +179,68 @@ class MainFragment : Fragment(), SettingDialogInterface, MakeDialogInterface {
     }
 
     override fun onUpdate(dialog: DialogFragment) {
-        TODO("Not yet implemented")
+        binding.prgLoadingTop.visibility = View.GONE
+        showRes(
+            "https://raw.githubusercontent.com/taamarin/box_for_magisk/master/update.json",
+            "Updater",
+            0
+        )
+        state = 0
     }
 
     override fun onCheckIP(dialog: DialogFragment) {
-        TODO("Not yet implemented")
+        binding.prgLoadingTop.visibility = View.VISIBLE
+        showRes("http://ip-api.com/json", "MyIP", 1)
+        state = 1
     }
 
-    override fun onDialogPositiveButton(dialog: DialogFragment) {
-        TODO("Not yet implemented")
+    override fun onDialogPositiveButton(dialog: DialogFragment) = when (state) {
+        1 -> {}
+        else -> {}
+    }
+
+
+    private fun showRes(url: String, title: String, state: Int) {
+        binding.prgLoadingTop.visibility = View.VISIBLE
+        val request = OkHttpHelper()
+        request.getRawTextFromURL(url, object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Util.runOnUiThread {
+                    toast(e.message!!, requireActivity())
+                    binding.prgLoadingTop.visibility = View.GONE
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                try {
+                    val jo = JSONObject(response.body!!.string())
+                    var res: String? = ""
+                    res = if (state == 1) {
+                        "IP: ${jo.getString("query")}\n" +
+                                "ISP: ${jo.getString("isp")}\n" +
+                                "TZ: ${jo.getString("timezone")}\n" +
+                                "C: ${jo.getString("country")}\n" +
+                                "City: ${jo.getString("city")}\n"
+                    } else {
+                        if (jo.getString("versionCode")
+                                .toInt() > ModuleManager.moduleVersionCode.toInt()
+                        ) {
+                            "Update available\nDo you want update now?"
+                        } else {
+                            "No update found"
+                        }
+                    }
+                    val df = MakeDialog(title, res)
+                    df.listener = this@MainFragment
+                    df.show(requireActivity().supportFragmentManager, "")
+                } catch (e: JSONException) {
+                    Log.d(MainFragment().tag, e.message!!)
+                }
+                Util.runOnUiThread {
+                    binding.prgLoadingTop.visibility = View.GONE
+                }
+            }
+        })
     }
 
 }

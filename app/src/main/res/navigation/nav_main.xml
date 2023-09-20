@@ -26,5 +26,9 @@
         android:id="@+id/nav_dashboard"
         android:name="xyz.chz.bfm.ui.fragment.DashboardFragment"
         android:label="fragment_log"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_nav_dashboard_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>

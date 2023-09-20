@@ -1,9 +1,11 @@
 package xyz.chz.bfm.ui.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,12 +15,13 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import xyz.chz.bfm.R
 import xyz.chz.bfm.adapter.AppListAdapter
-import xyz.chz.bfm.adapter.AppManager
 import xyz.chz.bfm.data.AppInfo
+import xyz.chz.bfm.data.AppManager
 import xyz.chz.bfm.databinding.FragmentAppListBinding
 import xyz.chz.bfm.util.Util
 import xyz.chz.bfm.util.command.TermCmd
 import xyz.chz.bfm.util.setMyFab
+import xyz.chz.bfm.util.showKeyboard
 import java.text.Collator
 
 @AndroidEntryPoint
@@ -37,7 +40,7 @@ class AppListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAppListBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -94,7 +97,7 @@ class AppListFragment : Fragment() {
                     if (Util.isProxyed) {
                         TermCmd.renewBox {
                             Util.runOnUiThread {
-                                if(it) {
+                                if (it) {
                                     setMyFab("#6fa251", R.drawable.ic_done)
                                 } else {
                                     setMyFab("#EC7474", R.drawable.ic_error)
@@ -108,5 +111,61 @@ class AppListFragment : Fragment() {
                 }
             }
         }
+        setupSearchApp()
+        setupSelect()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun setupSelect() = with(binding) {
+        selectAll.setOnClickListener {
+            adapter?.let {
+                if (it.blacklist.containsAll(it.apps.map { it.packageName })) {
+                    it.apps.forEach {
+                        adapter?.blacklist!!.remove(it.packageName)
+                    }
+                } else {
+                    it.apps.forEach {
+                        adapter?.blacklist!!.add(it.packageName)
+
+                    }
+                }
+                it.notifyDataSetChanged()
+            }
+        }
+    }
+
+    private fun setupSearchApp() = with(binding) {
+        searchBtn.setOnClickListener {
+            tvInfoApps.visibility = View.GONE
+            edSearch.visibility = View.VISIBLE
+            edSearch.doOnTextChanged { text, _, _, _ ->
+                search(text.toString())
+            }
+            edSearch.showKeyboard()
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun search(str: String) {
+        val apps = ArrayList<AppInfo>()
+
+        val key = str.uppercase()
+        if (key.isNotEmpty()) {
+            appsAll?.forEach {
+                if (it.appName.uppercase().indexOf(key) >= 0
+                    || it.packageName.uppercase().indexOf(key) >= 0
+                ) {
+                    apps.add(it)
+                }
+            }
+        } else {
+            appsAll?.forEach {
+                apps.add(it)
+            }
+        }
+
+        adapter = AppListAdapter(requireActivity(), apps, adapter?.blacklist)
+        binding.rvApps.adapter = adapter
+        adapter?.notifyDataSetChanged()
     }
 }

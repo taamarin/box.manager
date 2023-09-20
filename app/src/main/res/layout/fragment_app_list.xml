@@ -14,21 +14,55 @@
         android:layout_height="@dimen/list_header_height"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/conainer_app_bypass"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="clash only work on redir-host"
+                android:layout_marginStart="10dp"
+                android:id="@+id/tvInfoApps"
+                android:layout_marginTop="20dp"
+                android:text="@string/for_clash_only"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-        </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edSearch"
+                android:singleLine="true"
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="80dp"
+                tools:visibility="visible"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/searchBtn"
+                android:src="@drawable/ic_search"
+                android:background="@color/transparent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:tint="@color/material_blue"
+                android:layout_marginEnd="50dp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/selectAll"
+                android:tint="@color/material_blue"
+                android:src="@drawable/ic_select_all"
+                android:background="@color/transparent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

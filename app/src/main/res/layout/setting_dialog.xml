@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginLeft="9dp"
-            android:text="select core :" />
+            android:text="@string/select_core" />
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             android:visibility="gone"
             android:layout_marginStart="9dp"
             android:layout_marginLeft="9dp"
-            android:text="clash settings:"
+            android:text="@string/clash_settings"
             android:id="@+id/clash1" />
 
         <LinearLayout
@@ -64,7 +64,7 @@
                 android:layout_width="0dp"
                 android:layout_marginLeft="9dp"
                 android:layout_weight="1.6"
-                android:text="find procces" />
+                android:text="@string/find_procces" />
 
             <TextView
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                 android:layout_width="0dp"
                 android:layout_marginLeft="9dp"
                 android:layout_weight="1.6"
-                android:text="clash options" />
+                android:text="@string/clash_options" />
 
             <TextView
                 android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbunified_delay"
-                android:text="unified delay[meta]" />
+                android:text="@string/unified_delay" />
 
             <CheckBox
                 android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbsnifferrs"
-                android:text="sniffer[meta]" />
+                android:text="@string/sniffer" />
 
         </LinearLayout>
 
@@ -156,7 +156,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbfake_ip"
-                android:text="fake-ip" />
+                android:text="@string/fake_ip" />
 
             <CheckBox
                 android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbgeodata_mod"
-                android:text="geodata[meta] " />
+                android:text="@string/geodata_meta" />
 
         </LinearLayout>
 
@@ -183,7 +183,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbsubs"
-                android:text="subscription" />
+                android:text="@string/subscription" />
 
         </LinearLayout>
 
@@ -192,7 +192,7 @@
             android:layout_width="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginLeft="9dp"
-            android:text="module settings:" />
+            android:text="@string/module_settings" />
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbcgr"
-                android:text="cgroup" />
+                android:text="@string/cgroup" />
 
             <CheckBox
                 android:layout_height="wrap_content"
@@ -215,7 +215,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbquic"
-                android:text="quic" />
+                android:text="@string/quic" />
 
         </LinearLayout>
 
@@ -232,7 +232,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbipv6"
-                android:text="ipv6" />
+                android:text="@string/ipv6" />
 
             <CheckBox
                 android:layout_height="wrap_content"
@@ -240,7 +240,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbport_detect"
-                android:text="port detect" />
+                android:text="@string/port_detect" />
 
         </LinearLayout>
 
@@ -257,7 +257,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbcron"
-                android:text="crontab" />
+                android:text="@string/crontab" />
 
             <CheckBox
                 android:layout_height="wrap_content"
@@ -265,7 +265,7 @@
                 android:textSize="12sp"
                 android:layout_weight="1"
                 android:id="@+id/cbgeo"
-                android:text="geox" />
+                android:text="@string/geox" />
 
         </LinearLayout>
 
@@ -286,7 +286,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1.6"
                     android:layout_marginLeft="9dp"
-                    android:text="NetworkMode" />
+                    android:text="@string/networkmode" />
 
                 <TextView
                     android:layout_height="wrap_content"
@@ -312,7 +312,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1.6"
                     android:layout_marginLeft="9dp"
-                    android:text="ProxyMode" />
+                    android:text="@string/proxymode" />
 
                 <TextView
                     android:layout_height="wrap_content"
@@ -328,10 +328,12 @@
             </LinearLayout>
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:gravity="center"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:layout_weight="0">
 
@@ -340,22 +342,28 @@
                 android:layout_width="0dp"
                 android:textSize="12sp"
                 android:layout_weight="1"
+                android:background="@color/transparent"
                 android:id="@+id/checkModule"
-                android:text="check module" />
+                android:textColor="@color/material_blue"
+                android:text="@string/check_module" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:textSize="12sp"
+                android:background="@color/transparent"
                 android:layout_weight="1"
                 android:id="@+id/checkIp"
-                android:text="MyIP" />
+                android:textColor="@color/material_blue"
+                android:text="@string/myip" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:textSize="12sp"
+                android:background="@color/transparent"
                 android:layout_weight="1"
+                android:textColor="@color/material_blue"
                 android:id="@+id/aboutApp"
                 android:text="about" />
 

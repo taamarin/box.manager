@@ -36,7 +36,7 @@
             android:layout_below="@+id/tvMessage"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
-            android:text="ok" />
+            android:text="@string/ok" />
 
     </RelativeLayout>
 

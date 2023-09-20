@@ -20,7 +20,7 @@ class MakeDialog(
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = CustomDialogBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

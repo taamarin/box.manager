@@ -68,4 +68,8 @@ dependencies {
 
     //pref
     implementation 'androidx.preference:preference-ktx:1.2.1'
+
+    //okhttp
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.1'
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.1"
 }

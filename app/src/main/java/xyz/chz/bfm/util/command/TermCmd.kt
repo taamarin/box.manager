@@ -37,9 +37,19 @@ object TermCmd {
         return execRootCmd("cat ${path}run/runs.log")
     }
 
-    fun linkDasboard(): String {
-        return execRootCmd("grep 'external-controller:' ${path}clash/config.yaml | awk '{print $2}'")
-    }
+    val linkDasboardClash: String
+        get() {
+            return execRootCmd("grep 'external-controller:' ${path}clash/config.yaml | awk '{print $2}'")
+        }
+
+
+    val linkDBSing: String
+        get() {
+            val cmd =
+                "grep -w 'external_controller' ${path}sing-box/config.* | awk '{print $2}' | sed 's/\"//g | sed 's/,//g'"
+            return execRootCmd(cmd)
+        }
+
 
     val isBlackListMode: Boolean
         get() {
@@ -49,7 +59,7 @@ object TermCmd {
         }
 
     fun setWhitelistOrBlacklist(state: Boolean): Boolean {
-        val s = if(state) "blacklist" else "whitelist"
+        val s = if (state) "blacklist" else "whitelist"
         return execRootCmdSilent("sed -i 's/proxy_mode=.*/proxy_mode=\"$s\"/;' ${path}settings.ini") != -1
     }
 

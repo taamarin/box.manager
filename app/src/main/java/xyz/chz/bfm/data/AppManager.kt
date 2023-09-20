@@ -1,4 +1,4 @@
-package xyz.chz.bfm.adapter
+package xyz.chz.bfm.data
 
 import android.Manifest
 import android.content.Context
@@ -6,7 +6,6 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import rx.Observable
-import xyz.chz.bfm.data.AppInfo
 import java.util.ArrayList
 
 object AppManager {

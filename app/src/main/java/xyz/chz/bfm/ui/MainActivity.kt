@@ -14,12 +14,9 @@ import xyz.chz.bfm.ui.base.BaseActivity
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navBottom

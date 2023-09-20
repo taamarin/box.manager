@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import xyz.chz.bfm.databinding.SettingDialogBinding
 import xyz.chz.bfm.util.Util
 import xyz.chz.bfm.util.command.SettingCmd
+import xyz.chz.bfm.R
+import xyz.chz.bfm.ui.fragment.MainFragment
 
 class SettingDialog : MaterialDialogFragment() {
 
@@ -21,7 +23,7 @@ class SettingDialog : MaterialDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = SettingDialogBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -38,18 +40,13 @@ class SettingDialog : MaterialDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val coreArray = arrayOf("clash", "sing-box", "xray", "v2fly")
-        val procArray = arrayOf("off", "strict", "always")
-        val clashTypeArray = arrayOf("premium", "meta")
-        val netwrokArray = arrayOf("tproxy", "redirect", "mixed")
-        val proxyArray = arrayOf("tun", "whitelist", "blacklist")
 
         enableDisable(!Util.isProxyed)
         binding.apply {
             with(SettingCmd) {
 
                 coreSelector.apply {
-                    buildSpinner(coreArray, this)
+                    buildSpinner(resources.getStringArray(R.array.core_array), this)
                     when (core) {
                         "clash" -> setSelection(0)
                         "sing-box" -> setSelection(1)
@@ -109,7 +106,7 @@ class SettingDialog : MaterialDialogFragment() {
                 }
 
                 spFindProc.apply {
-                    buildSpinner(procArray, this)
+                    buildSpinner(resources.getStringArray(R.array.proc_array), this)
                     when (findProc) {
                         "off" -> setSelection(0)
                         "strict" -> setSelection(1)
@@ -131,7 +128,7 @@ class SettingDialog : MaterialDialogFragment() {
                 }
 
                 spClashType.apply {
-                    buildSpinner(clashTypeArray, this)
+                    buildSpinner(resources.getStringArray(R.array.clash_core_array), this)
                     setSelection(if (clashType == "premium") 0 else 1)
                     onItemSelectedListener = object : OnItemSelectedListener {
                         override fun onItemSelected(
@@ -146,7 +143,7 @@ class SettingDialog : MaterialDialogFragment() {
                 }
 
                 spNetworkMode.apply {
-                    buildSpinner(netwrokArray, this)
+                    buildSpinner(resources.getStringArray(R.array.network_array), this)
                     when (networkMode) {
                         "tproxy" -> setSelection(0)
                         "redirect" -> setSelection(1)
@@ -168,7 +165,7 @@ class SettingDialog : MaterialDialogFragment() {
                 }
 
                 spProxyMode.apply {
-                    buildSpinner(proxyArray, this)
+                    buildSpinner(resources.getStringArray(R.array.proxy_array), this)
                     when (proxyMode) {
                         "whitelist" -> setSelection(1)
                         "blacklist" -> setSelection(2)
@@ -268,6 +265,16 @@ class SettingDialog : MaterialDialogFragment() {
 
                 aboutApp.setOnClickListener {
                     listener.onAbout(this@SettingDialog)
+                }
+
+                checkIp.setOnClickListener {
+                    listener.onCheckIP(this@SettingDialog)
+                    this@SettingDialog.dismiss()
+                }
+
+                checkModule.setOnClickListener {
+                    listener.onUpdate(this@SettingDialog)
+                    this@SettingDialog.dismiss()
                 }
             }
         }
