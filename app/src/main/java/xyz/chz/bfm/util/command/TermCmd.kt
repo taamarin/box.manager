@@ -1,8 +1,11 @@
 package xyz.chz.bfm.util.command
 
+import android.content.Context
 import xyz.chz.bfm.util.magisk.MagiskHelper.execRootCmd
 import xyz.chz.bfm.util.magisk.MagiskHelper.execRootCmdSilent
 import xyz.chz.bfm.util.magisk.MagiskHelper.execRootCmdVoid
+import java.io.File
+import java.io.FileOutputStream
 import kotlin.concurrent.thread
 
 object TermCmd {
@@ -37,7 +40,7 @@ object TermCmd {
         return execRootCmd("cat ${path}run/runs.log")
     }
 
-    val linkDasboardClash: String
+    val linkDBClash: String
         get() {
             return execRootCmd("grep 'external-controller:' ${path}clash/config.yaml | awk '{print $2}'")
         }
@@ -46,22 +49,9 @@ object TermCmd {
     val linkDBSing: String
         get() {
             val cmd =
-                "grep -w 'external_controller' ${path}sing-box/config.* | awk '{print $2}' | sed 's/\"//g | sed 's/,//g'"
+                "grep -w 'external_controller' ${path}sing-box/config.json | awk '{print $2}' | sed 's/\"//g' | sed 's/,//g'"
             return execRootCmd(cmd)
         }
-
-
-    val isBlackListMode: Boolean
-        get() {
-            val cmd =
-                "grep 'proxy_mode' ${path}settings.ini | sed 's/^.*=//' | sed 's/\"//g' | awk '{print $1; exit}'"
-            return "blacklist" == execRootCmd(cmd)
-        }
-
-    fun setWhitelistOrBlacklist(state: Boolean): Boolean {
-        val s = if (state) "blacklist" else "whitelist"
-        return execRootCmdSilent("sed -i 's/proxy_mode=.*/proxy_mode=\"$s\"/;' ${path}settings.ini") != -1
-    }
 
     val appidList: HashSet<String>
         get() {
@@ -93,6 +83,41 @@ object TermCmd {
         }
         cmd.append(")/;' ${path}settings.ini")
         return execRootCmdSilent(cmd.toString().trim { it <= ' ' }) != -1
+    }
+
+    private fun getNameConfig(what: String, isClash: Boolean): String {
+        val m = if (isClash) "yaml" else "json"
+        return execRootCmd("find ${path}$what/ -maxdepth 1 -name 'config.$m' -type f -printf '%f\n'")
+    }
+
+    fun getConfig(): String {
+        val what = SettingCmd.core
+        val isClash = what == "clash"
+        val name = getNameConfig(what, isClash)
+        return execRootCmd("cat ${path}${what}/${name}")
+    }
+
+    fun saveConfig(ctx: Context, str: String, callback: (Boolean) -> Unit) {
+        thread {
+            val what = SettingCmd.core
+            val isClash = what == "clash"
+            val name = getNameConfig(what, isClash)
+            val exFile = File(ctx.getExternalFilesDir(null), "out.txt")
+            val fos = FileOutputStream(exFile)
+            fos.write(str.toByteArray())
+            val cmd = "mv -f $exFile ${path}${what}/${name}"
+            execRootCmdVoid(cmd, callback)
+        }
+    }
+
+    private fun yqParser(dir: String, config: String, isClash: Boolean): String {
+        val yq = "${path}bin/yq"
+        return if (isClash) {
+            val yamlToJson = "$yq -oj ${path}${dir}/${config} > ${path}${dir}/xtemp.json"
+            execRootCmd("$yamlToJson && $yq -oy ${path}${dir}/xtemp.json > ${path}${dir}/${config} && rm -f ${path}${dir}/xtemp.json && cat ${path}${dir}/${config}")
+        } else {
+            execRootCmd("$yq -oj ${path}${dir}/${config} > ${path}${dir}/xtemp.json && mv -f ${path}${dir}/xtemp.json ${path}${dir}/${config} && cat ${path}${dir}/${config}")
+        }
     }
 
 }

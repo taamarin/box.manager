@@ -1,8 +1,7 @@
 package xyz.chz.bfm.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavController
+import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,6 +21,11 @@ class MainActivity : BaseActivity() {
         val navView: BottomNavigationView = binding.navBottom
         val navController = findNavController(R.id.nav_host_fragment_container)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, dest, _ ->
+            if (dest.id == R.id.configHelperFragment) navView.visibility =
+                View.GONE else navView.visibility = View.VISIBLE
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.BoxForRoot" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -17,7 +17,7 @@
         <item name="colorSecondaryVariant">@color/material_blue</item>
         <item name="colorOnSecondary">@color/material_blue</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/dark</item>
+        <item name="android:statusBarColor">@color/dark</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="fontFamily">@font/product_sans_regular</item>
         <!-- Customize your theme here. -->

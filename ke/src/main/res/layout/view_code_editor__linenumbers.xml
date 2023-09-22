@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.otaliastudios.zoom.ZoomLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cel_linenumbers_zoomLayout"
+    android:layout_width="@dimen/cev_linenumber_width"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    app:alignment="top|right"
+    app:hasClickableChildren="false"
+    app:horizontalPanEnabled="false"
+    app:transformation="none"
+    app:transformationGravity="top|right"
+    app:verticalPanEnabled="false"
+    app:zoomEnabled="false">
+
+    <TextView
+        android:id="@+id/cel_linenumbers_textview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="end|top"
+        android:textSize="@dimen/cev_editor_text_size"
+        android:typeface="monospace" />
+
+</com.otaliastudios.zoom.ZoomLayout>

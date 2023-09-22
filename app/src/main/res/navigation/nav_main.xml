@@ -9,13 +9,16 @@
         android:id="@+id/nav_home"
         android:name="xyz.chz.bfm.ui.fragment.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_appListFragment"
             app:destination="@id/nav_applist" />
         <action
             android:id="@+id/action_mainFragment_to_logFragment"
             app:destination="@id/nav_dashboard" />
+        <action
+            android:id="@+id/action_nav_home_to_configHelperFragment"
+            app:destination="@id/configHelperFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_applist"
@@ -26,9 +29,18 @@
         android:id="@+id/nav_dashboard"
         android:name="xyz.chz.bfm.ui.fragment.DashboardFragment"
         android:label="fragment_log"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_nav_dashboard_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/configHelperFragment"
+        android:name="xyz.chz.bfm.ui.fragment.ConfigHelperFragment"
+        android:label="fragment_config_helper"
+        tools:layout="@layout/fragment_config_helper">
+        <action
+            android:id="@+id/action_configHelperFragment_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
 </navigation>

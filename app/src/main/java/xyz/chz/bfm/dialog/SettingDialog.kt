@@ -9,11 +9,10 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import xyz.chz.bfm.R
 import xyz.chz.bfm.databinding.SettingDialogBinding
 import xyz.chz.bfm.util.Util
 import xyz.chz.bfm.util.command.SettingCmd
-import xyz.chz.bfm.R
-import xyz.chz.bfm.ui.fragment.MainFragment
 
 class SettingDialog : MaterialDialogFragment() {
 

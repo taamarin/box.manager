@@ -20,11 +20,11 @@
     <color name="white_hint_text">#80F2F5F6</color>
     <color name="ripple_color">#7F717171</color>
     <color name="color_bg_dialog">@color/white</color>
-    <attr format="color" name="card"/>
-    <attr format="color" name="bg"/>
-    <attr format="color" name="boldText"/>
-    <attr format="color" name="regularText"/>
-    <attr format="color" name="hintText"/>
-    <attr format="color" name="appbar"/>
-    <attr format="color" name="appbarAttribute"/>
+    <attr name="card" format="color" />
+    <attr name="bg" format="color" />
+    <attr name="boldText" format="color" />
+    <attr name="regularText" format="color" />
+    <attr name="hintText" format="color" />
+    <attr name="appbar" format="color" />
+    <attr name="appbarAttribute" format="color" />
 </resources>

@@ -43,7 +43,7 @@ fun toast(str: String, ctx: Context) {
 }
 
 fun String.myReplacer(vararg replacements: Pair<Regex, String>): String =
-    replacements.fold(this) {acc, (old, new) -> acc.replace(old, new) }
+    replacements.fold(this) { acc, (old, new) -> acc.replace(old, new) }
 
 @SuppressLint("ObsoleteSdkInt")
 fun setTextHtml(text: String): Spanned {

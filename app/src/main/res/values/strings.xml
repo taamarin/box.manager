@@ -32,6 +32,7 @@
     <string name="proxymode">ProxyMode</string>
     <string name="check_module">check module</string>
     <string name="myip">MyIP</string>
+    <string name="setting">Setting</string>
 
     <!--Setting Dialog-->
     <string-array name="core_array">
@@ -63,5 +64,7 @@
         <item>whitelist</item>
         <item>blacklist</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

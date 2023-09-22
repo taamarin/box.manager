@@ -1,0 +1,17 @@
+[
+  {
+    "key1": "val1",
+    "key2": 233,
+    "key3": true
+  },
+  {
+    "key1": "mmmm",
+    "key2": 55533,
+    "key3": false
+  },
+  {
+    "key1": "varrrrl1",
+    "key2": 999,
+    "key3": true
+  }
+]

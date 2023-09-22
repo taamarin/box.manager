@@ -9,9 +9,7 @@ import android.webkit.WebSettings
 import android.webkit.WebViewClient
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import xyz.chz.bfm.R
 import xyz.chz.bfm.databinding.FragmentDashboardBinding
 import xyz.chz.bfm.dialog.MakeDialog
 import xyz.chz.bfm.dialog.MakeDialogInterface
@@ -49,7 +47,7 @@ class DashboardFragment : Fragment(), MakeDialogInterface {
     @SuppressLint("SetJavaScriptEnabled")
     private fun showRes() = with(binding) {
         val linkDB: String = if (SettingCmd.core == "clash") {
-            TermCmd.linkDasboardClash
+            TermCmd.linkDBClash
         } else {
             TermCmd.linkDBSing
         }

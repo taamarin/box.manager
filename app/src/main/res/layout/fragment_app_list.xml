@@ -21,46 +21,46 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvInfoApps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:id="@+id/tvInfoApps"
                 android:layout_marginTop="20dp"
                 android:text="@string/for_clash_only"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
             <EditText
+                android:id="@+id/edSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edSearch"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="80dp"
                 android:singleLine="true"
                 android:visibility="gone"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="80dp"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/searchBtn"
-                android:src="@drawable/ic_search"
-                android:background="@color/transparent"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="15dp"
-                android:tint="@color/material_blue"
-                android:layout_marginEnd="50dp" />
-
-            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/selectAll"
-                android:tint="@color/material_blue"
-                android:src="@drawable/ic_select_all"
-                android:background="@color/transparent"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"/>
+                android:layout_marginEnd="50dp"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_search"
+                android:tint="@color/material_blue" />
+
+            <ImageButton
+                android:id="@+id/selectAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_select_all"
+                android:tint="@color/material_blue" />
 
         </RelativeLayout>
 
@@ -68,10 +68,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvApps"
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header_view"
+        android:layout_marginTop="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:context=".ui.fragment.AppListFragment" />
 
@@ -92,8 +92,6 @@
         android:layout_marginBottom="20dp"
         android:src="@drawable/ic_save"
         app:fabSize="mini"
-        app:tint="@null">
-
-    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        app:tint="@null" />
 
 </RelativeLayout>

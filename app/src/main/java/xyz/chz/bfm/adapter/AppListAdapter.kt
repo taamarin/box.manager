@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import xyz.chz.bfm.R
 import xyz.chz.bfm.data.AppInfo
 import xyz.chz.bfm.databinding.ItemApplistBinding
-import java.util.*
 
-class AppListAdapter(val activity: Activity, val apps: List<AppInfo>, blacklist: MutableSet<String>?) :
+class AppListAdapter(
+    val activity: Activity,
+    val apps: List<AppInfo>,
+    blacklist: MutableSet<String>?
+) :
     RecyclerView.Adapter<AppListAdapter.BaseViewHolder>() {
 
     companion object {
@@ -34,15 +37,25 @@ class AppListAdapter(val activity: Activity, val apps: List<AppInfo>, blacklist:
         return when (viewType) {
             VIEW_TYPE_HEADER -> {
                 val view = View(ctx)
-                view.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ctx.resources.getDimensionPixelSize(R.dimen.list_header_height) * 0)
+                view.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ctx.resources.getDimensionPixelSize(R.dimen.list_header_height) * 0
+                )
                 BaseViewHolder(view)
             }
-            else -> AppViewHolder(ItemApplistBinding.inflate(LayoutInflater.from(ctx), parent, false))
+
+            else -> AppViewHolder(
+                ItemApplistBinding.inflate(
+                    LayoutInflater.from(ctx),
+                    parent,
+                    false
+                )
+            )
         }
     }
 
-    override fun getItemViewType(position: Int) = if (position == 0) VIEW_TYPE_HEADER else VIEW_TYPE_ITEM
+    override fun getItemViewType(position: Int) =
+        if (position == 0) VIEW_TYPE_HEADER else VIEW_TYPE_ITEM
 
     open class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -52,9 +65,9 @@ class AppListAdapter(val activity: Activity, val apps: List<AppInfo>, blacklist:
         private lateinit var appInfo: AppInfo
         private val inBlacklist: Boolean get() = blacklist.contains(appInfo.packageName)
 
-        fun bind(appInfo: AppInfo){
+        fun bind(appInfo: AppInfo) {
             this.appInfo = appInfo
-            with(item){
+            with(item) {
                 icon.setImageDrawable(appInfo.appIcon)
                 checkBox.isChecked = inBlacklist
                 item.packageName.text = appInfo.packageName
@@ -68,13 +81,13 @@ class AppListAdapter(val activity: Activity, val apps: List<AppInfo>, blacklist:
         }
 
         override fun onClick(v: View?) {
-           if (inBlacklist) {
-               blacklist.remove(appInfo.packageName)
-               item.checkBox.isChecked = false
-           } else {
-               blacklist.add(appInfo.packageName)
-               item.checkBox.isChecked = true
-           }
+            if (inBlacklist) {
+                blacklist.remove(appInfo.packageName)
+                item.checkBox.isChecked = false
+            } else {
+                blacklist.add(appInfo.packageName)
+                item.checkBox.isChecked = true
+            }
         }
     }
 }

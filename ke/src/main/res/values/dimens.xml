@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cev_linenumber_width">36dp</dimen>
+    <dimen name="cev_editor_text_margin">4dp</dimen>
+    <dimen name="cev_editor_text_size">16sp</dimen>
+</resources>

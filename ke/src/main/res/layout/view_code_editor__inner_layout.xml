@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cev_editor_contentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <de.markusressel.kodeeditor.library.view.CodeEditText
+        android:id="@+id/cev_editor_codeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cev_editor_text_margin"
+        android:editable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="top|start"
+        android:imeOptions="flagNoExtractUi"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:maxLength="99999999"
+        android:maxLines="99999999"
+        android:scrollbars="none"
+        android:scrollHorizontally="false"
+        android:textSize="@dimen/cev_editor_text_size"
+        android:typeface="monospace"
+        android:visibility="visible" />
+
+    <de.markusressel.kodeeditor.library.view.CodeTextView
+        android:id="@+id/cev_editor_codeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cev_editor_text_margin"
+        android:scrollbars="none"
+        android:textIsSelectable="true"
+        android:textSize="@dimen/cev_editor_text_size"
+        android:typeface="monospace"
+        android:visibility="gone" />
+
+</FrameLayout>

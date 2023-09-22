@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.Call
 import okhttp3.Callback
@@ -95,13 +96,15 @@ class MainFragment : Fragment(), SettingDialogInterface, MakeDialogInterface {
         }
         setupLog()
         settings()
+        configEditor()
     }
 
     private fun setProxyCard(status: String) = with(binding) {
-        var strapps: String
-        if (TermCmd.appidList.size == 0) strapps =
-            String.format(getString(R.string.no_apps_count_list), SettingCmd.proxyMode)
-        else strapps = String.format(
+        val strapps: String = if (TermCmd.appidList.size == 0) String.format(
+            getString(R.string.no_apps_count_list),
+            SettingCmd.proxyMode
+        )
+        else String.format(
             getString(R.string.apps_count_list), TermCmd.appidList.size, SettingCmd.proxyMode
         )
 
@@ -163,6 +166,12 @@ class MainFragment : Fragment(), SettingDialogInterface, MakeDialogInterface {
     private fun setupLog() = with(binding) {
         viewModel.log.observe(viewLifecycleOwner) {
             tvLog.text = setTextHtml(it)
+        }
+    }
+
+    private fun configEditor() = with(binding.configSetting) {
+        setOnClickListener {
+            findNavController().navigate(R.id.action_nav_home_to_configHelperFragment)
         }
     }
 

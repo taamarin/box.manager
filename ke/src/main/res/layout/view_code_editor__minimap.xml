@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cel_minimap_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top|end"
+    android:layout_margin="16dp">
+
+    <com.otaliastudios.zoom.ZoomImageView
+        android:id="@+id/cel_minimap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:alignment="left|top"
+        app:hasClickableChildren="true"
+        app:maxZoom="30.0"
+        app:maxZoomType="realZoom"
+        app:minZoom="1"
+        app:minZoomType="realZoom"
+        app:overPinchable="false"
+        app:overScrollHorizontal="false"
+        app:overScrollVertical="false"
+        app:transformation="none"
+        app:transformationGravity="top|left" />
+
+    <View
+        android:id="@+id/cel_minimap_indicator"
+        android:layout_width="1dp"
+        android:layout_height="1dp" />
+
+</FrameLayout>

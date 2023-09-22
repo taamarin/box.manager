@@ -1,5 +1,8 @@
 package xyz.chz.bfm.util
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import xyz.chz.bfm.util.command.SettingCmd
@@ -23,4 +26,9 @@ object Util {
                 return true
             return false
         }
+
+    fun copyToClipboard(context: Context, str: String?) {
+        (context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager)
+            .setPrimaryClip(ClipData.newPlainText("copied", str))
+    }
 }

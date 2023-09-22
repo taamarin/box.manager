@@ -12,23 +12,6 @@ object SettingCmd {
         return execRootCmdSilent("killall -9 xyz.chz.bfm") != -1
     }
 
-    fun getNameClashConf(what: String, isClash: Boolean): String {
-        val m = if (isClash) "yaml" else "json"
-        return execRootCmd("find /data/adb/box/$what/ -maxdepth 1 -name 'config.$m' -type f -printf '%f\n'")
-    }
-
-    fun getConf(what: String, isClash: Boolean): String {
-        val name = getNameClashConf(what, isClash)
-        return execRootCmd("cat /data/adb/box/$what/$name")
-    }
-
-    fun setConf(what: String, isClash: Boolean): String {
-        val name = getNameClashConf(what, isClash)
-        return execRootCmd("mv -f /storage/emulated/0/Android/data/xyz.chz.bfm/files/gg/output.txt /data/adb/box/$what/$name")
-    }
-
-    val linkController: String
-        get() = execRootCmd("grep 'external-controller:' /data/adb/box/clash/config.yaml | awk '{print $2}'")
     val networkMode: String
         get() = execRootCmd("grep 'network_mode=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
 

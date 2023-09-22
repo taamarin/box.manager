@@ -1,371 +1,370 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:padding="10dp"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <LinearLayout
-        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:orientation="vertical"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
+        android:orientation="vertical"
         tools:context=".ui.activity.MainActivity">
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginLeft="9dp"
             android:text="@string/select_core" />
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginLeft="9dp"
             android:layout_marginRight="9dp"
-            android:layout_weight="0">
+            android:layout_weight="0"
+            android:orientation="horizontal">
 
             <Spinner
-                android:layout_height="50dp"
+                android:id="@+id/coreSelector"
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/coreSelector">
+                android:layout_height="50dp"
+                android:layout_weight="1">
 
             </Spinner>
 
         </LinearLayout>
 
         <TextView
-            android:layout_height="wrap_content"
+            android:id="@+id/clash1"
             android:layout_width="wrap_content"
-            android:visibility="gone"
+            android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginLeft="9dp"
             android:text="@string/clash_settings"
-            android:id="@+id/clash1" />
+            android:visibility="gone" />
 
         <LinearLayout
-            android:layout_height="wrap_content"
+            android:id="@+id/clash2"
             android:layout_width="match_parent"
-            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_weight="0"
-            android:id="@+id/clash2">
+            android:visibility="gone">
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="9dp"
                 android:layout_weight="1.6"
                 android:text="@string/find_procces" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.1"
                 android:text=" :" />
 
             <Spinner
-                android:layout_height="wrap_content"
+                android:id="@+id/spFindProc"
                 android:layout_width="0dp"
-                android:layout_weight="1.5"
-                android:id="@+id/spFindProc">
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5">
 
             </Spinner>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="wrap_content"
+            android:id="@+id/clash8"
             android:layout_width="match_parent"
-            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_weight="0"
-            android:id="@+id/clash8">
+            android:visibility="gone">
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="9dp"
                 android:layout_weight="1.6"
                 android:text="@string/clash_options" />
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.1"
                 android:text=" :" />
 
             <Spinner
-                android:layout_height="wrap_content"
+                android:id="@+id/spClashType"
                 android:layout_width="0dp"
-                android:layout_weight="1.5"
-                android:id="@+id/spClashType">
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5">
 
             </Spinner>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="wrap_content"
+            android:id="@+id/clash5"
             android:layout_width="match_parent"
-            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_weight="0"
-            android:id="@+id/clash5">
+            android:visibility="gone">
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbunified_delay"
-                android:text="@string/unified_delay" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/unified_delay"
+                android:textSize="12sp" />
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbsnifferrs"
-                android:text="@string/sniffer" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sniffer"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="wrap_content"
+            android:id="@+id/clash6"
             android:layout_width="match_parent"
-            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_weight="0"
-            android:id="@+id/clash6">
+            android:visibility="gone">
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbfake_ip"
-                android:text="@string/fake_ip" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/fake_ip"
+                android:textSize="12sp" />
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbgeodata_mod"
-                android:text="@string/geodata_meta" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/geodata_meta"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="wrap_content"
+            android:id="@+id/clash7"
             android:layout_width="match_parent"
-            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_weight="0"
-            android:id="@+id/clash7">
+            android:visibility="gone">
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbsubs"
-                android:text="@string/subscription" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/subscription"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginLeft="9dp"
             android:text="@string/module_settings" />
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_weight="0">
+            android:orientation="horizontal">
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbcgr"
-                android:text="@string/cgroup" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cgroup"
+                android:textSize="12sp" />
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbquic"
-                android:text="@string/quic" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/quic"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_weight="0">
+            android:orientation="horizontal">
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbipv6"
-                android:text="@string/ipv6" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/ipv6"
+                android:textSize="12sp" />
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbport_detect"
-                android:text="@string/port_detect" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/port_detect"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_weight="0">
+            android:orientation="horizontal">
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbcron"
-                android:text="@string/crontab" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/crontab"
+                android:textSize="12sp" />
 
             <CheckBox
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
                 android:id="@+id/cbgeo"
-                android:text="@string/geox" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/geox"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
-                    android:layout_weight="1.6"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="9dp"
+                    android:layout_weight="1.6"
                     android:text="@string/networkmode" />
 
                 <TextView
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.1"
                     android:text=":" />
 
                 <Spinner
-                    android:layout_height="wrap_content"
+                    android:id="@+id/spNetworkMode"
                     android:layout_width="0dp"
-                    android:layout_weight="1.5"
-                    android:id="@+id/spNetworkMode" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
-                    android:layout_weight="1.6"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="9dp"
+                    android:layout_weight="1.6"
                     android:text="@string/proxymode" />
 
                 <TextView
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.1"
                     android:text=":" />
 
                 <Spinner
-                    android:layout_height="wrap_content"
+                    android:id="@+id/spProxyMode"
                     android:layout_width="0dp"
-                    android:layout_weight="1.5"
-                    android:id="@+id/spProxyMode" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5" />
             </LinearLayout>
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:gravity="center"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:layout_weight="0">
+            android:layout_weight="0"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:layout_weight="1"
-                android:background="@color/transparent"
                 android:id="@+id/checkModule"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:text="@string/check_module"
                 android:textColor="@color/material_blue"
-                android:text="@string/check_module" />
+                android:textSize="12sp" />
 
             <com.google.android.material.button.MaterialButton
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:background="@color/transparent"
-                android:layout_weight="1"
                 android:id="@+id/checkIp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:text="@string/myip"
                 android:textColor="@color/material_blue"
-                android:text="@string/myip" />
+                android:textSize="12sp" />
 
             <com.google.android.material.button.MaterialButton
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:textSize="12sp"
-                android:background="@color/transparent"
-                android:layout_weight="1"
-                android:textColor="@color/material_blue"
                 android:id="@+id/aboutApp"
-                android:text="about" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:text="about"
+                android:textColor="@color/material_blue"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
