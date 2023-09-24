@@ -2,6 +2,7 @@ package xyz.chz.bfm.ui
 
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,6 +24,7 @@ class MainActivity : BaseActivity() {
         navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, dest, _ ->
+            if (dest.id == R.id.nav_dashboard) this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
             if (dest.id == R.id.configHelperFragment) navView.visibility =
                 View.GONE else navView.visibility = View.VISIBLE
         }

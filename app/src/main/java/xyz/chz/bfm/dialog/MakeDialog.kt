@@ -1,6 +1,6 @@
 package xyz.chz.bfm.dialog
 
-import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +25,7 @@ class MakeDialog(
         return binding.root
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onAttachFragment(childFragment: Fragment) {
         super.onAttachFragment(childFragment)
         try {
@@ -34,8 +35,8 @@ class MakeDialog(
         }
     }
 
-    override fun onAttach(activity: Activity) {
-        super.onAttach(activity)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         try {
             listener = context as MakeDialogInterface
         } catch (e: ClassCastException) {

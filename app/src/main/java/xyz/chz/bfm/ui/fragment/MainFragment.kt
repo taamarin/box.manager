@@ -169,7 +169,7 @@ class MainFragment : Fragment(), SettingDialogInterface, MakeDialogInterface {
         }
     }
 
-    private fun configEditor() = with(binding.configSetting) {
+    private fun configEditor() = with(binding.fbConfig) {
         setOnClickListener {
             findNavController().navigate(R.id.action_nav_home_to_configHelperFragment)
         }

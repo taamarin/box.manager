@@ -16,14 +16,15 @@
 
     <style name="ThemeOverlay.MaterialComponents.MaterialAlertDialog_background" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="android:background">@color/color_bg_dialog</item>
-        <item name="colorOnSurface">@color/material_blue</item>
+        <!--        <item name="colorOnSurface">@color/material_blue</item>-->
         <item name="shapeAppearanceOverlay">@style/DialogCorners</item>
         <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
         <item name="buttonBarNegativeButtonStyle">@style/PositiveButtonStyle</item>
     </style>
 
     <style name="PositiveButtonStyle" parent="@style/Widget.MaterialComponents.Button">
-        <item name="android:background">@color/dark</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/material_blue</item>
         <item name="backgroundTint">@color/material_blue</item>
     </style>
 

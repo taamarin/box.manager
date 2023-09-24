@@ -28,6 +28,7 @@ class SettingDialog : MaterialDialogFragment() {
         return binding.root
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onAttachFragment(childFragment: Fragment) {
         super.onAttachFragment(childFragment)
         try {
@@ -64,7 +65,7 @@ class SettingDialog : MaterialDialogFragment() {
                                     clash6.visibility = View.VISIBLE
                                     clash7.visibility = View.VISIBLE
                                     clash8.visibility = View.VISIBLE
-                                    setCore("\"clash\"")
+                                    setCore = "clash"
                                 }
 
                                 1 -> {
@@ -74,7 +75,7 @@ class SettingDialog : MaterialDialogFragment() {
                                     clash6.visibility = View.GONE
                                     clash7.visibility = View.GONE
                                     clash8.visibility = View.GONE
-                                    setCore("\"sing-box\"")
+                                    setCore = "sing-box"
                                 }
 
                                 2 -> {
@@ -84,7 +85,7 @@ class SettingDialog : MaterialDialogFragment() {
                                     clash6.visibility = View.GONE
                                     clash7.visibility = View.GONE
                                     clash8.visibility = View.GONE
-                                    setCore("\"xray\"")
+                                    setCore = "xray"
                                 }
 
                                 else -> {
@@ -94,7 +95,7 @@ class SettingDialog : MaterialDialogFragment() {
                                     clash6.visibility = View.GONE
                                     clash7.visibility = View.GONE
                                     clash8.visibility = View.GONE
-                                    setCore("\"v2fly\"")
+                                    setCore = "v2fly"
                                 }
                             }
                         }

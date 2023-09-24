@@ -5,52 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/bg"
+    android:fitsSystemWindows="true"
     tools:context=".ui.fragment.ConfigHelperFragment">
 
-    <RelativeLayout
-        android:id="@+id/header_view_x"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/bg">
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/header_view_x"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="?attr/bg">-->
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            android:textSize="18sp"
-            tools:text="this is titlee" />
+    <!--        <TextView-->
+    <!--            android:id="@+id/tvTitle"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="15dp"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            android:layout_marginBottom="5dp"-->
+    <!--            android:textSize="18sp"-->
+    <!--            tools:text="this is titlee" />-->
 
-        <ImageButton
-            android:id="@+id/save_config"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_save"
-            app:tint="@color/material_blue" />
+    <!--        <ImageButton-->
+    <!--            android:id="@+id/save_config"-->
+    <!--            android:layout_width="32dp"-->
+    <!--            android:layout_height="32dp"-->
+    <!--            android:layout_alignParentEnd="true"-->
+    <!--            android:layout_marginTop="5dp"-->
+    <!--            android:layout_marginEnd="15dp"-->
+    <!--            android:layout_marginBottom="5dp"-->
+    <!--            android:background="@color/transparent"-->
+    <!--            android:src="@drawable/ic_save"-->
+    <!--            app:tint="@color/material_blue" />-->
 
-        <!--        <com.google.android.material.divider.MaterialDivider-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_below="@+id/save_config"-->
-        <!--            android:layout_height="wrap_content"/>-->
+    <!--        &lt;!&ndash;        <com.google.android.material.divider.MaterialDivider&ndash;&gt;-->
+    <!--        &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            android:layout_below="@+id/save_config"&ndash;&gt;-->
+    <!--        &lt;!&ndash;            android:layout_height="wrap_content"/>&ndash;&gt;-->
 
-    </RelativeLayout>
+    <!--    </RelativeLayout>-->
 
     <de.markusressel.kodeeditor.library.view.CodeEditorLayout
         android:id="@+id/myEditor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/header_view_x"
         android:fadeScrollbars="true"
         android:scrollbars="horizontal|vertical"
-        app:ke_divider_color="?android:attr/textColorPrimary"
-        app:ke_divider_enabled="true"
         app:ke_editor_backgroundColor="?attr/bg"
         app:ke_editor_followCursor="true"
         app:ke_editor_maxZoom="10.0"
@@ -60,6 +58,19 @@
         app:ke_minimap_enabled="false"
         app:ke_minimap_indicatorColor="#f00"
         app:ke_minimap_maxDimension="200dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/fbConverter"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="Save"
+        android:src="@drawable/ic_save"
+        app:fabSize="mini"
+        app:tint="@null" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fbConverter"

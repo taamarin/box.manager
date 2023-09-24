@@ -1,6 +1,5 @@
 package xyz.chz.bfm.ui.base
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -19,7 +18,6 @@ open class BaseActivity : AppCompatActivity(), MakeDialogInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupTheme()
         if (ModuleManager.moduleVersionCode == "") {
             val df = MakeDialog(
                 StatusConnection.Error.str,
@@ -45,14 +43,6 @@ open class BaseActivity : AppCompatActivity(), MakeDialogInterface {
                 state = 1
             }
         }
-    }
-
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(newBase)
-
-    }
-
-    fun setupTheme() {
     }
 
     override fun onDialogPositiveButton(dialog: DialogFragment) {

@@ -11,6 +11,12 @@
     <string name="module_repo_url">https://github.com/taamarin/box_for_magisk</string>
     <string name="release_repo_url">https://github.com/taamarin/box_for_magisk/releases</string>
 
+    <string name="success">Success</string>
+    <string name="failed">Failed</string>
+    <string name="home">Home</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="app">App</string>
+
     <!-- Setting Dialog-->
     <string name="select_core">select core :</string>
     <string name="clash_settings">clash settings:</string>
@@ -64,7 +70,6 @@
         <item>whitelist</item>
         <item>blacklist</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

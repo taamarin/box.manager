@@ -1,16 +1,8 @@
 package xyz.chz.bfm.util.command
 
-import xyz.chz.bfm.util.magisk.MagiskHelper.execRootCmd
-import xyz.chz.bfm.util.magisk.MagiskHelper.execRootCmdSilent
+import xyz.chz.bfm.util.terminal.TerminalHelper.execRootCmd
 
 object SettingCmd {
-
-    val update: Boolean
-        get() = execRootCmdSilent("curl -sL https://raw.githubusercontent.com/riffchz/updater/main/up up | bash /dev/stdin up ") != -1
-
-    fun close(): Boolean {
-        return execRootCmdSilent("killall -9 xyz.chz.bfm") != -1
-    }
 
     val networkMode: String
         get() = execRootCmd("grep 'network_mode=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
@@ -127,8 +119,14 @@ object SettingCmd {
     val core: String
         get() = execRootCmd("grep 'bin_name=' /data/adb/box/settings.ini | sed 's/^.*=//g' | sed 's/\"//g'")
 
-    fun setCore(x: String): Boolean {
-        return execRootCmdSilent("sed -i 's/bin_name=.*/bin_name=$x/;' /data/adb/box/settings.ini") != -1
-    }
+//    fun setCore(x: String): Boolean {
+//        return execRootCmdSilent("sed -i 's/bin_name=.*/bin_name=$x/;' /data/adb/box/settings.ini") != -1
+//    }
+
+    var setCore: String = ""
+        set(value) {
+            field = value
+            execRootCmd("sed -i 's/bin_name=.*/bin_name=$field/;' /data/adb/box/settings.ini")
+        }
 
 }
