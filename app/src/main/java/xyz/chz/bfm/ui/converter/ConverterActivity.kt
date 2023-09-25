@@ -24,7 +24,7 @@ class ConverterActivity : AppCompatActivity() {
             val spltStr = str.split("\n")
             val result = StringBuilder()
             for (x in spltStr) {
-                result.appendLine(ConfigManager.importConfig(x))
+                result.appendLine(ConfigManager.importConfig(x, false))
             }
             tvResult.text = result
             tvResult.apply {

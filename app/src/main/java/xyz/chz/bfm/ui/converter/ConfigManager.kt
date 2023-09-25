@@ -6,7 +6,7 @@ import xyz.chz.bfm.ui.converter.config.ConfigUtil
 
 object ConfigManager {
 
-    fun importConfig(config: String): String {
+    fun importConfig(config: String, useIndent: Boolean): String {
         try {
             if (config.startsWith(ConfigType.VMESS.scheme)) {
                 var result = config.replace(ConfigType.VMESS.scheme, "")
@@ -14,9 +14,11 @@ object ConfigManager {
                 if (result.isEmpty()) {
                     return "failed decode vms"
                 }
-                return ClashData(result).newVmessConfig()
+                return ClashData(result, useIndent).newVmessConfig()
             } else if (config.startsWith(ConfigType.VLESS.scheme)) {
-                return ClashData(config).newVlessConfig()
+                return ClashData(config, useIndent).newVlessConfig()
+            } else if (config.startsWith(ConfigType.TROJAN.scheme) || config.startsWith(ConfigType.TROJANGO.scheme)) {
+                return ClashData(config, useIndent).newTrojanConfig()
             } else {
                 return ""
             }
