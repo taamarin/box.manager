@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.chz.bfm.databinding.ActivityConverterBinding
+import xyz.chz.bfm.util.Util
+import xyz.chz.bfm.util.toast
 
 @AndroidEntryPoint
 class ConverterActivity : AppCompatActivity() {
@@ -19,8 +21,14 @@ class ConverterActivity : AppCompatActivity() {
     private fun setupConfig() = with(binding) {
         btnConvert.setOnClickListener {
             val str = textInput.text.toString()
-            val result = "Not Yet"
+            val result = ConfigManager.importConfig(str)
             tvResult.text = result
+            tvResult.apply {
+                setOnClickListener {
+                    Util.copyToClipboard(this@ConverterActivity, result)
+                }
+            }
+            toast("Click result for copy config", this@ConverterActivity)
         }
     }
 

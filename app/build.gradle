@@ -15,8 +15,8 @@ android {
         applicationId "xyz.chz.bfm"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 20230925
+        versionName "1.12.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -68,7 +68,4 @@ dependencies {
     //okhttp
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.1'
-    //tes
-    implementation 'com.google.code.gson:gson:2.10.1'
-
 }
