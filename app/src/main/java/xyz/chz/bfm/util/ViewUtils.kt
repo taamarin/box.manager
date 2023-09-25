@@ -2,6 +2,8 @@ package xyz.chz.bfm.util
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -16,6 +18,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import xyz.chz.bfm.ui.converter.config.ConfigType
 import xyz.chz.bfm.util.modul.ModuleManager
 
 
@@ -63,4 +66,26 @@ fun EditText.hideKeyboard(): Boolean {
 fun EditText.showKeyboard(): Boolean {
     return (context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager)
         .showSoftInput(this, 0)
+}
+
+fun String.removeEmptyLines(): String {
+    val regex = Regex("(?m)^\\s*\r?\n|\n[ \t]*(?!.*\r?\n)")
+    return this.replace(regex, "")
+}
+
+fun TextView.copyToClipboard(context: Context) {
+    (context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager)
+        .setPrimaryClip(ClipData.newPlainText("copied", this.text.toString()))
+}
+
+fun EditText.isValidCheck(): Boolean {
+    if (this.text.toString().isNotEmpty() || this.text.toString()
+            .startsWith(ConfigType.VMESS.scheme) || this.text.toString().startsWith(
+            ConfigType.VLESS.scheme
+        ) || this.text.toString().startsWith(ConfigType.TROJAN.scheme) || this.text.toString()
+            .startsWith(ConfigType.TROJANGO.scheme)
+    ) {
+        return true
+    }
+    return false
 }

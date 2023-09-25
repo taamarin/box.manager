@@ -1,0 +1,31 @@
+mode: rule
+redir-port: 9797
+tproxy-port: 9898
+allow-lan: true
+bind-address: '*'
+log-level: silent
+ipv6: false
+external-controller: 0.0.0.0:9090
+external-ui './dashboard'
+unified-delay: false
+profile:
+  store-selected: true
+dns:
+  enable: true
+  use-hosts: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  listen: 127.0.0.1:6868
+  default-nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+    - 1.0.0.1
+  nameserver:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+    - https://1.0.0.1/dns-query
+proxies:
+%1$sproxy-groups:
+%2$srules:
+- MATCH,%3$s

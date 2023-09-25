@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RawRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import xyz.chz.bfm.R
@@ -110,10 +109,6 @@ class ConfigHelperFragment : Fragment() {
         }
         val dialog = builder.create()
         dialog.show()
-    }
-
-    private fun readRawFile(@RawRes id: Int): String {
-        return resources.openRawResource(id).bufferedReader().readText()
     }
 
 }

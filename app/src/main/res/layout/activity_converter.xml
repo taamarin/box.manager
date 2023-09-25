@@ -15,25 +15,40 @@
         <EditText
             android:id="@+id/textInput"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:hint="paste your config here\nseperate by enter or new line" />
+            android:layout_height="wrap_content"
+            android:hint="paste your config here\nseperate by enter or new line"
+            android:maxLines="7" />
+
+        <CheckBox
+            android:id="@+id/fullClashConfig"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="simple clash config?" />
 
         <Button
             android:id="@+id/btnConvert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="convert" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvResult"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp" />
+                android:layout_marginBottom="50dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="25dp" />
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 </RelativeLayout>
