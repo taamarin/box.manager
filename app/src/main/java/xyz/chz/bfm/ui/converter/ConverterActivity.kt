@@ -21,11 +21,15 @@ class ConverterActivity : AppCompatActivity() {
     private fun setupConfig() = with(binding) {
         btnConvert.setOnClickListener {
             val str = textInput.text.toString()
-            val result = ConfigManager.importConfig(str)
+            val spltStr = str.split("\n")
+            val result = StringBuilder()
+            for (x in spltStr) {
+                result.appendLine(ConfigManager.importConfig(x))
+            }
             tvResult.text = result
             tvResult.apply {
                 setOnClickListener {
-                    Util.copyToClipboard(this@ConverterActivity, result)
+                    Util.copyToClipboard(this@ConverterActivity, result.toString())
                 }
             }
             toast("Click result for copy config", this@ConverterActivity)

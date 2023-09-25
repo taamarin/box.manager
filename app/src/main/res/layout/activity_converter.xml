@@ -16,7 +16,7 @@
             android:id="@+id/textInput"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:hint="paste your config here" />
+            android:hint="paste your config here\nseperate by enter or new line" />
 
         <Button
             android:id="@+id/btnConvert"
@@ -25,11 +25,15 @@
             android:layout_marginTop="10dp"
             android:text="convert" />
 
-        <TextView
-            android:id="@+id/tvResult"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" />
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/tvResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+        </ScrollView>
     </LinearLayout>
 </RelativeLayout>
