@@ -5,8 +5,8 @@ allow-lan: true
 bind-address: '*'
 log-level: silent
 ipv6: false
+external-ui: './dashboard'
 external-controller: 0.0.0.0:9090
-external-ui './dashboard'
 unified-delay: false
 profile:
   store-selected: true
