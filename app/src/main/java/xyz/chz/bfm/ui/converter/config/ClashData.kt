@@ -5,7 +5,16 @@ import org.json.JSONObject
 import java.net.URLDecoder
 import kotlin.random.Random
 
-class ClashData(private val masuk: String, private val indent: Boolean) {
+class ClashData(private val masuk: String = "", private val indent: Boolean = false) {
+
+    fun proxyGroupBuilder(nameProxy: String, listProxy: String): String {
+        val sb = StringBuilder()
+        sb.appendLine("- name: $nameProxy")
+        sb.appendLine("  type: select")
+        sb.appendLine("  proxies:")
+        sb.append(listProxy)
+        return sb.toString()
+    }
 
     fun newVmessConfig(): String {
         val jo = JSONObject(masuk)
@@ -26,6 +35,7 @@ class ClashData(private val masuk: String, private val indent: Boolean) {
         sb.appendLine("$idnt  alterId: ${jo.optString("aid", "0")}")
         sb.appendLine("$idnt  cipher: ${jo.optString("scy", "auto")}")
         sb.appendLine("$idnt  tls: ${jo.optString("tls", "") == "tls"}")
+        sb.appendLine("$idnt  servername: ${jo.optString("sni", jo.optString("add", ""))}")
         sb.appendLine("$idnt  skip-cert-verify: true")
         sb.appendLine("$idnt  udp: true")
         when (jo.optString("net", "tcp")) {

@@ -1,13 +1,15 @@
 package xyz.chz.bfm.ui.converter
 
+import org.json.JSONObject
 import xyz.chz.bfm.ui.converter.config.ClashData
 import xyz.chz.bfm.ui.converter.config.ConfigType
 import xyz.chz.bfm.ui.converter.config.ConfigUtil
+import xyz.chz.bfm.ui.converter.config.SingBoxData
 import java.util.regex.Pattern
 
 object ConfigManager {
 
-    fun importConfig(config: String, useIndent: Boolean): String {
+    fun importConfig(config: String, isClash: Boolean, useIndent: Boolean = false): String {
         try {
             if (config.startsWith(ConfigType.VMESS.scheme)) {
                 var result = config.replace(ConfigType.VMESS.scheme, "")
@@ -15,7 +17,9 @@ object ConfigManager {
                 if (result.isEmpty()) {
                     return "failed decode vms"
                 }
-                return ClashData(result, useIndent).newVmessConfig()
+                return if (isClash) ClashData(result, useIndent).newVmessConfig() else SingBoxData(
+                    result
+                ).vmessSing()
             } else if (config.startsWith(ConfigType.VLESS.scheme)) {
                 return ClashData(config, useIndent).newVlessConfig()
             } else if (config.startsWith(ConfigType.TROJAN.scheme) || config.startsWith(ConfigType.TROJANGO.scheme)) {
@@ -36,16 +40,27 @@ object ConfigManager {
         while (m.find()) {
             sb.appendLine("    - ${m.group(1)?.trim()}")
         }
-        return String.format(strRaw, config, proxyGroupBuilder(name, sb.toString()), name)
+        return String.format(
+            strRaw,
+            config,
+            ClashData().proxyGroupBuilder(name, sb.toString()),
+            name
+        )
     }
 
-    private fun proxyGroupBuilder(nameProxy: String, listProxy: String): String {
+    fun fullSingSimple(config: String, strRaw: String): String {
+        val s = ArrayList<String>()
+        val p = Pattern.compile("\"tag\":(.*)")
+        val m = p.matcher(config)
         val sb = StringBuilder()
-        sb.appendLine("- name: $nameProxy")
-        sb.appendLine("  type: select")
-        sb.appendLine("  proxies:")
-        sb.append(listProxy)
-        return sb.toString()
+        while (m.find()) {
+            s.add(m.group(1)?.trim()!!.replace("\"|,", ""))
+        }
+        sb.appendLine(SingBoxData().buildHeaderSlector(s))
+        sb.appendLine(SingBoxData().buildHeaderBestUrl(s))
+        sb.append(config)
+        sb.appendLine(SingBoxData().buildFooter())
+        val strResult = String.format(strRaw, sb.toString())
+        return JSONObject(strResult).toString(2).replace("\\", "").replace("null,", "")
     }
-
 }

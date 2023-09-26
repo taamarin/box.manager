@@ -68,9 +68,9 @@ fun EditText.showKeyboard(): Boolean {
         .showSoftInput(this, 0)
 }
 
-fun String.removeEmptyLines(): String {
-    val regex = Regex("(?m)^\\s*\r?\n|\n[ \t]*(?!.*\r?\n)")
-    return this.replace(regex, "")
+fun EditText.removeEmptyLines(): String {
+    //val regex = Regex()
+    return this.text.replace("(?m)^[ \t]*\r?\n".toRegex(), "")
 }
 
 fun TextView.copyToClipboard(context: Context) {

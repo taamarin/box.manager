@@ -8,6 +8,7 @@ import xyz.chz.bfm.R
 import xyz.chz.bfm.databinding.ActivityConverterBinding
 import xyz.chz.bfm.util.copyToClipboard
 import xyz.chz.bfm.util.isValidCheck
+import xyz.chz.bfm.util.removeEmptyLines
 import xyz.chz.bfm.util.toast
 
 @AndroidEntryPoint
@@ -23,16 +24,33 @@ class ConverterActivity : AppCompatActivity() {
 
     private fun setupConfig() = with(binding) {
         var isFull = false
+        var isSing = false
         fullClashConfig.setOnCheckedChangeListener { _, b ->
             isFull = b
+            isSing = false
+            fullSingConfig.isChecked = false
+        }
+        fullSingConfig.setOnCheckedChangeListener { _, b ->
+            if (b) {
+                isSing = true
+                isFull = false
+                fullClashConfig.isChecked = false
+            }
         }
         btnConvert.setOnClickListener {
             if (textInput.isValidCheck()) {
-                val str = textInput.text.toString()
+                val str = textInput.removeEmptyLines()
                 val spltStr = str.split("\n")
                 val result = StringBuilder()
                 for (x in spltStr) {
-                    result.appendLine(ConfigManager.importConfig(x, false))
+                    result.appendLine(
+                        "${
+                            if (isSing) ConfigManager.importConfig(
+                                x,
+                                false
+                            ) else ConfigManager.importConfig(x, true)
+                        },"
+                    )
                 }
                 if (isFull)
                     tvResult.text =
@@ -41,7 +59,10 @@ class ConverterActivity : AppCompatActivity() {
                             readRawFile(R.raw.clashtemplate)
                         )
                 else
-                    tvResult.text = result
+                    tvResult.text = if (isSing) ConfigManager.fullSingSimple(
+                        result.toString(),
+                        readRawFile(R.raw.singboxtemplate)
+                    ) else result
                 tvResult.apply {
                     setOnClickListener {
                         copyToClipboard(this@ConverterActivity)

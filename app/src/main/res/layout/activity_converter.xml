@@ -19,11 +19,23 @@
             android:hint="paste your config here\nseperate by enter or new line"
             android:maxLines="7" />
 
-        <CheckBox
-            android:id="@+id/fullClashConfig"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="simple clash config?" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/fullClashConfig"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="simple clash config?" />
+
+            <CheckBox
+                android:id="@+id/fullSingConfig"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="simple sing-box config?" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnConvert"
