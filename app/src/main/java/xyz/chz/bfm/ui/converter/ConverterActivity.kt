@@ -48,8 +48,8 @@ class ConverterActivity : AppCompatActivity() {
                             if (isSing) ConfigManager.importConfig(
                                 x,
                                 false
-                            ) else ConfigManager.importConfig(x, true)
-                        },"
+                            )+"," else ConfigManager.importConfig(x, true)
+                        }"
                     )
                 }
                 if (isFull)
