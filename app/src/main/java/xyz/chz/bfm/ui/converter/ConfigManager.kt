@@ -21,7 +21,9 @@ object ConfigManager {
                     result
                 ).vmessSing()
             } else if (config.startsWith(ConfigType.VLESS.scheme)) {
-                return ClashData(config, useIndent).newVlessConfig()
+                return if (isClash) ClashData(config, useIndent).newVlessConfig() else SingBoxData(
+                    config
+                ).vlessSing()
             } else if (config.startsWith(ConfigType.TROJAN.scheme) || config.startsWith(ConfigType.TROJANGO.scheme)) {
                 return ClashData(config, useIndent).newTrojanConfig()
             } else {

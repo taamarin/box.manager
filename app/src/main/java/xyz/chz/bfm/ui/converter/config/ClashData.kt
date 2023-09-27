@@ -126,7 +126,7 @@ class ClashData(private val masuk: String = "", private val indent: Boolean = fa
 
                 sb.appendLine("$idnt    path: $decodePath")
                 sb.appendLine("$idnt    headers:")
-                sb.append("${idnt}      Host: $decodeHost")
+                sb.append("$idnt      Host: $decodeHost")
             }
 
             "tcp" -> {}

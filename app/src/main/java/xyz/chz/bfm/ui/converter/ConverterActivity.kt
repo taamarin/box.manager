@@ -44,12 +44,10 @@ class ConverterActivity : AppCompatActivity() {
                 val result = StringBuilder()
                 for (x in spltStr) {
                     result.appendLine(
-                        "${
-                            if (isSing) ConfigManager.importConfig(
-                                x,
-                                false
-                            )+"," else ConfigManager.importConfig(x, true)
-                        }"
+                        if (isSing) ConfigManager.importConfig(
+                            x,
+                            false
+                        ) + "," else ConfigManager.importConfig(x, true)
                     )
                 }
                 if (isFull)
