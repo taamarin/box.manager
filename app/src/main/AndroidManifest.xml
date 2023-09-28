@@ -21,6 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.core.CoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.converter.ConverterActivity"
             android:exported="false" />
         <activity

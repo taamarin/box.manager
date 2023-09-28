@@ -1,5 +1,6 @@
 package xyz.chz.bfm.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,6 +23,7 @@ import xyz.chz.bfm.dialog.MakeDialogInterface
 import xyz.chz.bfm.dialog.SettingDialog
 import xyz.chz.bfm.dialog.SettingDialogInterface
 import xyz.chz.bfm.enm.StatusConnection
+import xyz.chz.bfm.ui.core.CoreActivity
 import xyz.chz.bfm.ui.model.MainViewModel
 import xyz.chz.bfm.util.OkHttpHelper
 import xyz.chz.bfm.util.Util
@@ -97,6 +99,7 @@ class MainFragment : Fragment(), SettingDialogInterface, MakeDialogInterface {
         setupLog()
         settings()
         configEditor()
+        checkCore()
     }
 
     private fun setProxyCard(status: String) = with(binding) {
@@ -172,6 +175,12 @@ class MainFragment : Fragment(), SettingDialogInterface, MakeDialogInterface {
     private fun configEditor() = with(binding.fbConfig) {
         setOnClickListener {
             findNavController().navigate(R.id.action_nav_home_to_configHelperFragment)
+        }
+    }
+
+    private fun checkCore() = with(binding.imgModule) {
+        setOnClickListener {
+            startActivity(Intent(context, CoreActivity::class.java))
         }
     }
 
