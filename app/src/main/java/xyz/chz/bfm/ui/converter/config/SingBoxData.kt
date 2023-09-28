@@ -146,6 +146,73 @@ class SingBoxData(private val masuk: String = "") {
         return json.toString(2)
     }
 
+    fun trojanSing(): String {
+        var url = masuk
+        if (!url.contains("@")) url = ConfigUtil.safeDecodeURLB64(url)
+        val uri = Uri.parse(url)
+        val json = Util.json {
+            "tag" to "${uri.fragment ?: "new"}_${uri.scheme}_${
+                Random.nextInt(
+                    0,
+                    7000
+                )
+            }"
+            "type" to "trojan"
+            ("server" to uri.host)
+            "server_port" to uri.port.toInt()
+            if (uri.userInfo == null || uri.userInfo!!.isEmpty()) throw Exception("no user info")
+            "password" to uri.userInfo
+            "multiplex" to {
+                "enabled" to false
+                "protocol" to "smux"
+                "max_streams" to 32
+            }
+            if ((ConfigUtil.getQueryParams(uri, "security") ?: "") == "tls") {
+                "tls" to {
+                    "enabled" to true
+                    "server_name" to (ConfigUtil.getQueryParams(uri, "sni")
+                        ?: ConfigUtil.getQueryParams(uri, "host") ?: uri.host!!)
+                    "insecure" to true
+                    "disable_sni" to false
+                }
+            }
+            val decodePath =
+                URLDecoder.decode(ConfigUtil.getQueryParams(uri, "path") ?: "", "UTF-8")
+            val decodeHost =
+                URLDecoder.decode(ConfigUtil.getQueryParams(uri, "host") ?: "", "UTF-8")
+            val type = ConfigUtil.getQueryParams(uri, "type") ?: "tcp"
+            when (type) {
+                "ws" -> {
+                    "transport" to {
+                        "type" to "ws"
+                        "path" to decodePath
+                        "headers" to {
+                            "Host" to decodeHost
+                        }
+                        "max_early_data" to 0
+                        "early_data_header_name" to "Sec-WebSocket-Protocol"
+                    }
+                }
+
+                "grpc" -> {
+                    "transport" to {
+                        "type" to "grpc"
+                        ("service_name" to ConfigUtil.getQueryParams(uri, "serviceName"))
+                        "idle_timeout" to "15s"
+                        "ping_timeout" to "15s"
+                        "permit_without_stream" to false
+                    }
+                }
+
+                "tcp" -> {}
+                "http" -> {}
+                else -> throw Exception("$type not supported")
+            }
+            "domain_strategy" to "ipv4_only"
+        }
+        return json.toString(2)
+    }
+
     fun buildHeaderSlector(arrName: ArrayList<String>): String {
         val sb = StringBuilder()
         sb.append("{\"type\": \"selector\",\"tag\": \"Internet\",")
