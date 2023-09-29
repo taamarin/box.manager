@@ -18,7 +18,7 @@ class SettingDialog : MaterialDialogFragment() {
 
     private lateinit var binding: SettingDialogBinding
 
-    lateinit var listener: SettingDialogInterface
+    lateinit var listener: ISettingDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -32,7 +32,7 @@ class SettingDialog : MaterialDialogFragment() {
     override fun onAttachFragment(childFragment: Fragment) {
         super.onAttachFragment(childFragment)
         try {
-            listener = context as SettingDialogInterface
+            listener = context as ISettingDialog
         } catch (e: ClassCastException) {
             throw ClassCastException("not cast")
         }

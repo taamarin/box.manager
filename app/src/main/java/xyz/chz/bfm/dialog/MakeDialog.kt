@@ -16,7 +16,7 @@ class MakeDialog(
 ) : MaterialDialogFragment() {
     private lateinit var binding: CustomDialogBinding
 
-    lateinit var listener: MakeDialogInterface
+    lateinit var listener: IMakeDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -29,7 +29,7 @@ class MakeDialog(
     override fun onAttachFragment(childFragment: Fragment) {
         super.onAttachFragment(childFragment)
         try {
-            listener = context as MakeDialogInterface
+            listener = context as IMakeDialog
         } catch (e: ClassCastException) {
             throw ClassCastException("not cast")
         }
@@ -38,7 +38,7 @@ class MakeDialog(
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
-            listener = context as MakeDialogInterface
+            listener = context as IMakeDialog
         } catch (e: ClassCastException) {
             throw ClassCastException("not cast")
         }

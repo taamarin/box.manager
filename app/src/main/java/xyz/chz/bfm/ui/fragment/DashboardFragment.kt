@@ -11,14 +11,14 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.chz.bfm.databinding.FragmentDashboardBinding
+import xyz.chz.bfm.dialog.IMakeDialog
 import xyz.chz.bfm.dialog.MakeDialog
-import xyz.chz.bfm.dialog.MakeDialogInterface
 import xyz.chz.bfm.util.Util
 import xyz.chz.bfm.util.command.SettingCmd
 import xyz.chz.bfm.util.command.TermCmd
 
 @AndroidEntryPoint
-class DashboardFragment : Fragment(), MakeDialogInterface {
+class DashboardFragment : Fragment(), IMakeDialog {
 
     private lateinit var binding: FragmentDashboardBinding
     override fun onCreateView(

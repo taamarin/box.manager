@@ -7,13 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.chz.bfm.R
+import xyz.chz.bfm.dialog.IMakeDialog
 import xyz.chz.bfm.dialog.MakeDialog
-import xyz.chz.bfm.dialog.MakeDialogInterface
 import xyz.chz.bfm.enm.StatusConnection
 import xyz.chz.bfm.util.modul.ModuleManager
 
 @AndroidEntryPoint
-open class BaseActivity : AppCompatActivity(), MakeDialogInterface {
+open class BaseActivity : AppCompatActivity(), IMakeDialog {
     private var state: Int? = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {

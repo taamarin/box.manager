@@ -60,7 +60,7 @@ class ClashData(private val masuk: String = "", private val indent: Boolean = fa
             }
 
             "tcp" -> {
-                if (jo["type"] == "http") {
+                if (jo.optString("type", "") == "http") {
                     sb.appendLine("$idnt  network: http")
                     sb.appendLine("$idnt  http-opts:")
                     sb.append("$idnt    path: ${jo.optString("path", "/")}")

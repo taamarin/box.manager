@@ -18,10 +18,10 @@ import org.json.JSONException
 import org.json.JSONObject
 import xyz.chz.bfm.R
 import xyz.chz.bfm.databinding.FragmentMainBinding
+import xyz.chz.bfm.dialog.IMakeDialog
+import xyz.chz.bfm.dialog.ISettingDialog
 import xyz.chz.bfm.dialog.MakeDialog
-import xyz.chz.bfm.dialog.MakeDialogInterface
 import xyz.chz.bfm.dialog.SettingDialog
-import xyz.chz.bfm.dialog.SettingDialogInterface
 import xyz.chz.bfm.enm.StatusConnection
 import xyz.chz.bfm.ui.core.CoreActivity
 import xyz.chz.bfm.ui.model.MainViewModel
@@ -38,7 +38,7 @@ import xyz.chz.bfm.util.toast
 import java.io.IOException
 
 @AndroidEntryPoint
-class MainFragment : Fragment(), SettingDialogInterface, MakeDialogInterface {
+class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
 
     private lateinit var binding: FragmentMainBinding
     private val viewModel: MainViewModel by viewModels()

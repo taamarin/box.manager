@@ -3,46 +3,142 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="20dp"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".ui.core.CoreActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvClash"
-            tools:text="testc"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="UPDATER CORE"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-        <ProgressBar
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            style="@android:style/Widget.DeviceDefault.ProgressBar"
-            android:id="@+id/prgClash"
-            android:visibility="gone"
-            android:layout_alignParentEnd="true"
-            tools:visibility="visible"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_marginTop="15dp">
 
-    </RelativeLayout>
-
-<ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvClash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                tools:text="testc" />
+
+            <ProgressBar
+                android:id="@+id/prgClash"
+                style="@android:style/Widget.DeviceDefault.ProgressBar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/tvClash"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ProgressBar
+                android:id="@+id/prgHrzClash"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
-                android:orientation="vertical">
-    <TextView
+                android:layout_below="@+id/tvClash"
+                android:layout_marginTop="8dp"
+                android:progress="0"
+                android:visibility="gone"
+                tools:progress="20"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/btnClash"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_download"
+                android:visibility="gone"
+                app:tint="@color/material_blue"
+                tools:visibility="visible" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvResTest"
-        tools:text="testc"/>
-		 </LinearLayout>
-        </ScrollView>
+        android:layout_margin="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvSing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                tools:text="testc" />
+
+            <ProgressBar
+                android:id="@+id/prgSing"
+                style="@android:style/Widget.DeviceDefault.ProgressBar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/tvSing"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ProgressBar
+                android:id="@+id/prgHrzSing"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSing"
+                android:layout_marginTop="8dp"
+                android:progress="0"
+                android:visibility="gone"
+                tools:progress="20"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/btnSing"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_download"
+                android:visibility="gone"
+                app:tint="@color/material_blue"
+                tools:visibility="visible" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--    <ScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginBottom="50dp"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <EditText-->
+    <!--                android:id="@+id/tvResTest"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                tools:text="testc" />-->
+    <!--        </LinearLayout>-->
+    <!--    </ScrollView>-->
 </LinearLayout>
