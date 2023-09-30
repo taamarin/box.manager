@@ -20,6 +20,8 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import xyz.chz.bfm.ui.converter.config.ConfigType
 import xyz.chz.bfm.util.modul.ModuleManager
+import java.net.HttpURLConnection
+import java.net.URL
 
 
 fun MaterialCardView.setColorBackground(str: String) {
@@ -88,4 +90,13 @@ fun EditText.isValidCheck(): Boolean {
         return true
     }
     return false
+}
+
+fun String.urlText(): String {
+    return URL(this).run {
+        openConnection().run {
+            this as HttpURLConnection
+            inputStream.bufferedReader().readText().trim()
+        }
+    }
 }

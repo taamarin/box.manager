@@ -6,7 +6,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 
 class OkHttpHelper {
-
     fun getRawTextFromURL(url: String, callback: Callback): Call {
         val client = OkHttpClient()
         val request = Request.Builder()

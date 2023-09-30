@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/bg"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".ui.core.CoreActivity">
@@ -24,8 +25,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_marginTop="15dp">
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,6 +38,8 @@
                 android:id="@+id/tvClash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
                 android:textSize="16sp"
                 tools:text="testc" />
 
@@ -51,9 +56,10 @@
             <ProgressBar
                 android:id="@+id/prgHrzClash"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvClash"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="8dp"
                 android:progress="0"
                 android:visibility="gone"
@@ -65,9 +71,35 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
                 android:src="@drawable/ic_download"
                 android:visibility="gone"
                 app:tint="@color/material_blue"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/imgErrorClash"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_error"
+                android:visibility="gone"
+                app:tint="@color/material_red"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/imgDoneClash"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_done"
+                android:visibility="gone"
+                app:tint="@color/green"
                 tools:visibility="visible" />
 
         </RelativeLayout>
@@ -76,7 +108,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -86,6 +121,8 @@
                 android:id="@+id/tvSing"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
                 android:textSize="16sp"
                 tools:text="testc" />
 
@@ -102,9 +139,10 @@
             <ProgressBar
                 android:id="@+id/prgHrzSing"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvSing"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="8dp"
                 android:progress="0"
                 android:visibility="gone"
@@ -116,9 +154,35 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
                 android:src="@drawable/ic_download"
                 android:visibility="gone"
                 app:tint="@color/material_blue"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/imgErrorSing"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_error"
+                android:visibility="gone"
+                app:tint="@color/material_red"
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/imgDoneSing"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_done"
+                android:visibility="gone"
+                app:tint="@color/green"
                 tools:visibility="visible" />
 
         </RelativeLayout>
@@ -141,4 +205,5 @@
     <!--                tools:text="testc" />-->
     <!--        </LinearLayout>-->
     <!--    </ScrollView>-->
+
 </LinearLayout>

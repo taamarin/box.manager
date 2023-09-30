@@ -5,5 +5,7 @@ package xyz.chz.bfm.util
 const val EXTRACTOR =
     "sed 's/\\[//g' | sed 's/\\]//g' | sed 's/\"//g' | sed 's/,//g' | sed 's/  //g' | awk 'NF'"
 const val QUOTES = "sed 's/\"//g'"
-const val META_REPO = "https://api.github.com/repos/shioeri/Clash.Meta/releases"
+const val META_REPO = "https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/latest"
+const val META_DOWNLOAD = "https://github.com/MetaCubeX/Clash.Meta/releases/download"
 const val SING_REPO = "https://api.github.com/repos/shioeri/sing-box/releases"
+const val SING_DOWNLOAD = "https://github.com/shioeri/sing-box/releases/download"
