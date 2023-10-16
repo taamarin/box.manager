@@ -116,7 +116,7 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
                 statusTitle.text = StatusConnection.Enabled.str
                 tvApps.text = strapps
                 proxy.setColorBackground("#6fa251")
-                statusIcon.setImage(R.drawable.ic_app)
+                statusIcon.setImage(R.drawable.ic_enabled)
                 statusSummary.moduleVer()
             }
 
@@ -124,7 +124,7 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
                 statusTitle.text = StatusConnection.Disabled.str
                 tvApps.text = strapps
                 proxy.setColorBackground("#87afc7")
-                statusIcon.setImage(R.drawable.ic_app)
+                statusIcon.setImage(R.drawable.ic_disabled)
                 statusSummary.moduleVer()
             }
 
@@ -132,7 +132,7 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
                 statusTitle.text = StatusConnection.Loading.str
                 tvApps.text = strapps
                 proxy.setColorBackground("#478fec")
-                statusIcon.setImage(R.drawable.ic_app)
+                statusIcon.setImage(R.drawable.ic_loading)
                 statusSummary.moduleVer()
             }
 
@@ -140,7 +140,7 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
                 statusTitle.text = StatusConnection.Error.str
                 tvApps.text = strapps
                 proxy.setColorBackground("#f35e5e")
-                statusIcon.setImage(R.drawable.ic_app)
+                statusIcon.setImage(R.drawable.ic_error)
                 statusSummary.moduleVer()
             }
 

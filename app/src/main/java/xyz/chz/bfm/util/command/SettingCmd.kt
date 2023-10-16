@@ -33,10 +33,10 @@ object SettingCmd {
     }
 
     val cgr: String
-        get() = execRootCmd("grep 'cgroup_memory=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
+        get() = execRootCmd("grep 'cgroup_memcg=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
 
     fun setCgr(mode: String): String {
-        return execRootCmd("sed -i 's/cgroup_memory=.*/cgroup_memory=\"$mode\"/;' /data/adb/box/settings.ini")
+        return execRootCmd("sed -i 's/cgroup_memcg=.*/cgroup_memcg=\"$mode\"/;' /data/adb/box/settings.ini")
     }
 
     val subs: String

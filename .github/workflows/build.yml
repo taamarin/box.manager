@@ -1,0 +1,88 @@
+name: build android apps
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - "docs/**"
+      - "README.md"
+      - ".github/ISSUE_TEMPLATE/**"
+    branches:
+      - main
+jobs:
+  Build:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+
+      - name: Build with Gradle
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon --no-configuration-cache -q app:assembleRelease
+
+      - name: checking release version
+        id: version
+        run: |
+          echo ::set-output name=release_version::$(cat app/build.gradle  | grep -o "versionName \"[0-9.]*\"" | grep -o "[0-9.]*")
+          echo ::set-output name=release_patch::$(git rev-parse --short HEAD)
+
+      - name: rename apks
+        run: |
+          APK="BoxForRoot_v${{ steps.version.outputs.release_version }}_${{ steps.version.outputs.release_patch }}.apk"
+          mv -f ./app/build/outputs/apk/release/*.apk ./app/build/outputs/apk/release/$APK
+
+      - uses: andreaswilli/delete-release-assets-action@v2.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: Prerelease
+          deleteOnlyFromDrafts: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: richardsimko/update-tag@v1.0.7
+        with:
+          tag_name: Prerelease
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: softprops/action-gh-release@v1
+        if: success()
+        with:
+          tag_name: Prerelease
+          files: ${{ github.workspace }}/app/build/outputs/apk/release/*.apk
+          draft: false
+          prerelease: true
+          generate_release_notes: true
+
+      - name: Upload to Telegram
+        run: |
+          export VERSION="v${{ steps.version.outputs.release_version }}-${{ steps.version.outputs.release_patch }}"
+          export CG=$(git log --oneline -n 5 --no-decorate)
+          CAPTION="
+          BoxforRoot Manager ${VERSION}
+
+          Commit:
+          ${CG}
+
+          source: https://github.com/taamarin/box.manager
+          "
+          for FILE in app/build/outputs/apk/release/*.apk; do
+            echo ">> Uploading ${FILE}"
+            curl "https://api.telegram.org/bot${{ secrets.BOT_TOKEN }}/sendDocument" \
+              -k \
+              -X POST \
+              -F "chat_id=-1001597117128" \
+              -F "message_thread_id=218356" \
+              -F "document=@${FILE}" \
+              -F "caption=$CAPTION" \
+              --show-error --fail >/dev/null
+          done
