@@ -19,7 +19,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/light_white</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="fontFamily">@font/product_sans_regular</item>
         <!-- Customize your theme here. -->
     </style>
 
