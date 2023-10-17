@@ -1,31 +1,89 @@
-mode: rule
+# port: 6550
+# socks-port: 6551
+# mixed-port: 6552
 redir-port: 9797
 tproxy-port: 9898
+mode: rule
 allow-lan: true
-bind-address: '*'
-log-level: silent
+bind-address: "*"
+log-level: warning
+unified-delay: true
+geodata-mode: true
+geodata-loader: memconservative
 ipv6: false
-external-ui: './dashboard'
 external-controller: 0.0.0.0:9090
-unified-delay: false
+secret: ""
+external-ui: /data/adb/box/clash/dashboard
 profile:
   store-selected: true
+  store-fake-ip: false
+find-process-mode: off
+geox-url:
+  geoip: "https://github.com/MetaCubeX/meta-rules-dat/raw/release/geoip-lite.dat"
+  mmdb: "https://github.com/MetaCubeX/meta-rules-dat/raw/release/country-lite.mmdb"
+  geosite: "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+sniffer:
+  enable: false
+  force-dns-mapping: false
+  parse-pure-ip: false
+  override-destination: false
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+  sniffing: [tls, http]
+  port-whitelist: [80, 443]
 dns:
   enable: true
-  use-hosts: true
+  prefer-h3: false
   ipv6: false
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  listen: 127.0.0.1:6868
   default-nameserver:
+    - 9.9.9.9
     - 1.1.1.1
-    - 8.8.8.8
-    - 1.0.0.1
+    - 94.140.14.14
+  listen: 0.0.0.0:1053
+  use-hosts: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - "*.lan"
+    - "*.ntp.*"
   nameserver:
-    - https://1.1.1.1/dns-query
-    - https://8.8.8.8/dns-query
-    - https://1.0.0.1/dns-query
+    - 9.9.9.9
+    - 8.8.8.8
+  # proxy-server-nameserver:
+    # - 112.215.198.248
+    # - 112.215.198.254
+    # - "[2400:9800:2:2::245]"
+    # - "[2400:9800:2:2::246]"
+  # nameserver-policy:
+    # "geosite:category-ads-all": rcode://success
+    # "geosite:nameserver-policy":
+       # - 192.168.130.30
+       # - '[2404:c0:1000::a:0:1]'
+tun:
+  enable: false
+  mtu: 9000
+  device: tun9
+  stack: system
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  auto-route: true
+  strict-route: false
+  auto-detect-interface: true
+  include-android-user: [0, 10]
+  exclude-package: []
 proxies:
 %1$sproxy-groups:
 %2$srules:
+- DOMAIN-SUFFIX,googlesyndication.com,%3$s
+- DOMAIN-SUFFIX,adtival.network,%3$s
+- IP-CIDR,127.0.0.1/32,REJECT,no-resolve
+- IP-CIDR,28.0.0.1/8,REJECT,no-resolve
+- IP-CIDR6,::1/128,REJECT,no-resolve
+- GEOSITE,category-ads-all,REJECT
+- AND,((NETWORK,udp),(GEOSITE,youtube)),REJECT
 - MATCH,%3$s

@@ -24,8 +24,6 @@ class SingBoxData(private val masuk: String = "") {
             "uuid" to jo.getString("id")
             "security" to jo.optString("scy", "auto")
             "alter_id" to jo.optString("aid", "0").toInt()
-            "global_padding" to false
-            "authenticated_length" to true
             "multiplex" to {
                 "enabled" to false
                 "protocol" to "smux"
@@ -67,7 +65,6 @@ class SingBoxData(private val masuk: String = "") {
                 "h2" -> {}
                 else -> throw Exception("$type not supported")
             }
-            "domain_strategy" to "ipv4_only"
         }
 
         return json.toString(2)
@@ -141,7 +138,6 @@ class SingBoxData(private val masuk: String = "") {
                 "http" -> {}
                 else -> throw Exception("$type not supported")
             }
-            "domain_strategy" to "ipv4_only"
         }
         return json.toString(2)
     }
@@ -208,15 +204,14 @@ class SingBoxData(private val masuk: String = "") {
                 "http" -> {}
                 else -> throw Exception("$type not supported")
             }
-            "domain_strategy" to "ipv4_only"
         }
         return json.toString(2)
     }
 
     fun buildHeaderSlector(arrName: ArrayList<String>): String {
         val sb = StringBuilder()
-        sb.append("{\"type\": \"selector\",\"tag\": \"Internet\",")
-        sb.append("\"outbounds\": [\"Best Latency\",")
+        sb.append("{\"type\": \"selector\",\"tag\": \"match\",")
+        sb.append("\"outbounds\": [\"urltest\",")
         for (x in arrName)
             sb.append(x)
         sb.append("]},")
@@ -225,7 +220,7 @@ class SingBoxData(private val masuk: String = "") {
 
     fun buildHeaderBestUrl(arrName: ArrayList<String>): String {
         val sb = StringBuilder()
-        sb.append("{\"type\": \"urltest\",\"tag\": \"Best Latency\",")
+        sb.append("{\"type\": \"urltest\",\"tag\": \"urltest\",")
         sb.append("\"outbounds\": [")
         for (x in arrName)
             sb.append(x)
