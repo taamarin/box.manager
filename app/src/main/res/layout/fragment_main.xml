@@ -39,7 +39,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@mipmap/ic_launcher_round" />
+                    android:src="@drawable/ic_launcher" />
 
                 <TextView
                     android:id="@+id/boxTitleApp"
