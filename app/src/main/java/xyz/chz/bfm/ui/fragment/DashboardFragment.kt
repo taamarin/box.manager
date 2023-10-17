@@ -36,7 +36,7 @@ class DashboardFragment : Fragment(), IMakeDialog {
             showRes()
         } else {
             MakeDialog(
-                "Ahhhh....!!",
+                "Wowo :( ",
                 "Your core is not clash or sing-box so dashboard not available",
                 false,
                 false
