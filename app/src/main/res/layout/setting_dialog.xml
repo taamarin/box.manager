@@ -150,11 +150,11 @@
             android:visibility="gone">
 
             <CheckBox
-                android:id="@+id/cbfake_ip"
+                android:id="@+id/cbredir_host"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/fake_ip"
+                android:text="@string/redir_host"
                 android:textSize="12sp" />
 
             <CheckBox
@@ -224,6 +224,14 @@
                 android:text="@string/geox"
                 android:textSize="12sp" />
 
+            <CheckBox
+                android:id="@+id/cbcron"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/crontab"
+                android:textSize="12sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -239,14 +247,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/port_detect"
-                android:textSize="12sp" />
-
-            <CheckBox
-                android:id="@+id/cbcron"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/crontab"
                 android:textSize="12sp" />
 
         </LinearLayout>

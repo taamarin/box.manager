@@ -200,10 +200,10 @@ class SettingDialog : MaterialDialogFragment() {
                     }
                 }
 
-                cbfakeIp.apply {
-                    isChecked = fakeIp
+                cbredirHost.apply {
+                    isChecked = redirHost
                     setOnCheckedChangeListener { _, b ->
-                        if (b) setFakeIp("fake-ip") else setFakeIp("redir-host")
+                        if (b) setRedirHost("redir-host") else setRedirHost("fake-ip")
                     }
                 }
 
@@ -314,7 +314,7 @@ class SettingDialog : MaterialDialogFragment() {
         cbgeo.isEnabled = bo
         cbsubs.isEnabled = bo
         cbgeodataMod.isEnabled = bo
-        cbfakeIp.isEnabled = bo
+        cbredirHost.isEnabled = bo
         coreSelector.isEnabled = bo
         spProxyMode.isEnabled = bo
         spNetworkMode.isEnabled = bo

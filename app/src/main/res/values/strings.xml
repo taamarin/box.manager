@@ -24,7 +24,7 @@
     <string name="clash_options">clash options</string>
     <string name="unified_delay">unified delay[meta]</string>
     <string name="sniffer">sniffer[meta]</string>
-    <string name="fake_ip">fake-ip</string>
+    <string name="redir_host">redir-host[meta]</string>
     <string name="geodata_meta">geodata[meta]</string>
     <string name="subscription">subscription</string>
     <string name="module_settings">module settings:</string>

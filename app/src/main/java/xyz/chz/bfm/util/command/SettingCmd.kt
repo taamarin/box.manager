@@ -60,10 +60,10 @@ object SettingCmd {
         return execRootCmd("sed -i 's/update_subscription=.*/update_subscription=\"$mode\"/;' /data/adb/box/settings.ini")
     }
 
-    val fakeIp: Boolean
-        get() = "fake-ip" == execRootCmd("grep 'enhanced-mode:' /data/adb/box/clash/config.yaml | awk '{print $2}'")
+    val redirHost: Boolean
+        get() = "redir-host" == execRootCmd("grep 'enhanced-mode:' /data/adb/box/clash/config.yaml | awk '{print $2}'")
 
-    fun setFakeIp(mode: String): String {
+    fun setRedirHost(mode: String): String {
         return execRootCmd("sed -i 's/enhanced-mode:.*/enhanced-mode: $mode/;' /data/adb/box/clash/config.yaml")
     }
 
