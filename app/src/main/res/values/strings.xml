@@ -28,7 +28,10 @@
     <string name="geodata_meta">geodata[meta]</string>
     <string name="subscription">subscription</string>
     <string name="module_settings">module settings:</string>
-    <string name="cgroup">cgroup</string>
+    <string name="cgroup_settings">cgroup:</string>
+    <string name="memcg">memcg</string>
+    <string name="blkio">blkio</string>
+    <string name="cpuset">cpuset</string>
     <string name="quic">quic</string>
     <string name="ipv6">ipv6</string>
     <string name="port_detect">port detect</string>

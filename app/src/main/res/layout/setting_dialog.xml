@@ -201,29 +201,12 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/cbcgr"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/cgroup"
-                android:textSize="12sp" />
-
-            <CheckBox
                 android:id="@+id/cbquic"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/quic"
                 android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:gravity="center"
-            android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/cbipv6"
@@ -234,11 +217,11 @@
                 android:textSize="12sp" />
 
             <CheckBox
-                android:id="@+id/cbport_detect"
+                android:id="@+id/cbgeo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/port_detect"
+                android:text="@string/geox"
                 android:textSize="12sp" />
 
         </LinearLayout>
@@ -251,6 +234,14 @@
             android:orientation="horizontal">
 
             <CheckBox
+                android:id="@+id/cbport_detect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/port_detect"
+                android:textSize="12sp" />
+
+            <CheckBox
                 android:id="@+id/cbcron"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -258,14 +249,44 @@
                 android:text="@string/crontab"
                 android:textSize="12sp" />
 
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginLeft="9dp"
+            android:text="@string/cgroup_settings" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:orientation="horizontal">
             <CheckBox
-                android:id="@+id/cbgeo"
+                android:id="@+id/cbmemcg"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/geox"
+                android:text="@string/memcg"
                 android:textSize="12sp" />
 
+            <CheckBox
+                android:id="@+id/cbblkio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/blkio"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/cbcpuset"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cpuset"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout

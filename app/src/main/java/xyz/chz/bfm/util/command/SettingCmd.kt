@@ -32,11 +32,25 @@ object SettingCmd {
         return execRootCmd("sed -i 's/update_geo=.*/update_geo=\"$mode\"/;' /data/adb/box/settings.ini")
     }
 
-    val cgr: String
+    val memcg: String
         get() = execRootCmd("grep 'cgroup_memcg=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
 
-    fun setCgr(mode: String): String {
+    fun setMemcg(mode: String): String {
         return execRootCmd("sed -i 's/cgroup_memcg=.*/cgroup_memcg=\"$mode\"/;' /data/adb/box/settings.ini")
+    }
+
+    val blkio: String
+        get() = execRootCmd("grep 'cgroup_blkio=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
+
+    fun setBlkio(mode: String): String {
+        return execRootCmd("sed -i 's/cgroup_blkio=.*/cgroup_blkio=\"$mode\"/;' /data/adb/box/settings.ini")
+    }
+
+    val cpuset: String
+        get() = execRootCmd("grep 'cgroup_cpuset=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
+
+    fun setCpuset(mode: String): String {
+        return execRootCmd("sed -i 's/cgroup_cpuset=.*/cgroup_cpuset=\"$mode\"/;' /data/adb/box/settings.ini")
     }
 
     val subs: String

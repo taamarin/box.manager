@@ -228,10 +228,24 @@ class SettingDialog : MaterialDialogFragment() {
                     }
                 }
 
-                cbcgr.apply {
-                    isChecked = cgr.toBoolean()
+                cbmemcg.apply {
+                    isChecked = memcg.toBoolean()
                     setOnCheckedChangeListener { _, b ->
-                        if (b) setCgr("true") else setCgr("false")
+                        if (b) setMemcg("true") else setMemcg("false")
+                    }
+                }
+
+                cbblkio.apply {
+                    isChecked = blkio.toBoolean()
+                    setOnCheckedChangeListener { _, b ->
+                        if (b) setBlkio("true") else setBlkio("false")
+                    }
+                }
+
+                cbcpuset.apply {
+                    isChecked = cpuset.toBoolean()
+                    setOnCheckedChangeListener { _, b ->
+                        if (b) setCpuset("true") else setCpuset("false")
                     }
                 }
 
@@ -294,7 +308,9 @@ class SettingDialog : MaterialDialogFragment() {
         cbportDetect.isEnabled = bo
         cbipv6.isEnabled = bo
         cbquic.isEnabled = bo
-        cbcgr.isEnabled = bo
+        cbmemcg.isEnabled = bo
+        cbblkio.isEnabled = bo
+        cbcpuset.isEnabled = bo
         cbgeo.isEnabled = bo
         cbsubs.isEnabled = bo
         cbgeodataMod.isEnabled = bo
