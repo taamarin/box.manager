@@ -78,7 +78,6 @@
           "::1/128",
           "fe80::/10"
         ],
-        "skip_resolve": true,
         "outbound": "block"
       },
       {

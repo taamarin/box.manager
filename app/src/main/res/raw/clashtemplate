@@ -84,6 +84,6 @@ proxies:
 - IP-CIDR,127.0.0.1/32,REJECT,no-resolve
 - IP-CIDR,28.0.0.1/8,REJECT,no-resolve
 - IP-CIDR6,::1/128,REJECT,no-resolve
-- GEOSITE,category-ads-all,REJECT
-- AND,((NETWORK,udp),(GEOSITE,youtube)),REJECT
+# - GEOSITE,category-ads-all,REJECT
+# - AND,((NETWORK,udp),(GEOSITE,youtube)),REJECT
 - MATCH,%3$s
