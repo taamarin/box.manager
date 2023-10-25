@@ -13,7 +13,7 @@
       },
       {
         "tag": "local",
-        "address": "local",
+        "address": "",
         "detour": "direct"
       },
       {
@@ -78,7 +78,7 @@
           "::1/128",
           "fe80::/10"
         ],
-        "outbound": "block"
+        "outbound": "direct"
       },
       {
         "type": "logical",

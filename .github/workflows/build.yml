@@ -9,11 +9,13 @@ on:
     branches:
       - main
 jobs:
-  Build:
+  build:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v3
         with:
@@ -37,8 +39,15 @@ jobs:
 
       - name: rename apks
         run: |
-          APK="BoxForRoot_v${{ steps.version.outputs.release_version }}_${{ steps.version.outputs.release_patch }}.apk"
+          APK="Box4Root-Manager_v${{ steps.version.outputs.release_version }}_${{ steps.version.outputs.release_patch }}.apk"
           mv -f ./app/build/outputs/apk/release/*.apk ./app/build/outputs/apk/release/$APK
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        if: ${{  success() }}
+        with:
+          name: b4r_manager
+          path: ./app/build/outputs/apk/release/*.apk
 
       - uses: andreaswilli/delete-release-assets-action@v2.0.0
         with:
@@ -55,7 +64,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: softprops/action-gh-release@v1
-        if: success()
         with:
           tag_name: Prerelease
           files: ${{ github.workspace }}/app/build/outputs/apk/release/*.apk
@@ -63,25 +71,19 @@ jobs:
           prerelease: true
           generate_release_notes: true
 
-      - name: Upload to Telegram
+      - name: upload to telegram
+        if: ${{  success() }}
+        env:
+          CHAT_ID: "-1001597117128"
+          MESSAGE_THREAD_ID: "218356"
+          API_ID: ${{ secrets.API_ID }}
+          API_HASH: ${{ secrets.API_HASH }}
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
-          export VERSION="v${{ steps.version.outputs.release_version }}-${{ steps.version.outputs.release_patch }}"
-          export CG=$(git log --oneline -n 5 --no-decorate)
-          CAPTION="
-          BoxforRoot Manager ${VERSION}
-
-          Commit:
-          ${CG}
-          source: https://github.com/taamarin/box.manager
-          "
-          for FILE in app/build/outputs/apk/release/*.apk; do
-            echo ">> Uploading ${FILE}"
-            curl "https://api.telegram.org/bot${{ secrets.BOT_TOKEN }}/sendDocument" \
-              -k \
-              -X POST \
-              -F "chat_id=-1001597117128" \
-              -F "message_thread_id=218356" \
-              -F "document=@${FILE}" \
-              -F "caption=$CAPTION" \
-              --show-error --fail >/dev/null
-          done
+          if [ ! -z "${{ secrets.BOT_TOKEN }}" ]; then
+            export VERSION="v${{ steps.version.outputs.release_version }}-${{ steps.version.outputs.release_patch }}"
+            export COMMIT=$(git log --oneline -n 10 --no-decorate | sed 's/^/🔨 /')
+            FILE=$(find app/build/outputs/apk/release -name "*.apk")
+            pip3 install telethon==1.31.1
+            python3 $GITHUB_WORKSPACE/.github/upload_bot.py $FILE
+          fi

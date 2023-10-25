@@ -12,7 +12,33 @@ class ClashData(private val masuk: String = "", private val indent: Boolean = fa
         sb.appendLine("- name: $nameProxy")
         sb.appendLine("  type: select")
         sb.appendLine("  proxies:")
+        sb.appendLine("    - urltest")
+        sb.appendLine("    - loadbalance")
+        sb.appendLine("    - fallback")
         sb.append(listProxy)
+
+        sb.appendLine("- name: urltest")
+        sb.appendLine("  type: url-test")
+        sb.appendLine("  url: 'http://www.gstatic.com/generate_204'")
+        sb.appendLine("  interval: 300")
+        sb.appendLine("  proxies:")
+        sb.append(listProxy)
+
+        sb.appendLine("- name: loadbalance")
+        sb.appendLine("  type: load-balance")
+        sb.appendLine("  url: 'http://www.gstatic.com/generate_204'")
+        sb.appendLine("  interval: 300")
+        sb.appendLine("  # strategy: consistent-hashing # 可选 round-robin 和 sticky-sessions")
+        sb.appendLine("  proxies:")
+        sb.append(listProxy)
+
+        sb.appendLine("- name: fallback")
+        sb.appendLine("  type: fallback")
+        sb.appendLine("  url: 'http://www.gstatic.com/generate_204'")
+        sb.appendLine("  interval: 300")
+        sb.appendLine("  proxies:")
+        sb.append(listProxy)
+
         return sb.toString()
     }
 

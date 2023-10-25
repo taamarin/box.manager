@@ -37,7 +37,7 @@ object ConfigManager {
     }
 
     fun fullClashSimple(config: String, strRaw: String): String {
-        val name = "BOX-FOR-ROOT"
+        val name = "match"
         val p = Pattern.compile("- name:(.*)")
         val m = p.matcher(config)
         val sb = StringBuilder()

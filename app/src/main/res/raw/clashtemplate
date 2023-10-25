@@ -40,9 +40,8 @@ dns:
   prefer-h3: false
   ipv6: false
   default-nameserver:
-    - 9.9.9.9
+    - 8.8.8.8#@match
     - 1.1.1.1
-    - 94.140.14.14
   listen: 0.0.0.0:1053
   use-hosts: true
   enhanced-mode: fake-ip
@@ -52,16 +51,15 @@ dns:
     - "*.ntp.*"
   nameserver:
     - 9.9.9.9
-    - 8.8.8.8
+    - 94.140.14.14
+    - 8.8.8.8#@match
   # proxy-server-nameserver:
     # - 112.215.198.248
-    # - 112.215.198.254
-    # - "[2400:9800:2:2::245]"
     # - "[2400:9800:2:2::246]"
   # nameserver-policy:
     # "geosite:category-ads-all": rcode://success
     # "geosite:nameserver-policy":
-       # - 192.168.130.30
+       # - 112.215.198.248
        # - '[2404:c0:1000::a:0:1]'
 tun:
   enable: false
@@ -79,11 +77,11 @@ tun:
 proxies:
 %1$sproxy-groups:
 %2$srules:
-- DOMAIN-SUFFIX,googlesyndication.com,%3$s
-- DOMAIN-SUFFIX,adtival.network,%3$s
-- IP-CIDR,127.0.0.1/32,REJECT,no-resolve
-- IP-CIDR,28.0.0.1/8,REJECT,no-resolve
-- IP-CIDR6,::1/128,REJECT,no-resolve
+# - DOMAIN-SUFFIX,googlesyndication.com,%3$s
+# - DOMAIN-SUFFIX,adtival.network,%3$s
+# - IP-CIDR,127.0.0.1/32,REJECT,no-resolve
+# - IP-CIDR,28.0.0.1/8,REJECT,no-resolve
+# - IP-CIDR6,::1/128,REJECT,no-resolve
 # - GEOSITE,category-ads-all,REJECT
 # - AND,((NETWORK,udp),(GEOSITE,youtube)),REJECT
 - MATCH,%3$s
