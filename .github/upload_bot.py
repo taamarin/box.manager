@@ -13,12 +13,12 @@ MESSAGE_THREAD_ID = int(os.environ.get("MESSAGE_THREAD_ID"))
 VERSION = os.environ.get("VERSION")
 COMMIT = os.environ.get("COMMIT")
 MSG_TEMPLATE = """
-🏷️ box4root Manager {version}
-```
-📝 Commit:
+box4root Manager {version}
+
+Commit:
 {commit}
-```
-🔖 [source](https://github.com/taamarin/box.manager)
+
+[source](https://github.com/taamarin/box.manager)
 
 #apk #manager #bfr #root
 """.strip()

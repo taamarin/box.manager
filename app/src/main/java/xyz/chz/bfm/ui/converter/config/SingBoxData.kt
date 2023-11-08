@@ -225,6 +225,9 @@ class SingBoxData(private val masuk: String = "") {
         for (x in arrName)
             sb.append(x)
         sb.append("]},")
+        sb.append("{\"type\": \"selector\",\"tag\": \"ads-all\",")
+        sb.append("\"outbounds\": [\"direct\",\"block\",\"match\"")
+        sb.append("]},")
         return sb.toString().replace(",]", "]")
     }
 
