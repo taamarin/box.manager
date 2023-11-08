@@ -63,6 +63,7 @@ class ConverterActivity : AppCompatActivity() {
                     ) else result
                 tvResult.apply {
                     setOnClickListener {
+                        toast("Copied to Clipboard!", this@ConverterActivity)
                         copyToClipboard(this@ConverterActivity)
                     }
                 }
