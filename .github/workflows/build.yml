@@ -82,7 +82,7 @@ jobs:
         run: |
           if [ ! -z "${{ secrets.BOT_TOKEN }}" ]; then
             export VERSION="v${{ steps.version.outputs.release_version }}-${{ steps.version.outputs.release_patch }}"
-            export COMMIT=$(git log --oneline -n 5 --no-decorate | sed 's/^/— /')
+            export COMMIT=$(git log --oneline -n 10 --no-decorate | sed 's/^[0-9a-f]* //' | sed 's/^/— /')
             FILE=$(find app/build/outputs/apk/release -name "*.apk")
             pip3 install telethon==1.31.1
             python3 $GITHUB_WORKSPACE/.github/upload_bot.py $FILE

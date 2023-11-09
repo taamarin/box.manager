@@ -43,11 +43,10 @@ class SingBoxData(private val masuk: String = "") {
                     "transport" to {
                         "type" to "ws"
                         "path" to jo.optString("path", "/")
+                        "host" to jo.optString("host", jo.optString("add", ""))
                         "headers" to {
                             "Host" to jo.optString("host", jo.optString("add", ""))
                         }
-                        "max_early_data" to 0
-                        "early_data_header_name" to "Sec-WebSocket-Protocol"
                     }
                 }
 
@@ -116,11 +115,10 @@ class SingBoxData(private val masuk: String = "") {
                     "transport" to {
                         "type" to "ws"
                         "path" to decodePath
+                        "host" to decodeHost
                         "headers" to {
                             "Host" to decodeHost
                         }
-                        "max_early_data" to 0
-                        "early_data_header_name" to "Sec-WebSocket-Protocol"
                     }
                 }
 
@@ -182,11 +180,10 @@ class SingBoxData(private val masuk: String = "") {
                     "transport" to {
                         "type" to "ws"
                         "path" to decodePath
+                        "host" to decodeHost
                         "headers" to {
                             "Host" to decodeHost
                         }
-                        "max_early_data" to 0
-                        "early_data_header_name" to "Sec-WebSocket-Protocol"
                     }
                 }
 
