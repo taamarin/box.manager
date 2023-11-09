@@ -40,7 +40,7 @@ dns:
   prefer-h3: false
   ipv6: false
   default-nameserver:
-    - 8.8.8.8#@match
+    - '8.8.8.8#match'
     - 1.1.1.1
   listen: 0.0.0.0:1053
   use-hosts: true
@@ -52,7 +52,7 @@ dns:
   nameserver:
     - 9.9.9.9
     - 94.140.14.14
-    - 8.8.8.8#@match
+    - '8.8.8.8#match'
   # proxy-server-nameserver:
     # - 112.215.198.248
     # - "[2400:9800:2:2::246]"
