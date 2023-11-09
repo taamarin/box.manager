@@ -95,7 +95,8 @@
         "outbound": "ads-all"
       }
     ],
-    "final": "match"
+    "final": "match",
+    "auto_detect_interface": true
   },
   "experimental": {
     "clash_api": {
