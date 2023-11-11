@@ -43,7 +43,6 @@ class SingBoxData(private val masuk: String = "") {
                     "transport" to {
                         "type" to "ws"
                         "path" to jo.optString("path", "/")
-                        "host" to jo.optString("host", jo.optString("add", ""))
                         "headers" to {
                             "Host" to jo.optString("host", jo.optString("add", ""))
                         }
@@ -115,7 +114,6 @@ class SingBoxData(private val masuk: String = "") {
                     "transport" to {
                         "type" to "ws"
                         "path" to decodePath
-                        "host" to decodeHost
                         "headers" to {
                             "Host" to decodeHost
                         }
@@ -180,7 +178,6 @@ class SingBoxData(private val masuk: String = "") {
                     "transport" to {
                         "type" to "ws"
                         "path" to decodePath
-                        "host" to decodeHost
                         "headers" to {
                             "Host" to decodeHost
                         }

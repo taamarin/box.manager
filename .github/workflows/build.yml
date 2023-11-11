@@ -26,6 +26,11 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
 
+      - name: update version
+        run: |
+          sed -i "s|versionCode .*|versionCode $(date +%Y%m%d)|g" app/build.gradle
+          sed -i "s|versionName .*|versionName \"1.12.2-$(git rev-parse --short HEAD)\"|g" app/build.gradle
+ 
       - name: Build with Gradle
         run: |
           chmod +x gradlew
@@ -34,12 +39,11 @@ jobs:
       - name: checking release version
         id: version
         run: |
-          echo ::set-output name=release_version::$(cat app/build.gradle  | grep -o "versionName \"[0-9.]*\"" | grep -o "[0-9.]*")
-          echo ::set-output name=release_patch::$(git rev-parse --short HEAD)
+          echo ::set-output name=release_version::$(cat app/build.gradle  | grep -o "versionName \"[0-9.]*-[a-z,0-9]*\"" | grep -o "[0-9.]*-[a-z,0-9]*")
 
       - name: rename apks
         run: |
-          APK="Box4Root-Manager_v${{ steps.version.outputs.release_version }}_${{ steps.version.outputs.release_patch }}.apk"
+          APK="Box4Root-Manager_v${{ steps.version.outputs.release_version }}.apk"
           mv -f ./app/build/outputs/apk/release/*.apk ./app/build/outputs/apk/release/$APK
 
       - name: upload artifact
@@ -81,9 +85,9 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
           if [ ! -z "${{ secrets.BOT_TOKEN }}" ]; then
-            export VERSION="v${{ steps.version.outputs.release_version }}-${{ steps.version.outputs.release_patch }}"
-            export COMMIT=$(git log --oneline -n 10 --no-decorate | sed 's/^[0-9a-f]* //' | sed 's/^/— /')
+            export VERSION="v${{ steps.version.outputs.release_version }}"
+            export COMMIT=$(git log --oneline -n 5 --no-decorate | sed 's/^[0-9a-f]* //' | sed 's/^/— /')
             FILE=$(find app/build/outputs/apk/release -name "*.apk")
             pip3 install telethon==1.31.1
-            python3 $GITHUB_WORKSPACE/.github/upload_bot.py $FILE
+            python3 $GITHUB_WORKSPACE/.github/taamarinbot.py $FILE
           fi

@@ -13,7 +13,7 @@ MESSAGE_THREAD_ID = int(os.environ.get("MESSAGE_THREAD_ID"))
 VERSION = os.environ.get("VERSION")
 COMMIT = os.environ.get("COMMIT")
 MSG_TEMPLATE = """
-box4root Manager {version}
+{version}
 
 Commit:
 {commit}

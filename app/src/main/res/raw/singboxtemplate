@@ -32,15 +32,17 @@
         "mode": "and",
         "rules": [
           {
-            "network": "udp",
             "port": 443,
+            "network": "udp",
             "geosite": "youtube"
           }
         ],
         "server": "rcode"
       }
     ],
-    "strategy": "prefer_ipv4"
+    "final": "AdGuard",
+    "reverse_mapping": true,
+    "independent_cache": true
   },
   "inbounds": [
     {
@@ -83,8 +85,8 @@
         "mode": "and",
         "rules": [
           {
-            "network": "udp",
             "port": 443,
+            "network": "udp",
             "geosite": "youtube"
           }
         ],
