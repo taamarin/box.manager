@@ -214,7 +214,7 @@ class SingBoxData(private val masuk: String = "") {
 
     fun buildHeaderBestUrl(arrName: ArrayList<String>): String {
         val sb = StringBuilder()
-        sb.append("{\"type\": \"urltest\",\"tag\": \"urltest\",")
+        sb.append("{\"type\": \"urltest\",\"tag\": \"urltest\",\"url\": \"http://www.gstatic.com/generate_204\",\"interval\": \"1m\",\"tolerance\": 50,\"interrupt_exist_connections\": false,")
         sb.append("\"outbounds\": [")
         for (x in arrName)
             sb.append(x)
