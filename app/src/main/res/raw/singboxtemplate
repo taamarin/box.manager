@@ -42,6 +42,7 @@
     ],
     "final": "AdGuard",
     "reverse_mapping": true,
+    "disable_cache": true,
     "independent_cache": true
   },
   "inbounds": [
@@ -98,6 +99,7 @@
       }
     ],
     "final": "match",
+    "find_process": false,
     "auto_detect_interface": true
   },
   "experimental": {

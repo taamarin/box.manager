@@ -2,16 +2,17 @@ import asyncio
 import os
 import sys
 from telethon import TelegramClient
-from telethon.tl.functions.help import GetConfigRequest
+from telethon.tl.functions.messages import GetMessagesRequest
 
 API_ID = os.environ.get("API_ID")
 API_HASH = os.environ.get("API_HASH")
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
 CHAT_ID = int(os.environ.get("CHAT_ID"))
 MESSAGE_THREAD_ID = int(os.environ.get("MESSAGE_THREAD_ID"))
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 VERSION = os.environ.get("VERSION")
 COMMIT = os.environ.get("COMMIT")
+# TAGS = os.environ.get("TAGS")
 MSG_TEMPLATE = """
 {version}
 
@@ -26,12 +27,12 @@ Commit:
 def get_caption():
     msg = MSG_TEMPLATE.format(
         version=VERSION,
+        # tags=TAGS,
         commit=COMMIT
     )
     if len(msg) > 1024:
         return COMMIT
     return msg
-
 
 def check_environ():
     if BOT_TOKEN is None:
@@ -40,12 +41,18 @@ def check_environ():
     if CHAT_ID is None:
         print("[-] Invalid CHAT_ID")
         exit(1)
+    if MESSAGE_THREAD_ID is None:
+        print("[-] Invalid MESSAGE_THREAD_ID")
+        exit(1)
     if VERSION is None:
         print("[-] Invalid VERSION")
         exit(1)
     if COMMIT is None:
         print("[-] Invalid COMMIT")
         exit(1)
+    # if TAGS is None:
+        # print("[-] Invalid TAGS")
+        # exit(1)
 
 async def main():
     print("[+] Uploading to telegram")
@@ -66,7 +73,13 @@ async def main():
         print(caption)
         print("---")
         print("[+] Sending")
-        await bot.send_file(entity=CHAT_ID, file=files, caption=caption, reply_to=MESSAGE_THREAD_ID, parse_mode="markdown")
+        sent_messages = await bot.send_file(entity=CHAT_ID, file=files, caption=caption, reply_to=MESSAGE_THREAD_ID, parse_mode="markdown")
+
+        # Pin the last sent message
+        if sent_messages:
+            last_message_id = sent_messages[-1].id
+            await bot.pin_message(entity=CHAT_ID, message=last_message_id)
+
         print("[+] Done!")
 
 if __name__ == "__main__":
