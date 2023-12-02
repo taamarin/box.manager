@@ -124,10 +124,10 @@ object SettingCmd {
     }
 
     val clashType: String
-        get() = execRootCmd("grep 'clash_option=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
+        get() = execRootCmd("grep 'xclash_option=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
 
     fun setClashType(mode: String): String {
-        return execRootCmd("sed -i 's/clash_option=.*/clash_option=\"$mode\"/;' /data/adb/box/settings.ini")
+        return execRootCmd("sed -i 's/xclash_option=.*/xclash_option=\"$mode\"/;' /data/adb/box/settings.ini")
     }
 
     val core: String

@@ -42,12 +42,11 @@ class CoreActivity : AppCompatActivity() {
         setContentView(binding.root)
         dCore = DownloaderCore(this)
         checkClash()
-        checkSing()
         buttonUp()
     }
 
     private fun checkClash() = with(binding) {
-        tvClash.text = "Checking for Clash Meta"
+        tvClash.text = "Checking for mihomo"
         prgClash.isVisible = true
         OkHttpHelper().reqGithub(META_REPO, object : Callback {
             override fun onFailure(call: Call, e: IOException) {
@@ -62,43 +61,14 @@ class CoreActivity : AppCompatActivity() {
                 runOnUiThread {
                     urlClash = parseClash(respom)
                     if (parseVersionClashMeta() != CoreCmd.checkVerClashMeta) {
-                        tvClash.text = "Update available Clash Meta"
+                        tvClash.text = "Update available mihomo"
                         btnClash.isVisible = true
                     } else {
-                        tvClash.text = "Clash Meta has Latest Version"
+                        tvClash.text = "mihomo has Latest Version"
                         imgDoneClash.isVisible = true
                         btnClash.isVisible = false
                     }
                     prgClash.isVisible = false
-                }
-            }
-        })
-    }
-
-    private fun checkSing() = with(binding) {
-        tvSing.text = "Checking for SingBox"
-        prgSing.isVisible = true
-        OkHttpHelper().reqGithub(SING_REPO, object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread {
-                    tvSing.text = "Failed to get repo sing-box, check ur internet connection"
-                    prgSing.isVisible = false
-                }
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                val respom = response.body!!.string()
-                runOnUiThread {
-                    urlSing = parseSing(respom)
-                    if (tagNameSing != CoreCmd.checkVerSing) {
-                        tvSing.text = "Update available SingBox"
-                        btnSing.isVisible = true
-                    } else {
-                        tvSing.text = "SingBox has Latest Version"
-                        imgDoneSing.isVisible = true
-                        btnSing.isVisible = false
-                    }
-                    prgSing.isVisible = false
                 }
             }
         })
@@ -109,24 +79,9 @@ class CoreActivity : AppCompatActivity() {
             val jo = JSONObject(str)
             tagNameClash = jo.getString("tag_name")
             if (CoreUtil.getAbis().contains("arm64")) {
-                "$META_DOWNLOAD/$tagNameClash/clash.meta-android-arm64-cgo-$tagNameClash.gz"
+                "$META_DOWNLOAD/$tagNameClash/mihomo-android-arm64-cgo-$tagNameClash.gz"
             } else {
-                "$META_DOWNLOAD/$tagNameClash/clash.meta-linux-armv7-cgo-$tagNameClash.gz"
-            }
-        } catch (e: JSONException) {
-            e.message!!.toString()
-        }
-    }
-
-    private fun parseSing(str: String): String {
-        return try {
-            val ja = JSONArray(str)
-            val jo = ja.getJSONObject(0)
-            tagNameSing = jo.getString("tag_name")
-            if (CoreUtil.getAbis().contains("arm64")) {
-                "$SING_DOWNLOAD/$tagNameSing/sing-box-$tagNameSing-android-arm64.tar.gz"
-            } else {
-                "$SING_DOWNLOAD/$tagNameSing/sing-box-$tagNameSing-android-armv7.tar.gz"
+                "$META_DOWNLOAD/$tagNameClash/mihomo-linux-armv7-cgo-$tagNameClash.gz"
             }
         } catch (e: JSONException) {
             e.message!!.toString()
@@ -147,7 +102,7 @@ class CoreActivity : AppCompatActivity() {
                 dCore.downloadFile(
                     urlClash,
                     "clash_meta.gz",
-                    "/data/adb/box/bin/xclash/clash_meta",
+                    "/data/adb/box/bin/xclash/mihomo",
                     object : IDownloadCore {
                         override fun onDownloadingStart() {
                             prgHrzClash.isVisible = true
@@ -162,7 +117,7 @@ class CoreActivity : AppCompatActivity() {
                             btnClash.isVisible = false
                             prgHrzClash.isVisible = false
                             imgDoneClash.isVisible = true
-                            tvClash.text = "Clash Meta has Latest Version"
+                            tvClash.text = "mihomo has Latest Version"
                         }
 
                         override fun onDownloadingFailed(e: Exception?) {
@@ -172,40 +127,7 @@ class CoreActivity : AppCompatActivity() {
                             prgHrzClash.isVisible = false
                         }
                     })
-            }
-        }
-
-        btnSing.apply {
-            setOnClickListener {
-                dCore.downloadFile(
-                    urlSing,
-                    "sing-box.tar.gz",
-                    "/data/adb/box/bin",
-                    object : IDownloadCore {
-                        override fun onDownloadingStart() {
-                            prgHrzSing.isVisible = true
-                            btnSing.isVisible = false
-                        }
-
-                        override fun onDownloadingProgress(progress: Int) {
-                            prgHrzSing.progress = progress
-                        }
-
-                        override fun onDownloadingComplete() {
-                            btnSing.isVisible = false
-                            prgHrzSing.isVisible = false
-                            imgDoneSing.isVisible = true
-                            tvSing.text = "Clash Meta has Latest Version"
-                        }
-
-                        override fun onDownloadingFailed(e: Exception?) {
-                            toast("failed downloading sing-box", this@CoreActivity)
-                            btnSing.isVisible = true
-                            prgHrzSing.progress = 0
-                            prgHrzSing.isVisible = false
-                        }
-                    })
-            }
+                }
         }
     }
 }

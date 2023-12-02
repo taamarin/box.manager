@@ -14,7 +14,7 @@ object CoreCmd {
 
     val checkVerClashMeta: String
         get() {
-            val cmd = "$path/bin/xclash/clash_meta -v | awk '{print $3}' | awk '{print $1; exit}'"
+            val cmd = "$path/bin/xclash/mihomo -v | awk '{print $3}' | awk '{print $1; exit}'"
             return execRootCmd(cmd)
         }
 

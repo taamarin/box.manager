@@ -134,7 +134,7 @@ class SettingDialog : MaterialDialogFragment() {
                         override fun onItemSelected(
                             p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long
                         ) {
-                            setClashType(if (p2 == 0) "premium" else "meta")
+                            setClashType(if (p2 == 0) "premium" else "mihomo")
                         }
 
                         override fun onNothingSelected(p0: AdapterView<*>?) {

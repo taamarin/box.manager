@@ -1,209 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="?attr/bg"
+  android:orientation="vertical"
+  android:padding="20dp"
+  tools:context=".ui.core.CoreActivity">
+
+  <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/bg"
-    android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".ui.core.CoreActivity">
+    android:layout_height="50dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:text="UPDATER CORE"
+      android:textSize="32sp"
+      android:textStyle="bold" />
+  </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="UPDATER CORE"
-            android:textSize="32sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="35dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <TextView
+        android:id="@+id/tvClash"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp">
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        tools:text="testc" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+      <ProgressBar
+        android:id="@+id/prgClash"
+        style="@android:style/Widget.DeviceDefault.ProgressBar"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/tvClash"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
-            <TextView
-                android:id="@+id/tvClash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:textSize="16sp"
-                tools:text="testc" />
-
-            <ProgressBar
-                android:id="@+id/prgClash"
-                style="@android:style/Widget.DeviceDefault.ProgressBar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/tvClash"
-                android:visibility="gone"
-                tools:visibility="visible" />
-
-            <ProgressBar
-                android:id="@+id/prgHrzClash"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvClash"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="8dp"
-                android:progress="0"
-                android:visibility="gone"
-                tools:progress="20"
-                tools:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/btnClash"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_download"
-                android:visibility="gone"
-                app:tint="@color/material_blue"
-                tools:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/imgErrorClash"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_error"
-                android:visibility="gone"
-                app:tint="@color/material_red"
-                tools:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/imgDoneClash"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_done"
-                android:visibility="gone"
-                app:tint="@color/green"
-                tools:visibility="visible" />
-
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+      <ProgressBar
+        android:id="@+id/prgHrzClash"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp">
+        android:layout_below="@+id/tvClash"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:progress="0"
+        android:visibility="gone"
+        tools:progress="20"
+        tools:visibility="visible" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+      <ImageView
+        android:id="@+id/btnClash"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_download"
+        android:visibility="gone"
+        app:tint="@color/material_blue"
+        tools:visibility="visible" />
 
-            <TextView
-                android:id="@+id/tvSing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:textSize="16sp"
-                tools:text="testc" />
+      <ImageView
+        android:id="@+id/imgErrorClash"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_error"
+        android:visibility="gone"
+        app:tint="@color/material_red"
+        tools:visibility="visible" />
 
-            <ProgressBar
-                android:id="@+id/prgSing"
-                style="@android:style/Widget.DeviceDefault.ProgressBar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/tvSing"
-                android:visibility="gone"
-                tools:visibility="visible" />
+      <ImageView
+        android:id="@+id/imgDoneClash"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_done"
+        android:visibility="gone"
+        app:tint="@color/green"
+        tools:visibility="visible" />
 
-            <ProgressBar
-                android:id="@+id/prgHrzSing"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvSing"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="8dp"
-                android:progress="0"
-                android:visibility="gone"
-                tools:progress="20"
-                tools:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/btnSing"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_download"
-                android:visibility="gone"
-                app:tint="@color/material_blue"
-                tools:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/imgErrorSing"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_error"
-                android:visibility="gone"
-                app:tint="@color/material_red"
-                tools:visibility="visible" />
-
-            <ImageView
-                android:id="@+id/imgDoneSing"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_done"
-                android:visibility="gone"
-                app:tint="@color/green"
-                tools:visibility="visible" />
-
-        </RelativeLayout>
-    </LinearLayout>
-
-    <!--    <ScrollView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content">-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginBottom="50dp"-->
-    <!--            android:orientation="vertical">-->
-
-    <!--            <EditText-->
-    <!--                android:id="@+id/tvResTest"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                tools:text="testc" />-->
-    <!--        </LinearLayout>-->
-    <!--    </ScrollView>-->
-
+    </RelativeLayout>
+  </LinearLayout>
 </LinearLayout>
