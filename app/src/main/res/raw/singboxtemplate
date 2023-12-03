@@ -13,7 +13,7 @@
       },
       {
         "tag": "local",
-        "address": "",
+        "address": "YOUR DNS",
         "detour": "direct"
       },
       {
@@ -26,24 +26,12 @@
         "outbound": "any",
         "server": "local",
         "disable_cache": true
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "port": 443,
-            "network": "udp",
-            "geosite": "youtube"
-          }
-        ],
-        "server": "rcode"
       }
     ],
     "final": "AdGuard",
-    "reverse_mapping": true,
-    "disable_cache": true,
-    "independent_cache": true
+    "reverse_mapping": false,
+    "disable_cache": false,
+    "independent_cache": false
   },
   "inbounds": [
     {
@@ -59,55 +47,41 @@
     %1$s
   ],
   "route": {
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geosite-category-ads-all",
+        "url": "https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "match",
+        "update_interval": "24h",
+        "format": "binary"
+      }
+    ],
     "rules": [
       {
-        "port": 53,
+        "protocol": "dns",
         "outbound": "dns-out"
       },
       {
-        "domain_regex": [
-          "^.*adtival.network$",
-          "^.*googlesyndication.com$"
+        "rule_set": [
+          "geosite-category-ads-all"
         ],
-        "outbound": "match"
-      },
-      {
-        "ip_cidr": [
-          "0.0.0.0/8",
-          "100.64.0.0/10",
-          "127.0.0.0/8",
-          "::/128",
-          "::1/128"
-        ],
-        "outbound": "direct"
-      },
-      {
-        "type": "logical",
-        "mode": "and",
-        "rules": [
-          {
-            "port": 443,
-            "network": "udp",
-            "geosite": "youtube"
-          }
-        ],
-        "outbound": "block"
-      },
-      {
-        "geosite": "category-ads-all",
         "outbound": "ads-all"
       }
     ],
     "final": "match",
-    "find_process": false,
+    "find_process": true,
     "auto_detect_interface": true
   },
   "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "store_fakeip": false
+    },
     "clash_api": {
-      "external_controller": "127.0.0.1:9090",
-      "external_ui": "/data/adb/box/sing-box/dashboard",
-      "cache_file": "cache.db",
-      "store_selected": true
+      "external_controller": "0.0.0.0:9090",
+      "external_ui": "./dashboard"
     }
   }
 }
