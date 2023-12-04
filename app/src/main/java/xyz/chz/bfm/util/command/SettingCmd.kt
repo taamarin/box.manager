@@ -102,13 +102,6 @@ object SettingCmd {
         return execRootCmd("sed -i '/^sniffer:/{n;s/enable:.*/enable: $mode/;}' /data/adb/box/clash/config.yaml")
     }
 
-    val portDetect: Boolean
-        get() = "true" == execRootCmd("grep 'port_detect=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
-
-    fun setPortDetect(mode: String): String {
-        return execRootCmd("sed -i 's/port_detect=.*/port_detect=\"$mode\"/;' /data/adb/box/settings.ini")
-    }
-
     val ipv6: Boolean
         get() = "true" == execRootCmd("grep 'ipv6=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
 

@@ -263,13 +263,6 @@ class SettingDialog : MaterialDialogFragment() {
                     }
                 }
 
-                cbportDetect.apply {
-                    isChecked = portDetect
-                    setOnCheckedChangeListener { _, b ->
-                        if (b) setPortDetect("true") else setPortDetect("false")
-                    }
-                }
-
                 cbcron.apply {
                     isChecked = cron.toBoolean()
                     setOnCheckedChangeListener { _, b ->
@@ -305,7 +298,6 @@ class SettingDialog : MaterialDialogFragment() {
         cbunifiedDelay.isEnabled = bo
         cbsnifferrs.isEnabled = bo
         cbcron.isEnabled = bo
-        cbportDetect.isEnabled = bo
         cbipv6.isEnabled = bo
         cbquic.isEnabled = bo
         cbmemcg.isEnabled = bo
