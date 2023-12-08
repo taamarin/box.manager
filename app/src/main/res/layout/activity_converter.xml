@@ -28,13 +28,13 @@
                 android:id="@+id/fullClashConfig"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:text="simple clash config?" />
+                android:text="clash configuration" />
 
             <CheckBox
                 android:id="@+id/fullSingConfig"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:text="simple sing-box config?" />
+                android:text="sing-box configuration" />
         </LinearLayout>
 
         <Button
