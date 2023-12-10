@@ -76,7 +76,7 @@ class ClashData(private val masuk: String = "", private val indent: Boolean = fa
             "grpc" -> {
                 sb.appendLine("$idnt  network: grpc")
                 sb.appendLine("$idnt  grpc-opts:")
-                sb.append("$idnt    grpc-service-name: ${jo.getString("host")}")
+                sb.append("$idnt    grpc-service-name: ${jo.getString("path")}")
             }
 
             "h2" -> {

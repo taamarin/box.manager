@@ -53,9 +53,6 @@ class SingBoxData(private val masuk: String = "") {
                     "transport" to {
                         "type" to "grpc"
                         "service_name" to jo.optString("path", "/")
-                        "idle_timeout" to "15s"
-                        "ping_timeout" to "15s"
-                        "permit_without_stream" to false
                     }
                 }
 
