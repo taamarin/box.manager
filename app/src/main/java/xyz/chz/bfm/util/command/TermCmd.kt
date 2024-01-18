@@ -125,7 +125,7 @@ object TermCmd {
 
     private fun getNameConfig(what: String, isClash: Boolean): String {
         val m = if (isClash) "yaml" else "json"
-        return execRootCmd("find ${path}/$what/ -maxdepth 1 -name 'config.$m' -type f -printf '%f\n'")
+        return execRootCmd("find ${path}/$what/ -maxdepth 1 -name 'config.$m' -type f -exec basename {} \\;")
     }
 
 
