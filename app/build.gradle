@@ -15,8 +15,8 @@ android {
         applicationId "xyz.chz.bfm"
         minSdk 24
         targetSdk 33
-        versionCode 20230925
-        versionName "1.12.2"
+        versionCode 20240310
+        versionName "1.13"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

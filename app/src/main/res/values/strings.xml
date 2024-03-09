@@ -65,11 +65,12 @@
     <string-array name="network_array">
         <item>tproxy</item>
         <item>redirect</item>
+        <item>enhance</item>
         <item>mixed</item>
+        <item>tun</item>
     </string-array>
 
     <string-array name="proxy_array">
-        <item>tun</item>
         <item>whitelist</item>
         <item>blacklist</item>
     </string-array>

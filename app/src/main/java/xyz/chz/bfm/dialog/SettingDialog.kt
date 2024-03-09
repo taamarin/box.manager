@@ -99,7 +99,6 @@ class SettingDialog : MaterialDialogFragment() {
                                 }
                             }
                         }
-
                         override fun onNothingSelected(p0: AdapterView<*>?) {
                         }
                     }
@@ -122,7 +121,6 @@ class SettingDialog : MaterialDialogFragment() {
                                 else -> setFindProc("off")
                             }
                         }
-
                         override fun onNothingSelected(p0: AdapterView<*>?) {}
                     }
                 }
@@ -136,7 +134,6 @@ class SettingDialog : MaterialDialogFragment() {
                         ) {
                             setClashType(if (p2 == 0) "premium" else "mihomo")
                         }
-
                         override fun onNothingSelected(p0: AdapterView<*>?) {
                         }
                     }
@@ -147,7 +144,9 @@ class SettingDialog : MaterialDialogFragment() {
                     when (networkMode) {
                         "tproxy" -> setSelection(0)
                         "redirect" -> setSelection(1)
-                        else -> setSelection(2)
+                        "enhance" -> setSelection(2)
+                        "mixed" -> setSelection(3)
+                        else -> setSelection(4)
                     }
                     onItemSelectedListener = object : OnItemSelectedListener {
                         override fun onItemSelected(
@@ -155,11 +154,12 @@ class SettingDialog : MaterialDialogFragment() {
                         ) {
                             when (p2) {
                                 1 -> setNetworkMode("redirect")
-                                2 -> setNetworkMode("mixed")
+                                2 -> setNetworkMode("enhance")
+                                3 -> setNetworkMode("mixed")
+                                4 -> setNetworkMode("tun")
                                 else -> setNetworkMode("tproxy")
                             }
                         }
-
                         override fun onNothingSelected(p0: AdapterView<*>?) {}
                     }
                 }
@@ -167,21 +167,18 @@ class SettingDialog : MaterialDialogFragment() {
                 spProxyMode.apply {
                     buildSpinner(resources.getStringArray(R.array.proxy_array), this)
                     when (proxyMode) {
-                        "whitelist" -> setSelection(1)
-                        "blacklist" -> setSelection(2)
-                        else -> setSelection(0)
+                        "whitelist" -> setSelection(0)
+                        else -> setSelection(1)
                     }
                     onItemSelectedListener = object : OnItemSelectedListener {
                         override fun onItemSelected(
                             p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long
                         ) {
                             when (p2) {
-                                1 -> setProxyMode("whitelist")
-                                2 -> setProxyMode("blacklist")
-                                else -> setProxyMode("tun")
+                                1 -> setProxyMode("blacklist")
+                                else -> setProxyMode("whitelist")
                             }
                         }
-
                         override fun onNothingSelected(p0: AdapterView<*>?) {}
                     }
                 }

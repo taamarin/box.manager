@@ -29,7 +29,7 @@ jobs:
       - name: update version
         run: |
           sed -i "s|versionCode .*|versionCode $(date +%Y%m%d)|g" app/build.gradle
-          sed -i "s|versionName .*|versionName \"1.12.2-$(git rev-parse --short HEAD)\"|g" app/build.gradle
+          sed -i "s|versionName .*|versionName \"1.13-$(git rev-parse --short HEAD)\"|g" app/build.gradle
  
       - name: Build with Gradle
         run: |
