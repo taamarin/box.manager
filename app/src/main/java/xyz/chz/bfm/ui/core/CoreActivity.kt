@@ -79,9 +79,9 @@ class CoreActivity : AppCompatActivity() {
             val jo = JSONObject(str)
             tagNameClash = jo.getString("tag_name")
             if (CoreUtil.getAbis().contains("arm64")) {
-                "$META_DOWNLOAD/$tagNameClash/mihomo-android-arm64-cgo-$tagNameClash.gz"
+                "$META_DOWNLOAD/$tagNameClash/mihomo-android-arm64-v8-$tagNameClash.gz"
             } else {
-                "$META_DOWNLOAD/$tagNameClash/mihomo-linux-armv7-cgo-$tagNameClash.gz"
+                "$META_DOWNLOAD/$tagNameClash/mihomo-android-armv7-$tagNameClash.gz"
             }
         } catch (e: JSONException) {
             e.message!!.toString()
