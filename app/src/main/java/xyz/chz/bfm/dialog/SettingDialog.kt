@@ -47,59 +47,38 @@ class SettingDialog : MaterialDialogFragment() {
 
                 coreSelector.apply {
                     buildSpinner(resources.getStringArray(R.array.core_array), this)
-                    when (core) {
-                        "clash" -> setSelection(0)
-                        "sing-box" -> setSelection(1)
-                        "xray" -> setSelection(2)
-                        else -> setSelection(3)
-                    }
-                    onItemSelectedListener = object : OnItemSelectedListener {
-                        override fun onItemSelected(
-                            p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long
-                        ) {
-                            when (p2) {
-                                0 -> {
-                                    clash1.visibility = View.VISIBLE
-                                    clash2.visibility = View.VISIBLE
-                                    clash5.visibility = View.VISIBLE
-                                    clash6.visibility = View.VISIBLE
-                                    clash7.visibility = View.VISIBLE
-                                    clash8.visibility = View.VISIBLE
-                                    setCore = "clash"
-                                }
-
-                                1 -> {
-                                    clash1.visibility = View.GONE
-                                    clash2.visibility = View.GONE
-                                    clash5.visibility = View.GONE
-                                    clash6.visibility = View.GONE
-                                    clash7.visibility = View.GONE
-                                    clash8.visibility = View.GONE
-                                    setCore = "sing-box"
-                                }
-
-                                2 -> {
-                                    clash1.visibility = View.GONE
-                                    clash2.visibility = View.GONE
-                                    clash5.visibility = View.GONE
-                                    clash6.visibility = View.GONE
-                                    clash7.visibility = View.GONE
-                                    clash8.visibility = View.GONE
-                                    setCore = "xray"
-                                }
-
-                                else -> {
-                                    clash1.visibility = View.GONE
-                                    clash2.visibility = View.GONE
-                                    clash5.visibility = View.GONE
-                                    clash6.visibility = View.GONE
-                                    clash7.visibility = View.GONE
-                                    clash8.visibility = View.GONE
-                                    setCore = "v2fly"
-                                }
+                    setSelection(
+                        when (core) {
+                            "clash" -> 0
+                            "sing-box" -> 1
+                            "xray" -> 2
+                            "hysteria" -> 3
+                            else -> 4
+                        }
+                    )
+                    
+                    onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                            val isClashSelected = position == 0
+                            val visibility = if (isClashSelected) View.VISIBLE else View.GONE
+                            
+                            clash1.visibility = visibility
+                            clash2.visibility = visibility
+                            clash5.visibility = visibility
+                            clash6.visibility = visibility
+                            clash7.visibility = visibility
+                            clash8.visibility = visibility
+                            
+                            setCore = when (position) {
+                                0 -> "clash"
+                                1 -> "sing-box"
+                                2 -> "xray"
+                                3 -> "hysteria"
+                                else -> "v2fly"
                             }
                         }
-                        override fun onNothingSelected(p0: AdapterView<*>?) {
+                
+                        override fun onNothingSelected(parent: AdapterView<*>?) {
                         }
                     }
                 }
