@@ -57,22 +57,6 @@ object TermCmd {
             return execRootCmd(cmd)
         }
 
-    val appidList: HashSet<String>
-        get() {
-            val s = HashSet<String>()
-            val cmd =
-                "grep 'packages_list' ${path}/settings.ini | sed 's/^.*=//' | sed 's/(//g' | sed 's/)//g' | awk 'END{print}'"
-            val result = execRootCmd(cmd)
-            if (result.isEmpty()) {
-                return s
-            }
-            val appIds = result.split(" ")
-            for (i in appIds) {
-                s.add(i)
-            }
-            return s
-        }
-
     private val proxyProviderJsonKey: HashSet<String>
         get() {
             val s = HashSet<String>()
@@ -107,27 +91,34 @@ object TermCmd {
             return s
         }
 
-    private fun setAppIdList(): Boolean {
-        return execRootCmdSilent("sed -i 's/packages_list=.*/packages_list=()/;' ${path}/settings.ini") != -1
-    }
+    val appidList: HashSet<String>
+        get() {
+            val s = HashSet<String>()
+            val result = execRootCmd("cat ${path}/package.list.ini")
+            if (result.isEmpty()) {
+                return s
+            }
+            val appIds = result.split("\n", " ")
+            for (i in appIds) {
+                if (i.isNotEmpty()) {
+                    s.add(i.trim())
+                }
+            }
+            return s
+        }
 
     fun setAppidList(s: HashSet<String?>): Boolean {
-        if (s.size == 0) {
-            return setAppIdList()
-        }
-        val cmd = StringBuilder("sed -i 's/packages_list=.*/packages_list=( ")
-        for (i in s) {
-            cmd.append(i).append(" ")
-        }
-        cmd.append(")/;' ${path}/settings.ini")
-        return execRootCmdSilent(cmd.toString().trim { it <= ' ' }) != -1
+        val content = s.filterNotNull()
+            .filter { it.isNotEmpty() }
+            .joinToString(" ")
+        
+        return execRootCmdSilent("echo '${content}' > ${path}/package.list.ini && sed -i 's/ /\\'$'\\n/g' ${path}/package.list.ini") != -1
     }
 
     private fun getNameConfig(what: String, isClash: Boolean): String {
         val m = if (isClash) "yaml" else "json"
         return execRootCmd("find ${path}/$what/ -maxdepth 1 -name 'config.$m' -type f -exec basename {} \\;")
     }
-
 
     val getPathOnly: String
         get() {
