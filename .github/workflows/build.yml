@@ -29,7 +29,7 @@ jobs:
       - name: update version
         run: |
           sed -i "s|versionCode .*|versionCode $(date +%Y%m%d)|g" app/build.gradle
-          sed -i "s|versionName .*|versionName \"1.13-$(git rev-parse --short HEAD)\"|g" app/build.gradle
+          sed -i "s|versionName .*|versionName \"1.14-$(git rev-parse --short HEAD)\"|g" app/build.gradle
  
       - name: Build with Gradle
         run: |
@@ -86,7 +86,7 @@ jobs:
         run: |
           if [ ! -z "${{ secrets.BOT_TOKEN }}" ]; then
             export VERSION="v${{ steps.version.outputs.release_version }}"
-            export COMMIT=$(git log --oneline -n 5 --no-decorate | sed 's/^[0-9a-f]* //' | sed 's/^/— /')
+            export COMMIT=$(git log --oneline -n 10 --no-decorate | sed 's/^[0-9a-f]* //' | sed 's/^/— /')
             FILE=$(find app/build/outputs/apk/release -name "*.apk")
             pip3 install telethon==1.31.1
             python3 $GITHUB_WORKSPACE/.github/taamarinbot.py $FILE

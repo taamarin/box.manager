@@ -20,8 +20,9 @@ Commit:
 {commit}
 
 [source](https://github.com/taamarin/box.manager)
+[module](https://github.com/taamarin/box_for_magisk)
 
-#apk #manager #bfr #root
+#apk #manager #BFR #root
 """.strip()
 
 def get_caption():
