@@ -64,6 +64,7 @@ class SettingDialog : MaterialDialogFragment() {
                             
                             clash1.visibility = visibility
                             clash2.visibility = visibility
+                            clash4.visibility = visibility
                             clash5.visibility = visibility
                             clash6.visibility = visibility
                             clash7.visibility = visibility
@@ -98,6 +99,27 @@ class SettingDialog : MaterialDialogFragment() {
                                 1 -> setFindProc("strict")
                                 2 -> setFindProc("always")
                                 else -> setFindProc("off")
+                            }
+                        }
+                        override fun onNothingSelected(p0: AdapterView<*>?) {}
+                    }
+                }
+
+                spFindConf.apply {
+                    buildSpinner(resources.getStringArray(R.array.conf_array), this)
+                    when (findConf) {
+                        "config.yaml" -> setSelection(0)
+                        "config2.yaml" -> setSelection(1)
+                        else -> setSelection(2)
+                    }
+                    onItemSelectedListener = object : OnItemSelectedListener {
+                        override fun onItemSelected(
+                            p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long
+                        ) {
+                            when (p2) {
+                                1 -> setFindConf("config2.yaml")
+                                2 -> setFindConf("config3.yaml")
+                                else -> setFindConf("config.yaml")
                             }
                         }
                         override fun onNothingSelected(p0: AdapterView<*>?) {}
@@ -288,5 +310,6 @@ class SettingDialog : MaterialDialogFragment() {
         spNetworkMode.isEnabled = bo
         spClashType.isEnabled = bo
         spFindProc.isEnabled = bo
+        spFindConf.isEnabled = bo
     }
 }

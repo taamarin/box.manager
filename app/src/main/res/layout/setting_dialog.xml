@@ -82,6 +82,38 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/clash4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:layout_weight="1.6"
+                android:text="@string/find_config" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:text=" :" />
+
+            <Spinner
+                android:id="@+id/spFindConf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5">
+
+            </Spinner>
+
+        </LinearLayout>
+ 
+        <LinearLayout
             android:id="@+id/clash8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

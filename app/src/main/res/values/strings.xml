@@ -21,6 +21,7 @@
     <string name="select_core">select core :</string>
     <string name="clash_settings">clash settings:</string>
     <string name="find_procces">find procces</string>
+    <string name="find_config">find config</string>
     <string name="clash_options">clash options</string>
     <string name="unified_delay">unified delay[meta]</string>
     <string name="sniffer">sniffer[meta]</string>
@@ -56,6 +57,12 @@
         <item>off</item>
         <item>strict</item>
         <item>always</item>
+    </string-array>
+
+    <string-array name="conf_array">
+        <item>default</item>
+        <item>config2</item>
+        <item>config3</item>
     </string-array>
 
     <string-array name="clash_core_array">
