@@ -12,10 +12,10 @@ object SettingCmd {
     }
 
     val proxyMode: String
-        get() = execRootCmd("grep 'proxy_mode=' /data/adb/box/settings.ini | sed 's/^.*=//' | sed 's/\"//g'")
+        get() = execRootCmd("sed -n 's/^mode:\\([^ ]*\\).*/\\1/p' /data/adb/box/package.list.cfg")
 
     fun setProxyMode(mode: String): String {
-        return execRootCmd("sed -i 's/proxy_mode=.*/proxy_mode=\"$mode\"/;' /data/adb/box/settings.ini")
+        return execRootCmd("sed -i 's/^mode:[^ ]*/mode:$mode/' /data/adb/box/package.list.cfg")
     }
 
     val cron: String

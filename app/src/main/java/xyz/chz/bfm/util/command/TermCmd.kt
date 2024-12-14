@@ -94,13 +94,13 @@ object TermCmd {
     val appidList: HashSet<String>
         get() {
             val s = HashSet<String>()
-            val result = execRootCmd("cat ${path}/package.list.ini")
+            val result = execRootCmd("cat ${path}/package.list.cfg")
             if (result.isEmpty()) {
                 return s
             }
-            val appIds = result.split("\n", " ")
+            val appIds = result.split("\n")
             for (i in appIds) {
-                if (i.isNotEmpty()) {
+                if (i.isNotEmpty() && !i.startsWith("#")) {
                     s.add(i.trim())
                 }
             }
@@ -111,8 +111,15 @@ object TermCmd {
         val content = s.filterNotNull()
             .filter { it.isNotEmpty() }
             .joinToString(" ")
-        
-        return execRootCmdSilent("echo '${content}' > ${path}/package.list.ini && sed -i 's/ /\\'$'\\n/g' ${path}/package.list.ini") != -1
+
+        val command = """
+            echo "$content" > "$path/package.list.cfg" && 
+            sed -i '/^#/!s/ /\'$'\n/g' "${path}/package.list.cfg"
+            sed -i '/alook\\|999_alook/s/^/#/' "${path}/package.list.cfg"
+        """.trimIndent()
+
+        return execRootCmdSilent(command) != -1
+
     }
 
     private fun getNameConfig(what: String, isClash: Boolean): String {
