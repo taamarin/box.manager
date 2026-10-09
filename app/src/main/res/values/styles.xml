@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="MyCardView" parent="@style/Widget.Material3.CardView">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut
-        </item>
+    <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
     </style>
 
     <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
@@ -14,16 +13,17 @@
         <item name="cornerSizeBottomRight">8dp</item>
     </style>
 
-    <style name="ThemeOverlay.Material3.MaterialAlertDialog_background" parent="@style/ThemeOverlay.Material3.MaterialAlertDialog">
-        <item name="android:background">?attr/colorSurface</item>
+    <style name="ThemeOverlay.MaterialComponents.MaterialAlertDialog_background" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:background">@color/color_bg_dialog</item>
         <item name="shapeAppearanceOverlay">@style/DialogCorners</item>
         <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
         <item name="buttonBarNegativeButtonStyle">@style/PositiveButtonStyle</item>
     </style>
 
-    <style name="PositiveButtonStyle" parent="@style/Widget.Material3.Button.TextButton">
+    <style name="PositiveButtonStyle" parent="@style/Widget.MaterialComponents.Button">
         <item name="android:background">@color/transparent</item>
-        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textColor">@color/material_blue</item>
+        <item name="backgroundTint">@color/material_blue</item>
     </style>
 
     <style name="DialogCorners">
