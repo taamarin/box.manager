@@ -1,25 +1,19 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.BoxForRoot" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
+    <style name="Base.Theme.BoxForRoot" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/material_blue</item>
-        <item name="colorPrimaryVariant">@color/material_blue</item>
         <item name="colorOnPrimary">@color/light_dark</item>
-        <item name="bg">@color/dark</item>
-        <item name="boldText">@color/white_bold_text</item>
-        <item name="regularText">@color/white_regular_text</item>
-        <item name="appbar">@color/dark</item>
-        <item name="card">@color/light_dark</item>
-        <item name="appbarAttribute">@color/material_blue</item>
-        <item name="hintText">@color/white_hint_text</item>
-        <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/material_blue</item>
-        <item name="colorSecondaryVariant">@color/material_blue</item>
-        <item name="colorOnSecondary">@color/material_blue</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/dark</item>
+        <item name="colorOnSecondary">@color/light_dark</item>
+        <item name="bg">?attr/colorSurface</item>
+        <item name="boldText">?attr/colorOnSurface</item>
+        <item name="regularText">?attr/colorOnSurfaceVariant</item>
+        <item name="appbar">?attr/colorSurface</item>
+        <item name="card">?attr/colorSurfaceVariant</item>
+        <item name="appbarAttribute">?attr/colorPrimary</item>
+        <item name="hintText">?attr/colorOnSurfaceVariant</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
         <item name="android:windowLightStatusBar">false</item>
-        <!-- Customize your theme here. -->
     </style>
 
 </resources>

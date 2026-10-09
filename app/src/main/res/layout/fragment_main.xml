@@ -75,7 +75,7 @@
                     android:layout_marginEnd="10dp"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_modul"
-                    app:tint="@color/material_blue" />
+                    app:tint="?attr/colorPrimary" />
 
             </RelativeLayout>
 
@@ -89,7 +89,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
-                app:cardBackgroundColor="#6fa251">
+                app:cardBackgroundColor="?attr/colorPrimaryContainer">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -105,7 +105,7 @@
                         android:layout_height="28dp"
                         android:layout_centerVertical="true"
                         app:srcCompat="@drawable/ic_app"
-                        app:tint="?android:attr/textColorPrimaryInverse" />
+                        app:tint="?attr/colorOnPrimaryContainer" />
 
                     <TextView
                         android:id="@+id/status_title"
@@ -114,7 +114,7 @@
                         android:layout_marginStart="25dp"
                         android:layout_toEndOf="@id/status_icon"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="?android:attr/textColorPrimaryInverse"
+                        android:textColor="?attr/colorOnPrimaryContainer"
                         tools:text="status" />
 
                     <TextView
@@ -125,7 +125,7 @@
                         android:layout_alignStart="@id/status_title"
                         android:layout_marginTop="2dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="?android:attr/textColorPrimaryInverse"
+                        android:textColor="?attr/colorOnPrimaryContainer"
                         tools:text="version" />
 
                     <TextView
@@ -137,7 +137,7 @@
                         android:layout_marginTop="2dp"
                         android:ellipsize="end"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="?android:attr/textColorPrimaryInverse"
+                        android:textColor="?attr/colorOnPrimaryContainer"
                         android:textSize="16sp"
                         tools:text="tes text" />
 

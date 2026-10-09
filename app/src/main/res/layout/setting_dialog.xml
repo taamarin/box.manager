@@ -379,7 +379,7 @@
                 android:layout_weight="1"
                 android:background="@color/transparent"
                 android:text="@string/check_module"
-                android:textColor="@color/material_blue"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="12sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -389,7 +389,7 @@
                 android:layout_weight="1"
                 android:background="@color/transparent"
                 android:text="@string/myip"
-                android:textColor="@color/material_blue"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="12sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -399,7 +399,7 @@
                 android:layout_weight="1"
                 android:background="@color/transparent"
                 android:text="about"
-                android:textColor="@color/material_blue"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="12sp" />
 
         </LinearLayout>
