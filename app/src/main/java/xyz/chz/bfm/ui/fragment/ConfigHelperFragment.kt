@@ -68,7 +68,7 @@ class ConfigHelperFragment : Fragment() {
     private fun dialogConfig() {
         val builder = AlertDialog.Builder(
             requireActivity(),
-            R.style.ThemeOverlay_Material3_MaterialAlertDialog
+            R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_background
         )
         builder.setCancelable(false)
         val items = TermCmd.proxyProviderPath.toTypedArray()
@@ -89,7 +89,7 @@ class ConfigHelperFragment : Fragment() {
     private fun dialogSave() {
         val builder = AlertDialog.Builder(
             requireActivity(),
-            R.style.ThemeOverlay_Material3_MaterialAlertDialog
+            R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_background
         )
         builder.setTitle("Save")
         builder.setMessage("Do you want save config now ?")
