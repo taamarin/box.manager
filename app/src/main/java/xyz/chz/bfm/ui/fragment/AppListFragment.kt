@@ -93,14 +93,23 @@ class AppListFragment : Fragment() {
 
             with(fbSave) {
                 setOnClickListener {
-                    setMyFab("#888F96", R.drawable.ic_commit)
+                    setMyFab(
+                        com.google.android.material.R.attr.colorPrimary,
+                        R.drawable.ic_commit
+                    )
                     if (Util.isProxyed) {
                         TermCmd.renewBox {
                             Util.runOnUiThread {
                                 if (it) {
-                                    setMyFab("#6fa251", R.drawable.ic_done)
+                                    setMyFab(
+                                        com.google.android.material.R.attr.colorPrimary,
+                                        R.drawable.ic_done
+                                    )
                                 } else {
-                                    setMyFab("#EC7474", R.drawable.ic_error)
+                                    setMyFab(
+                                        com.google.android.material.R.attr.colorError,
+                                        R.drawable.ic_error
+                                    )
                                 }
                             }
                         }

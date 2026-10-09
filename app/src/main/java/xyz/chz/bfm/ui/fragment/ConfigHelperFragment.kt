@@ -89,7 +89,7 @@ class ConfigHelperFragment : Fragment() {
     private fun dialogSave() {
         val builder = AlertDialog.Builder(
             requireActivity(),
-            R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_background
+            R.style.ThemeOverlay_Material3_MaterialAlertDialog_background
         )
         builder.setTitle("Save")
         builder.setMessage("Do you want save config now ?")

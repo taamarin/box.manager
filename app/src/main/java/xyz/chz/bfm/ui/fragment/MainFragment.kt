@@ -10,6 +10,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.color.MaterialColors
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.Call
 import okhttp3.Callback
@@ -31,7 +32,6 @@ import xyz.chz.bfm.util.command.SettingCmd
 import xyz.chz.bfm.util.command.TermCmd
 import xyz.chz.bfm.util.modul.ModuleManager
 import xyz.chz.bfm.util.moduleVer
-import xyz.chz.bfm.util.setColorBackground
 import xyz.chz.bfm.util.setImage
 import xyz.chz.bfm.util.setTextHtml
 import xyz.chz.bfm.util.toast
@@ -115,7 +115,10 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
             StatusConnection.Enabled.str -> {
                 statusTitle.text = StatusConnection.Enabled.str
                 tvApps.text = strapps
-                proxy.setColorBackground("#6fa251")
+                setProxyCardColors(
+                    com.google.android.material.R.attr.colorPrimaryContainer,
+                    com.google.android.material.R.attr.colorOnPrimaryContainer
+                )
                 statusIcon.setImage(R.drawable.ic_enabled)
                 statusSummary.moduleVer()
             }
@@ -123,7 +126,10 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
             StatusConnection.Disabled.str -> {
                 statusTitle.text = StatusConnection.Disabled.str
                 tvApps.text = strapps
-                proxy.setColorBackground("#87afc7")
+                setProxyCardColors(
+                    com.google.android.material.R.attr.colorSurfaceVariant,
+                    com.google.android.material.R.attr.colorOnSurfaceVariant
+                )
                 statusIcon.setImage(R.drawable.ic_disabled)
                 statusSummary.moduleVer()
             }
@@ -131,7 +137,10 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
             StatusConnection.Loading.str -> {
                 statusTitle.text = StatusConnection.Loading.str
                 tvApps.text = strapps
-                proxy.setColorBackground("#478fec")
+                setProxyCardColors(
+                    com.google.android.material.R.attr.colorSecondaryContainer,
+                    com.google.android.material.R.attr.colorOnSecondaryContainer
+                )
                 statusIcon.setImage(R.drawable.ic_loading)
                 statusSummary.moduleVer()
             }
@@ -139,7 +148,10 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
             StatusConnection.Error.str -> {
                 statusTitle.text = StatusConnection.Error.str
                 tvApps.text = strapps
-                proxy.setColorBackground("#f35e5e")
+                setProxyCardColors(
+                    com.google.android.material.R.attr.colorErrorContainer,
+                    com.google.android.material.R.attr.colorOnErrorContainer
+                )
                 statusIcon.setImage(R.drawable.ic_error)
                 statusSummary.moduleVer()
             }
@@ -147,12 +159,25 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
             else -> {
                 statusTitle.text = StatusConnection.Unknown.str
                 tvApps.text = strapps
-                proxy.setColorBackground("#26b545")
+                setProxyCardColors(
+                    com.google.android.material.R.attr.colorPrimaryContainer,
+                    com.google.android.material.R.attr.colorOnPrimaryContainer
+                )
                 statusIcon.setImage(R.drawable.ic_app)
                 statusSummary.moduleVer()
             }
         }
     }
+
+    private fun setProxyCardColors(backgroundAttribute: Int, foregroundAttribute: Int) =
+        with(binding) {
+            proxy.setCardBackgroundColor(MaterialColors.getColor(proxy, backgroundAttribute))
+            val foregroundColor = MaterialColors.getColor(proxy, foregroundAttribute)
+            statusIcon.imageTintList = android.content.res.ColorStateList.valueOf(foregroundColor)
+            statusTitle.setTextColor(foregroundColor)
+            statusSummary.setTextColor(foregroundColor)
+            tvApps.setTextColor(foregroundColor)
+        }
 
     private fun settings() = with(binding) {
         with(fbSetting) {
