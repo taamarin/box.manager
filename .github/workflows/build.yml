@@ -39,7 +39,7 @@ jobs:
       - name: checking release version
         id: version
         run: |
-          echo ::set-output name=release_version::$(cat app/build.gradle  | grep -o "versionName \"[0-9.]*-[a-z,0-9]*\"" | grep -o "[0-9.]*-[a-z,0-9]*")
+          echo "release_version=$(cat app/build.gradle  | grep -o "versionName \"[0-9.]*-[a-z,0-9]*\"" | grep -o "[0-9.]*-[a-z,0-9]*")" >> "$GITHUB_OUTPUT"
 
       - name: rename apks
         run: |
@@ -47,7 +47,7 @@ jobs:
           mv -f ./app/build/outputs/apk/release/*.apk ./app/build/outputs/apk/release/$APK
 
       - name: upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{  success() }}
         with:
           name: b4r_manager
