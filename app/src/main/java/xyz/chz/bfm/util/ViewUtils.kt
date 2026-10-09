@@ -6,29 +6,21 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Build
 import android.text.Html
 import android.text.Spanned
-import android.util.TypedValue
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.material.card.MaterialCardView
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import xyz.chz.bfm.ui.converter.config.ConfigType
 import xyz.chz.bfm.util.modul.ModuleManager
 import java.net.HttpURLConnection
 import java.net.URL
 
-
-fun MaterialCardView.setColorBackground(str: String) {
-    this.setCardBackgroundColor(Color.parseColor(str))
-    this.radius =
-        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, context.resources.displayMetrics)
-}
 
 fun ImageView.setImage(res: Int) {
     this.setImageResource(res)
@@ -38,8 +30,8 @@ fun TextView.moduleVer() {
     this.text = ModuleManager.moduleVersion
 }
 
-fun FloatingActionButton.setMyFab(color: String, res: Int) {
-    this.backgroundTintList = ColorStateList.valueOf(Color.parseColor(color))
+fun FloatingActionButton.setMyFab(colorAttribute: Int, res: Int) {
+    this.backgroundTintList = ColorStateList.valueOf(MaterialColors.getColor(this, colorAttribute))
     this.setImageResource(res)
 }
 
