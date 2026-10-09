@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import rx.Subscription
 import xyz.chz.bfm.R
 import xyz.chz.bfm.adapter.AppListAdapter
 import xyz.chz.bfm.data.AppInfo
@@ -27,10 +26,12 @@ import java.text.Collator
 @AndroidEntryPoint
 class AppListFragment : Fragment() {
 
-    private lateinit var binding: FragmentAppListBinding
+    private var _binding: FragmentAppListBinding? = null
+    private val binding get() = _binding!!
 
     private var adapter: AppListAdapter? = null
     private var appsAll: List<AppInfo>? = null
+    private var appListSubscription: Subscription? = null
     private val defaultsSharedPreferences by lazy {
         PreferenceManager.getDefaultSharedPreferences(
             requireActivity()
@@ -41,7 +42,7 @@ class AppListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAppListBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentAppListBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -49,13 +50,9 @@ class AppListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            val dividerItemDecoration =
-                DividerItemDecoration(requireActivity(), LinearLayoutManager.VERTICAL)
-            rvApps.addItemDecoration(dividerItemDecoration)
-
             val applist = TermCmd.appidList
 
-            AppManager.rxLoadNetworkAppList(requireActivity())
+            appListSubscription = AppManager.rxLoadNetworkAppList(requireContext())
                 .subscribeOn(Schedulers.io())
                 .map {
                     if (applist != null) {
@@ -86,7 +83,7 @@ class AppListFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     appsAll = it
-                    adapter = AppListAdapter(requireActivity(), it, applist)
+                    adapter = AppListAdapter(it, applist)
                     rvApps.adapter = adapter
                     prgWaiting.visibility = View.GONE
                 }
@@ -122,6 +119,16 @@ class AppListFragment : Fragment() {
         }
         setupSearchApp()
         setupSelect()
+    }
+
+    override fun onDestroyView() {
+        appListSubscription?.unsubscribe()
+        appListSubscription = null
+        adapter = null
+        appsAll = null
+        _binding?.rvApps?.adapter = null
+        _binding = null
+        super.onDestroyView()
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -173,7 +180,7 @@ class AppListFragment : Fragment() {
             }
         }
 
-        adapter = AppListAdapter(requireActivity(), apps, adapter?.blacklist)
+        adapter = AppListAdapter(apps, adapter?.blacklist)
         binding.rvApps.adapter = adapter
         adapter?.notifyDataSetChanged()
     }

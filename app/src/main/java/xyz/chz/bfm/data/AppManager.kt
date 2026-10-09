@@ -19,19 +19,16 @@ object AppManager {
             val applicationInfo = pkg.applicationInfo
 
             val appName = applicationInfo.loadLabel(packageManager).toString()
-            val appIcon = applicationInfo.loadIcon(packageManager)
             val isSystemApp = (applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM) > 0
 
-            val appInfo = AppInfo(appName, pkg.packageName, appIcon, isSystemApp, 0)
+            val appInfo = AppInfo(appName, pkg.packageName, applicationInfo, isSystemApp, 0)
             apps.add(appInfo)
         }
         return apps
     }
 
     fun rxLoadNetworkAppList(ctx: Context): Observable<ArrayList<AppInfo>> =
-        Observable.unsafeCreate {
-            it.onNext(loadNetworkAppList(ctx))
-        }
+        Observable.fromCallable { loadNetworkAppList(ctx) }
 
 
     val PackageInfo.hasInternetPermission: Boolean

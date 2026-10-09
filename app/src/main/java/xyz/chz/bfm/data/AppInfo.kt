@@ -1,11 +1,11 @@
 package xyz.chz.bfm.data
 
-import android.graphics.drawable.Drawable
+import android.content.pm.ApplicationInfo
 
 data class AppInfo(
     val appName: String,
     val packageName: String,
-    val appIcon: Drawable,
+    val applicationInfo: ApplicationInfo,
     val isSystemApp: Boolean,
     var isSelected: Int
 )

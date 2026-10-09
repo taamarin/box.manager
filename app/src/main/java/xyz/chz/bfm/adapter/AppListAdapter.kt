@@ -1,6 +1,5 @@
 package xyz.chz.bfm.adapter
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import xyz.chz.bfm.data.AppInfo
 import xyz.chz.bfm.databinding.ItemApplistBinding
 
 class AppListAdapter(
-    val activity: Activity,
     val apps: List<AppInfo>,
     blacklist: MutableSet<String>?
 ) :
@@ -68,7 +66,7 @@ class AppListAdapter(
         fun bind(appInfo: AppInfo) {
             this.appInfo = appInfo
             with(item) {
-                icon.setImageDrawable(appInfo.appIcon)
+                icon.setImageDrawable(appInfo.applicationInfo.loadIcon(item.root.context.packageManager))
                 checkBox.isChecked = inBlacklist
                 item.packageName.text = appInfo.packageName
                 if (appInfo.isSystemApp) {
