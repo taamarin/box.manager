@@ -17,7 +17,7 @@ open class MaterialDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return MaterialAlertDialogBuilder(
             requireContext(),
-            R.style.ThemeOverlay_Material3_MaterialAlertDialog_background
+            R.style.ThemeOverlay_Material3_MaterialAlertDialog
         ).apply {
             dialogView =
                 onCreateView(LayoutInflater.from(requireContext()), null, savedInstanceState)
