@@ -14,7 +14,7 @@
         <item name="cornerSizeBottomRight">16dp</item>
     </style>
 
-    <style name="ThemeOverlay.MaterialComponents.MaterialAlertDialog_background" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+    <style name="ThemeOverlay.MaterialComponents.MaterialAlertDialog_background" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="android:background">?attr/colorSurface</item>
         <item name="shapeAppearanceOverlay">@style/DialogCorners</item>
         <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
@@ -31,5 +31,8 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">28dp</item>
     </style>
+
+    <!-- Compatibility alias for older resource references that still use @style/Base.Theme -->
+    <style name="Base.Theme" parent="@style/Base.Theme.BoxForRoot" />
 
 </resources>
