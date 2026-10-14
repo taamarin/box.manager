@@ -32,7 +32,7 @@
         <item name="cornerSize">28dp</item>
     </style>
 
-    <!-- Compatibility alias for older resource references that still use @style/Base.Theme -->
-    <style name="Base.Theme" parent="@style/Base.Theme.BoxForRoot" />
+    <!-- Implicit parent of Base.Theme.BoxForRoot in values-v26 variants; also resolves stale @style/Base.Theme references -->
+    <style name="Base.Theme" parent="Theme.Material3.DayNight.NoActionBar" />
 
 </resources>
