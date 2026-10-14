@@ -12,6 +12,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import xyz.chz.bfm.databinding.ActivityCoreBinding
+import xyz.chz.bfm.R
 import xyz.chz.bfm.ui.core.util.CoreUtil
 import xyz.chz.bfm.ui.core.util.DownloaderCore
 import xyz.chz.bfm.ui.core.util.IDownloadCore
@@ -46,12 +47,12 @@ class CoreActivity : AppCompatActivity() {
     }
 
     private fun checkClash() = with(binding) {
-        tvClash.text = "Checking for mihomo"
+        tvClash.text = getString(R.string.checking_mihomo)
         prgClash.isVisible = true
         OkHttpHelper().reqGithub(META_REPO, object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 runOnUiThread {
-                    tvClash.text = "Failed to get repo clash, check ur internet connection"
+                    tvClash.text = getString(R.string.failed_get_clash_repo)
                     prgClash.isVisible = false
                 }
             }
@@ -61,10 +62,10 @@ class CoreActivity : AppCompatActivity() {
                 runOnUiThread {
                     urlClash = parseClash(respom)
                     if (parseVersionClashMeta() != CoreCmd.checkVerClashMeta) {
-                        tvClash.text = "Update available mihomo"
+                        tvClash.text = getString(R.string.mihomo_update_available)
                         btnClash.isVisible = true
                     } else {
-                        tvClash.text = "mihomo has Latest Version"
+                        tvClash.text = getString(R.string.mihomo_latest_version)
                         imgDoneClash.isVisible = true
                         btnClash.isVisible = false
                     }
@@ -117,11 +118,11 @@ class CoreActivity : AppCompatActivity() {
                             btnClash.isVisible = false
                             prgHrzClash.isVisible = false
                             imgDoneClash.isVisible = true
-                            tvClash.text = "mihomo has Latest Version"
+                            tvClash.text = getString(R.string.mihomo_latest_version)
                         }
 
                         override fun onDownloadingFailed(e: Exception?) {
-                            toast("failed downloading clash", this@CoreActivity)
+                            toast(getString(R.string.failed_downloading_clash), this@CoreActivity)
                             btnClash.isVisible = true
                             prgHrzClash.progress = 0
                             prgHrzClash.isVisible = false

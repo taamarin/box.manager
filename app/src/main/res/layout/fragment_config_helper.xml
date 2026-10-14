@@ -32,7 +32,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
-        android:contentDescription="Converter"
+        android:contentDescription="@string/converter"
         android:src="@drawable/ic_converter"
         app:fabSize="mini"
         app:tint="@null" />
@@ -45,7 +45,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="30dp"
-        android:contentDescription="Save"
+        android:contentDescription="@string/save"
         android:src="@drawable/ic_save"
         app:fabSize="mini"
         app:tint="@null" />

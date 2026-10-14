@@ -16,7 +16,7 @@
             android:id="@+id/textInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="paste your config here\nseperate by enter or new line"
+            android:hint="@string/paste_config_hint"
             android:maxLines="7" />
 
         <LinearLayout
@@ -28,13 +28,13 @@
                 android:id="@+id/fullClashConfig"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:text="clash configuration" />
+                android:text="@string/clash_configuration" />
 
             <CheckBox
                 android:id="@+id/fullSingConfig"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:text="sing-box configuration" />
+                android:text="@string/sing_box_configuration" />
         </LinearLayout>
 
         <Button
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="convert" />
+            android:text="@string/convert" />
 
         <ScrollView
             android:layout_width="match_parent"
