@@ -18,7 +18,8 @@ open class BaseActivity : AppCompatActivity(), IMakeDialog {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (ModuleManager.moduleVersionCode == "") {
+        val moduleVersionCode = ModuleManager.moduleVersionCode.toIntOrNull()
+        if (moduleVersionCode == null) {
             val df = MakeDialog(
                 StatusConnection.Error.str,
                 getString(R.string.module_not_found),
@@ -28,12 +29,13 @@ open class BaseActivity : AppCompatActivity(), IMakeDialog {
             df.listener = this
             df.show(supportFragmentManager, "")
         } else {
-            if (ModuleManager.moduleVersionCode.toInt() < getString(R.string.min_module_vrsion).toInt()) {
+            val minimumVersionCode = getString(R.string.min_module_vrsion).toIntOrNull()
+            if (minimumVersionCode != null && moduleVersionCode < minimumVersionCode) {
                 val df = MakeDialog(
                     StatusConnection.Loading.str,
                     String.format(
                         getString(R.string.update_module),
-                        ModuleManager.moduleVersionCode.toInt()
+                        moduleVersionCode
                     ),
                     true,
                     false
