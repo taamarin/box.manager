@@ -77,7 +77,7 @@ class ConfigHelperFragment : Fragment() {
             if (configSlected.isNotEmpty()) {
                 binding.myEditor.text = configSlected
             } else {
-                toast("Empty file", requireActivity())
+                toast(getString(R.string.empty_file), requireActivity())
             }
             statePath = items[w]
 
@@ -91,9 +91,9 @@ class ConfigHelperFragment : Fragment() {
             requireActivity(),
             R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_background
         )
-        builder.setTitle("Save")
-        builder.setMessage("Do you want save config now ?")
-        builder.setPositiveButton("yes") { _, _ ->
+        builder.setTitle(getString(R.string.save))
+        builder.setMessage(getString(R.string.save_config_prompt))
+        builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
             val input = binding.myEditor.text
             TermCmd.saveConfig(requireActivity(), input, statePath!!) {
                 Util.runOnUiThread {
@@ -104,7 +104,7 @@ class ConfigHelperFragment : Fragment() {
                 }
             }
         }
-        builder.setNegativeButton("cancel") { d, _ ->
+        builder.setNegativeButton(getString(R.string.cancel)) { d, _ ->
             d.dismiss()
         }
         val dialog = builder.create()

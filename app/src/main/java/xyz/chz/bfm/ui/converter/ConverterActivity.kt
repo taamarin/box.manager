@@ -63,12 +63,12 @@ class ConverterActivity : AppCompatActivity() {
                     ) else result
                 tvResult.apply {
                     setOnClickListener {
-                        toast("Copied to Clipboard!", this@ConverterActivity)
+                        toast(getString(R.string.copied_to_clipboard), this@ConverterActivity)
                         copyToClipboard(this@ConverterActivity)
                     }
                 }
-                toast("Click result for copy config", this@ConverterActivity)
-            } else toast("???????????", this@ConverterActivity)
+                toast(getString(R.string.click_result_to_copy), this@ConverterActivity)
+            } else toast(getString(R.string.invalid_config), this@ConverterActivity)
         }
     }
 

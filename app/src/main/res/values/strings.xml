@@ -2,12 +2,12 @@
     <!-- Apps -->
     <string name="app_name">BoxForRoot</string>
     <string name="min_module_vrsion">20230814</string>
-    <string name="apps_count_list">added %d apps in mode %s</string>
-    <string name="no_apps_count_list">mode %s</string>
+    <string name="apps_count_list">added %1$d apps in mode %2$s</string>
+    <string name="no_apps_count_list">mode %1$s</string>
     <string name="ok">OK</string>
     <string name="for_clash_only">clash only work on redir-host</string>
     <string name="module_not_found">Module Not Found</string>
-    <string name="update_module">Please upgrade ur Module :)\nMinimum ver: %d</string>
+    <string name="update_module">Please upgrade ur Module :)\nMinimum ver: %1$d</string>
     <string name="module_repo_url">https://github.com/taamarin/box_for_magisk</string>
     <string name="release_repo_url">https://github.com/taamarin/box_for_magisk/releases</string>
 
@@ -43,6 +43,27 @@
     <string name="check_module">check module</string>
     <string name="myip">MyIP</string>
     <string name="setting">Setting</string>
+    <string name="about">About</string>
+    <string name="config">Config</string>
+    <string name="converter">Converter</string>
+    <string name="save">Save</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="save_config_prompt">Do you want to save the config now?</string>
+    <string name="empty_file">Empty file</string>
+    <string name="updater_core">Core Updater</string>
+    <string name="paste_config_hint">Paste your config here\n(separate entries with a new line)</string>
+    <string name="clash_configuration">Clash configuration</string>
+    <string name="sing_box_configuration">sing-box configuration</string>
+    <string name="convert">Convert</string>
+    <string name="copied_to_clipboard">Copied to clipboard!</string>
+    <string name="click_result_to_copy">Tap the result to copy the config</string>
+    <string name="invalid_config">Please enter a config</string>
+    <string name="checking_mihomo">Checking for mihomo</string>
+    <string name="failed_get_clash_repo">Failed to get the Clash repository. Check your internet connection.</string>
+    <string name="mihomo_update_available">mihomo update available</string>
+    <string name="mihomo_latest_version">mihomo is up to date</string>
+    <string name="failed_downloading_clash">Failed to download Clash</string>
 
     <!--Setting Dialog-->
     <string-array name="core_array">

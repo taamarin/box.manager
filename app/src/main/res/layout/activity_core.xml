@@ -17,7 +17,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:gravity="center"
-      android:text="UPDATER CORE"
+      android:text="@string/updater_core"
       android:textSize="32sp"
       android:textStyle="bold" />
   </LinearLayout>
