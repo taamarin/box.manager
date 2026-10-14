@@ -15,7 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
-import org.json.JSONException
 import org.json.JSONObject
 import xyz.chz.bfm.R
 import xyz.chz.bfm.databinding.FragmentMainBinding
@@ -249,38 +248,51 @@ class MainFragment : Fragment(), ISettingDialog, IMakeDialog {
         request.getRawTextFromURL(url, object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 Util.runOnUiThread {
-                    toast(e.message!!, requireActivity())
+                    if (!isAdded || view == null) return@runOnUiThread
+                    toast(e.localizedMessage ?: "Request failed", requireActivity())
                     binding.prgLoadingTop.visibility = View.GONE
                 }
             }
 
             override fun onResponse(call: Call, response: Response) {
                 try {
-                    val jo = JSONObject(response.body!!.string())
-                    var res: String? = ""
-                    res = if (state == 1) {
-                        "IP: ${jo.getString("query")}\n" +
-                                "ISP: ${jo.getString("isp")}\n" +
-                                "TZ: ${jo.getString("timezone")}\n" +
-                                "C: ${jo.getString("country")}\n" +
-                                "City: ${jo.getString("city")}\n"
-                    } else {
-                        if (jo.getString("versionCode")
-                                .toInt() > ModuleManager.moduleVersionCode.toInt()
-                        ) {
-                            "Update available\nDo you want update now?"
-                        } else {
-                            "No update found"
+                    response.use {
+                        val body = it.body?.string() ?: return@use
+                        val result = try {
+                            val jo = JSONObject(body)
+                            if (state == 1) {
+                                "IP: ${jo.getString("query")}\n" +
+                                        "ISP: ${jo.getString("isp")}\n" +
+                                        "TZ: ${jo.getString("timezone")}\n" +
+                                        "C: ${jo.getString("country")}\n" +
+                                        "City: ${jo.getString("city")}\n"
+                            } else {
+                                if (jo.getString("versionCode")
+                                        .toInt() > ModuleManager.moduleVersionCode.toInt()
+                                ) {
+                                    "Update available\nDo you want update now?"
+                                } else {
+                                    "No update found"
+                                }
+                            }
+                        } catch (e: Exception) {
+                            Log.d(tag, e.message ?: "Failed to parse response")
+                            null
+                        }
+                        if (result != null) {
+                            Util.runOnUiThread {
+                                if (!isAdded || view == null) return@runOnUiThread
+                                val df = MakeDialog(title, result)
+                                df.listener = this@MainFragment
+                                df.show(requireActivity().supportFragmentManager, "")
+                            }
                         }
                     }
-                    val df = MakeDialog(title, res)
-                    df.listener = this@MainFragment
-                    df.show(requireActivity().supportFragmentManager, "")
-                } catch (e: JSONException) {
-                    Log.d(MainFragment().tag, e.message!!)
-                }
-                Util.runOnUiThread {
-                    binding.prgLoadingTop.visibility = View.GONE
+                } finally {
+                    Util.runOnUiThread {
+                        if (!isAdded || view == null) return@runOnUiThread
+                        binding.prgLoadingTop.visibility = View.GONE
+                    }
                 }
             }
         })
